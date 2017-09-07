@@ -1,0 +1,605 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{geometry}
+%\pagestyle{empty}
+%\usepackage{fontspec,xltxtra,xunicode,indentfirst}
+%\defaultfontfeatures{Mapping=tex-text}
+%\setromanfont[Mapping=tex-text]{Baskerville}
+%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Futura}
+
+
+
+\usepackage{bm}
+\usepackage{setspace}
+%\usepackage{xyling}
+\usepackage{graphics}
+\usepackage{comment}
+%\usepackage{fullpage}
+%\usepackage{endnotes}
+\usepackage{graphicx}
+\usepackage{pstricks}
+\usepackage{pstricks,pst-plot}
+\usepackage{color}
+\usepackage{pdflscape}
+%\usepackage{pstcol}
+\usepackage{pst-3d}
+\usepackage{sgame}
+\usepackage{egameps}
+%\usepackage{bib}
+%\usepackage[abbr]{harvard}
+\usepackage{soul}
+\usepackage{placeins}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{tikz}
+%\usepackage{geometry}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+\linespread{1.1}
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0in}
+\setlength{\parindent}{0.25in}
+\setlength\textheight{8in}
+\setlength\textwidth{5.25in}
+%\setlength\oddsidemargin{0in}
+%\setlength\evensidemargin{1.5in}
+\setlength\headheight{0pt}
+\setlength\headsep{0.25in}
+%\addtolength{\parskip}{1.5ex}
+
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}% %%% THIS STUFF ALLOWS THE ~iid TO COME OUT NICE
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\newcommand{\E}{\mathop{\bf E\/}}
+\newtheorem{prop}{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{comm}{Comment}
+\newtheorem{cor}{Corollary} 
+
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\ \\
+
+
+\vfill
+{\LARGE \bf Testing Epistemic Democracy's Majority Rule Result}\ \\
+\ \\
+{\Large By William J. Berger\footnote{University of Michigan, Center for the Study of Complex Systems, zberger@umich.edu.} and Adam Sales\footnote{UT Austin, College of Education, asales@utexas.edu.}%\thanks{We received some very helpful feedback from Scott Page and Patrick Grim}
+}\\
+%{\normalsize Prepared for the Political Theory Workshop 3/12/10}\\
+%\today\\
+ \end{center}
+
+\begin{abstract}
+\noindent 
+While epistemic democrats have claimed that majority rule comes to recruit the wisdom of the crowds to identify correct answers to political problems, it has yet to be demonstrated that  elections actually produce outcomes in this way. This paper illustrates how elections can plausibly be thought to leverage the epistemic capacity of the electorate to enhance the instrumental value of elections via majority rule. To do so we offer a set of sufficient conditions that effect such `majority rule results,' even when the decision in question is multidimensional. We then look to the case of sociotropic economic voting in U.S. presidential elections to provide empirical support for the tractability of these conditions.  We find that absent such an epistemic capacity, seven presidential elections since 1956 might well have been decided differently. By generating clear conditions for the plausibility of claims made by epistemic democrats, and demonstrating their correspondence to empirical data, this paper strengthens the broader instrumental grounds which recommend democracy.
+\end{abstract}
+\smallskip
+\noindent \textbf{Keywords.} Democratic theory, epistemic democracy, majority rule, economic voting, plausibility analysis, Condorcet Jury Theorem
+\vfill
+\end{titlepage}
+
+%\begin{center}
+%{\Large Voting as Betting: An Endorsement of Landemore's Argument for Majority Rule}\\
+%MPSA 2014\\
+%by William J. Berger \\
+%Dept. of Political Science, University of Michigan
+%\end{center}
+
+\ \\
+\section{Introduction}
+Democratic theory's epistemic turn ought to be exciting for political scientists and political philosophers alike. Beyond the standard endorsements of democracy on procedural, outcome independent grounds, epistemic democracy offers insight into how and why democracy succeeds at getting things ``right.'' We'll refer to these sorts of mechanisms as \emph{veritistic} since they get at the truth. In this way, democratic decision making can be recommended not only for fostering autonomy and fairness, but also on these instrumental grounds. Epistemic democrats have pointed toward what we will refer to broadly as `majority rule results' such as the Condorcet Jury Theorem (CJT) and the Miracle of Aggregation (MA) in order to argue that democracy has a tendency to select the correct candidate or proposal in an election (\citet{Landemore13}; \cite{Surowiecki2004}; \cite{List2001}). Since free and fair elections have become democracy's sine qua non, these majority rule results provide good grounds for recommending democracy more broadly.
+
+Indeed, Aristotle already noted in book three of the \emph{Politics} that ``the many, who are not as individuals excellent men, nevertheless can, when they have come together, be better than the few best people, not individually but collectively, just as feasts to which many contribute are better than feasts provided at one person's expense'' (\cite{reeve1998aristotle}: 83). This contention, that the fruits of the many are superior to the fruits of the few, is foundational to politics. The collective domain of politics is efficacious in virtue of its propensity to generate collective outcomes superior to those that an individual alone could achieve.
+
+But it is not obvious when Aristotle's contention is correct, or even what constitutes correctness. A nagging worry remains that beyond aggregating beliefs, votes also tally people's divergent values. The examples epistemic democrats frequently use are cases where the criteria of correctness are uncontested, such as a guilty verdict or an ox's weight. Political disagreements, however, are commonly  disputes of value rather than of attendant facts or consequences. Disagreements such as gun control, abortion, and civil rights all lack a clear right answer. %\footnote{See Landemore \citeyear{Landemore2014} for a discussion of the ``fact of disagreement''.} 
+  For this reason many have argued that the machinery of epistemic democracy cannot plausibly endorse electoral outcomes (\citet{Anderson2006}; \citet{Estlund1997}; \citet{Estlund08}; \citet{Ingham2013}; \cite{urbinati2014democracy}).
+
+In this paper we push back against such skepticism and argue that, under certain conditions, 
+the result of a democratic election can be considered veritistic. Were voters epistemically biased against the candidates that advanced their commitments, the institution would systematically produce `unwanted effects,' where a constituency would be less likely to obtain its preferred outcome by voting for it. We provide a set of conditions where, to the extent that voters substantively agree on some issue that affects an election's outcome, their votes can be thought to nudge the election in favor of the `right' candidate---the candidate that they would endorse on some particular grounds given full information---thereby inhibiting unwanted effects.\footnote{Indeed, assumptions such as single-peakedness can also be employed to  make sense of aggregating values. These routes, however, would preclude the kind empirical analysis we provide, since they would necessitate considering both the strength and accuracy of the ``yeas'' and ``nays,'' which our data just don't permit.} 
+
+%This allows us to then demonstrate that the arguments made by epistemic democrats plausibly correspond to empirical cases.
+Since the claim is instrumental in kind---democracy is good in virtue of the outcomes it produces---it is still necessary to demonstrate that the processes in question arrive at the stipulated ends, as a matter of fact. Previous treatments of majority rule results don't provide sufficient evidence to support their empirical relevance  
+(\cite{schwartzberg2015epistemic}). And though there are matters on which we imagine consensus exists, such as public health or the competence of political officials (e.g. \cite{Page2007}: 256-7; \cite{Landemore13}: 145), there has been no move to identify a case in which the conditions of majority rule results are met. By going beyond the formal results to provide an empirical case that tracks the conjectures of epistemic democrats, this paper both makes good on admonishments to demonstrate the plausibility of normative theory (e.g. \cite{rehfeld2010offensive}, \cite{wiens2015against}), while also pointing to the purchase of arguments made by epistemic democrats to recommend democracy against alternative regimes.
+
+
+Our plan for this paper is to first briefly explain how majority rule
+yields veritistic outcomes and address some of its limitations. We specify three jointly sufficient conditions
+under which the \emph{majority rule mechanism}---akin to those that drive CJT and MA---can obtain on a single dimension of a decision
+function, independent of other contested components.
+The mechanism we specify recruits the same kind of aggregative features as these other theorems while also allowing for multidimensional considerations. %show how such veritistic outcomes can
+%result even when voters must consider a wide range of issues
+%simultaneously. 
+And though CJT and MA are commonly asymptotic, they share the same core probabilisitic assumptions as those specified in the formal proposition provided here. 
+
+Next, we turn to the case of sociotropic economic voting in U.S. presidential elections to illustrate the empirical plausibility of the majority rule results. That voters by and large want economic growth provides a ready case where a majority of voters agree on some value, leaving that facts to be contested.
+ Our analysis here builds on a trove of both theoretical and empirical evidence for the retrospective economic voting model (\cite{Duch2008}, \cite{Revisited09}). Beyond their own economic well-being, voters select the U.S. president with an eye to  recent economic trends. We recruit these findings and models in the service of our point here: that given the electorate's preference for economic growth, their epistemic capacities allow them to select the better candidate.
+ 
+
+%We provide evidence that economic growth, as captured by $\Delta RDI$ (the annual change in U.S. real disposable income), mediated by people's beliefs, explains their vote for president.
+
+This serves as empirical example of the epistemic quality of the majority rule results. Here, insofar as people substantively agree on a particular value (increased $\Delta RDI$), and are in a position to judge that fact of economic growth (whether $\Delta RDI$ has increased), the election can be thought to be biased in favor of the right candidate``better'' candidate---the one voters themselves would have chosen given full information. %Given that people appear to be better than random at assessing $\Delta RDI$, this phenomenon would have had a real effect on electoral outcomes. 
+Though this effect needn't be decisive, we estimate that without it the result of seven presidential elections from 1956--2012 would have been different. The formal proof of our result and technical discussion of the models are reserved for the appendix.
+%show that, beyond pocketbook concerns, votes are conditioned by voters' beliefs of a commonly valued phenomenon. This case does a good job of
+
+
+\section{Evaluating Democracy's Truth-Tending Properties}\label{sec:theory}
+
+
+While there are many instances in which it is difficult to determine what a community should do or which values it ought to endorse, there might be issues where there is broad normative agreement, leaving the facts of the matter to be contested.
+ Consider a multidimensional decision illustrated here by voters' choices in the 2012 U.S. Presidential election. Along one dimension Alice and Bernice fundamentally disagree about the access women ought to have to abortions. Since Alice identifies as pro-life, she is more likely to vote for Mitt Romney. Bernice, on the other hand, is pro-choice and feels strongly that President Obama should be reelected. Along another dimension, however, both Alice and Bernice agree that the government should effect the greatest number of Americans to carry health insurance. Given that they both endorse this same value, cashed out using the same metric, their disagreement can be construed as partly factual in kind (\citet{Page2007}: 258)---which candidate will in fact lead more Americans to be insured? If Alice and Bernice are each better than random at determining the fact of the matter, we then have reason to think that the candidate more adept at implementing healthcare policy has his chances of winning boosted. Holding their disagreement about abortion constant, the candidate's fitness on the second dimension enhances his electability.
+
+\begin{prop*}
+If we model votes in a majoritarian election with two candidates as
+binary random variables, insofar as voters agree to the value of some
+issue and, holding all else constant, the following conditions hold:
+\begin{enumerate}
+	\item Each voter is more likely to believe a candidate is
+          superior when she actually is than when she is not\label{ass:belief}%Each voter is no worse---and some better---than random at judging a candidate's superiority on that issue
+	\item Every voter is at least as---and some more---likely as otherwise to select a candidate if she believes  that the candidate is superior to her rival on that issue\label{ass:preference}  % 1/30 added "than otherwise"
+	%\item A candidate's actual superiority affects voters' choices only through voters' perception of her superiority
+	\item Votes are mutually independent\label{ass:independent}
+\end{enumerate}
+%then, holding all else constant, 
+a candidate's superiority to her rival on that issue increases her probability of being elected.
+\end{prop*}
+
+
+Our claim is this: in a binary election (even when the decision function is multidimensional) where independent and minimally competent voters seek to select the candidate that maximizes a shared value, the majority rule mechanism comes to recommend democracy on veritistic grounds. %The claim is that insofar as people agree the outcome of the election can be thought to be truth-tracking by epistemic means. 
+%The point here is not that the capacity to afford more Americans healthcare is sufficient for victory. Rather, to the extent that a majority of voters hold that value and are able to ascertain which candidate is better on this dimension, that candidate has his chances of victory boosted. Thus, Though the result is easiest to see in instances of value-consensus, it's not limited to such cases.  
+By ``minimally competent'' here we mean that voters' decisions are no worse than random at assessing which candidate is better regarding some shared value. Were this otherwise, the instrumental value of the contest would be at best null and at worst it would hazard producing unwanted effects, whereby voting for a candidate $A$ in virtue of some criterion $c_i$ would diminish the chances that $c_i$ would be realized (say, in this case, more wide-spread healthcare).\footnote{The technical restatement of this proposition and its proof for the appendix.}
+
+Though the result is easiest to see in the case of consensus, where everyone agrees to some value, it's not limited to such cases. The claim here is \emph{insofar as people agree}, the outcome of the election can be thought to be truth-tracking by epistemic means.  Instead of thinking of complete consensus of the electorate, consider instead a majority consensus, where a simple majority of Americans want more people to carry health insurance. 
+%In as much as democratic elections (and particularly U.S. presidential elections) are legitimate on majoritarian grounds, we can think of consensus in terms of the majority's agreement. 
+ Here the process can be thought to be veritistic when the majority agrees to the value of some issue and has the capacity to select the candidate that is in fact better on that issue---they have the capacity to obtain the outcomes they so desire. Insofar as this majority wants to elect the candidate that will increase healthcare coverage, the candidate better on this issue will have her chances of victory boosted. Importantly, they need not possess epistemic access to the policy mechanisms---whether single-payer is superior to market-based exchanges---for the election's result to maintain a veritistic quality. It need only be the case that the outcome be the intended one.
+ 
+ This doesn't have to be a trivial result. Sure, just because a candidate is better on \emph{some} issue that a majority agrees to enhances her chances of victory, doesn't mean this bump is close to decisive. That being said, we show here that the effect of sociotropic economic voting in U.S. presidential elections  has had consistent and measurable  effects on (popular) electoral outcomes.
+ 
+\section{The Empirical Plausibility of Democracy's Truth-Tending Properties}%%&
+The proposition above outlines epistemic considerations relevant to majoritarian voting, stipulating conditions under which a candidate's fitness on some issue increases the probability of her being elected.
+The practical relevance, however, hinges on whether the conditions actually obtain. To establish this we need to identify a case that tracks how people evaluate some particular and salient dimension of their voting decision. %}\st{ two questions, though.} %First, do the conditions ever (roughly) obtain, that is are they reasonable assumptions? And second, is the effect actually significant?
+%The practical relevance of the proposition hinges on whether the conditions (roughly) obtain, are they reasonable assumptions, and whether the effect is actually significant, thereby indicating that the dimension of agreement affects the outcome of the election. two questions, though. %First, do the conditions ever (roughly) obtain, that is are they reasonable assumptions? And second, is the effect actually significant?
+As such, we now turn to the case of sociotropic economic voting in U.S. presidential elections.
+
+Though economic voting is not a part of every election (\citet{Stein:1990tt}; \cite{Nadeau:2001tw}:171), U.S. presidential elections do appear to turn on economic performance (\cite{miller1985throwing}, \cite{Fiorina:1978tz}; \cite{Lockerbie:1992js}; \cite{Lanoue:1994bl}; \cite{LewisBeck:2000ww}; \cite{Nadeau:2001tw}; \citet{Markus88}). Voters appear to hold the president responsible for not only their own financial well-being, but also for the health of the domestic economy more broadly---referred to as ``sociotropic'' economic voting  (\citet{Kinder1981}). Moreover, it is likely that the president has some control over macroeconomic outcomes (\cite{blinder2014presidents}). This kind of sociotropic voting reveals that while people collectively seek to endorse the candidate that best serves the American economy, they may disagree about which party is more apt for the task. We look to economic voting, in part, because of the theory's robustness. Both \cite{Duch2008} and \cite{Revisited09} review the sizable literature on the matter and argue forcefully that there exits a strong causal relationship between past sociotropic economic performance and people's assessment of the president. We use this example in part because of the broad theoretical and empirical support for economic voting.\footnote{It is worth noting that while voters respond to continued economic growth, the substance of voters' judgements isn't entirely clear. It does not appear, for instance, that the judgement is terribly forward looking---which party \emph{will} handle the economy better (e.g. \cite{Nadeau:2001tw}; \cite{woon2012democratic}). The substance of the judgement---why retrospective economic progress is important---is not, however, of immediate interest here. Because our concern is veritistic (i.e. are people right about the facts which inform their judgements) it is sufficient to note that people belief's regarding economic growth are accurate and facilitate their decisions.} 
+
+For our purposes is not enough to argue that people share the same value in principle, they must also render it in the same way, that is using the same metric. While any number of criteria plausibly affect people's judgement about the economy (e.g. inflation, unemployment, trade deficits), we find that the annual change in real disposable income ($\Delta RDI$---average income, less taxes) highlights a broad agreement that exists and informs voters' decisions of whom to vote for. $\Delta RDI$ is an attractive metric not only because it corresponds to an objective measure of economic performance, but also as people plausibly have epistemic access to it. People can look around and assess the after-tax money that they and those whom they know have earned in recent years. Voters need not diligently read the Wall Street Journal or watch CNBC to know whether the economy around them appears to be growing or shrinking.\footnote{While wages have largely stagnated over the last four decades, the CBO shows slight growth in even the bottom quartile. Even so, since our inquiry is primarily interested in sociotropic rather than pocketbook voting, we believe that this phenomenon does not undermine the strength of our findings (\cite{congress2011trends}).} %RDI can most helpfully be understood as an anchor here: it is an objective aspect of the macroeconomy that, we hypothesize, voters (almost) uniformly want to increase.
+As evidence for this claim, we show that RDI growth is an important predictor of individual votes, even after controlling for several other canonical variables.\footnote{While we use $\Delta RDI$ in order to follow the lead of \citet{Nadeau:2001tw} (among other considerations), the results are consistent for GDP growth too.}
+
+\subsection{The Empirical Results}\label{sec:model}
+To get a handle on the influence of macroeconomic performance on voters' beliefs and choices, we take a cue from \citet{Nadeau:2001tw} and fit a logit model to American National Election Survey (ANES) data.\footnote{While
+our models rely on the substantive theory behind those in Nadeau and Lewis-Beck (2001), the fresh analysis allows us to fix some methodological concerns as well as direct attention to the specific ways in which beliefs mediate between voters' observations and decisions (votes). The technical discussion is provided in the appendix.} Our models (Table 1) provide evidence that $\Delta RDI$ predicts voters' choices as mediated by their beliefs, and corroborates earlier studies which have shown that $\Delta RDI$  is a strong predictor of the votes for U.S. president.\footnote{An increase of one in unit $\Delta RDI$ increases the odds of a respondent voting for the incumbent by a factor of about 5--36\%, adjusting for voters' perceptions of their individual financial situations, their race, their state, and their party identification, as well as the election year. This is an approximate 95\% confidence interval: the coefficient estimate plus or minus two standard errors, exponentiated to transform log-odds ratios to odds ratios.} But when the model also accounts for respondents' subjective retrospective economic beliefs (models (2) and (3)), the magnitude of $\Delta RDI$'s coefficient diminishes to near zero and becomes statistically insignificant. Consistent with Nadeau and Lewis-Beck's account, $\Delta RDI$'s impact on votes is mediated by a person's subjective beliefs of the economy. The level of $\Delta RDI$ affects subjects' perceptions of the economy, which in turn affect their voting decisions. The role of beliefs here is evidence for the epistemic arguments advanced by democratic theorists. %These results, indicating that beliefs mediate between economic outcomes and votes, are consistent with the claims advanced by epistemic democracy.
+
+
+%\newpage
+\begin{table}[!htbp] \centering
+\footnotesize
+ \begin{tabular}{@{\extracolsep{5pt}}lccc}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\
+\cline{2-4}
+\\[-1.8ex] & \multicolumn{3}{c}{vote} \\
+\\[-1.8ex] & (1) & (2) & (3)\\
+\hline \\[-1.8ex]
+$\Delta$ RDI & 0.200$^{**}$ & $-$0.003 & 0. 0.010 \\
+  & (0.074) & (0.085) & (0.089) \\
+  & & & \\
+ finances & 0.303$^{**}$ & 0.162$^{**}$ &  0.154$^{**}$ \\
+  & (0.025) & (0.032) & (0.033) \\
+  & & & \\
+ incumbentParty & $-$0.521$^{**}$ & $-$0.522$^{**}$ &  $-$0.497$^{**}$ \\
+  & (0.126) & (0.139) &  (0.146) \\
+  & & & \\
+ retrospective &  & 1.019$^{**}$  & 0.950$^{**}$ \\
+  &  & (0.058) &   (0.062) \\
+  & &  & \\
+ prospective &  &  & 0.259$^{**}$ \\
+  &  &   & (0.042) \\
+  & &  & \\
+ incumbentParty:race & 0.748$^{**}$ & 0.635$^{**}$ &  0.574$^{**}$ \\
+  & (0.054) & (0.061) &  (0.064) \\
+  & &  & \\
+ incumbentParty:partyID & 0.824$^{**}$ & 0.819$^{**}$ &  0.800$^{**}$ \\
+  & (0.011) & (0.014) &  (0.014) \\
+  & &  & \\
+ Constant & $-$0.451$^{*}$ & 0.029  & $-$0.024 \\
+  & (0.218) & (0.220) &  (0.231) \\
+  & &  & \\
+\hline \\[-1.8ex]
+Observations & 20,168 & 13,988 &  12,746 \\
+Log Likelihood & $-$7,664.552 & $-$4,890.587 & $-$4,508.239 \\
+Akaike Inf. Crit. & 15,345.100 & 9,799.174 &  9,036.478 \\
+\hline
+\hline \\[-1.8ex]
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01} \\
+\end{tabular}
+\caption{Results from three multilevel logistic regressions described in equations (\ref{indMod}) and (\ref{elecMod}) in the appendix. $\Delta RDI$ is the percent change in national real disposable income per-capita from the previous year; incumbentParty is equal to 1 when Democrats are incumbent and -1 when Republicans are; finances is equal to 1 when respondents answer that their family's financial situation is better than a year ago, -1 when worse and 0 when the same; prospective is 1 when respondents answer that they expect the economy to improve in the following year, -1 when they expect it to get worse and 0 if they expect it to stay the same; retrospective is 1 when respondents answer that they believe the economy  improved in the previous year, -1 when they believe it got worse and 0 if they believe it stayed the same; race is equal to 1 if the respondent is non-white and 0 if the respondent is white; partyID is a five-point scale for party identification: positive for Democrats, negative for Republicans; 3 for strong, 1 for weak or leaning, and 0 for apolitical. %incCand is 1 when an incumbent is running in the presidential race. 
+Models based on ANES data from presidential elections from 1956--2012 (1) or 1980--2012 (2) and (3).}
+\label{results}
+\end{table}
+
+
+
+As in Nadeau and Lewis-Beck's model, subjective measures have a large, positive association with $\Delta RDI$.
+% indicating that a sizable part of what their retrospective and prospective variables are picking up on is people's assessment of the national change in income levels. 
+ People's assessment of the national change in income levels appears to make up a sizable part of what their retrospective variable measures. We find that retrospective assessments of the economy are correlated with $\Delta RDI$ at a level of 0.30, consistent with Nadeau and Lewis-Beck's finding that when \emph{retrospective} is regressed on $\Delta RDI$ the $R^2$ value is 0.77,  indicating that people's economic beliefs correspond to empirical fact (\cite{Nadeau:2001tw}: 161, 174). This is consistent with the arguments of epistemic democrats who argue that people's correct beliefs come to be aggregated in democratic contests to bias the outcome in favor of the better candidate. Indeed we estimate that without this effect (that is, were people only no better than random at assessing $\Delta RDI$) elections in 1960, 1968, 1976, 1980, 2000, 2004, and 2012 would have had different outcomes.\footnote{That is, with regard to the popular vote.} 
+
+\subsection{Epistemic Heterogeneity in the Model}\label{sec:heterogeneity}
+The conditions of the majority rule mechanism regard individual level
+properties (beliefs, values) while  models (1)--(3) estimate
+aggregate association between people's beliefs of economic progress
+and actual economic growth. Results in Table 1 suggest that voters \emph{as a whole} are both more likely to vote
+for the incumbent party the higher $\Delta RDI$ (model (1)) and more
+likely to vote for the incumbent party when they believe the economy
+is growing (models (2) and (3)), from which we conclude that voters as
+a whole select the candidate they believe is better on economic
+issues. It's conceivable, though, that a substantial portion of voters are
+systematically mistaken regarding economic growth, believing the
+economy is growing when it is shrinking and vice versa. 
+Such voters violate assumption \ref{ass:belief} and, if their number
+is sufficient, undermine the majority rule mechanism.
+%Voters' collective ability to choose the better option depends on
+their individual abilities to judge the facts.
+
+While the data don't allow us to track individual competencies, we can look at subgroups within the population to assess whether any are systematically confused.
+The model reported substantial variation in the correlation between
+$\Delta RDI$ and \emph{retrospective} as a function of a variety of respondents'  demographic features (finances, party identification, race, age, class, education, gender, marital status and urbanism), no combination thereof  reported a negative correlation.
+Though this does not imply that every voter is a good judge of the
+economy, it suggests that very few voters are particularly poor
+judges. 
+
+
+%\subsection{Value Heterogeneity in the Model}
+%Another worry is that it's \emph{possible} that the result is produced by a minority of electors rather than a majority.\footnote{More precisely, the worry is as follows: The proposition claims that insofar as people agree and both know something about economic progress and vote with regard to economic progress, the majority rule results can be thought to obtain. We then specify that the argument is not that everyone need agree that positive $\Delta RDI$ is a good, but insofar as the majority believe it to be a good, our evidence demonstrates that they have the capacity to select the better candidate in this regard. What we want to show here is that the outcomes of our empirical model are the result of the majority getting it right (they want the economy to grow,  they believe it is growing, and it is in fact growing), rather than a minority getting it wrong (they want the economic to shrink, they believe it is shrinking, and it is in fact growing).} Again, the ANES data don't allow us to identify the individuals who would prefer the economy to shrink, and thereby directly rule out such a possibility. Again, we perform a subgroup analysis to probe this worry, but could not confidently identify any subgroups of our population for which $\Delta RDI$ was negatively correlated with election outcome.
+
+Another worry is that it's \emph{possible} that the result is produced by a preferences of a minority of electors rather than a majority.\footnote{More precisely, the worry is as follows: The proposition claims that insofar as people agree and both know something about economic progress and vote with regard to economic progress, the majority rule results can be thought to obtain. We then specify that the argument is not that everyone need agree that positive $\Delta RDI$ is a good, but insofar as the majority believe it to be a good, our evidence demonstrates that they have the capacity to select the better candidate in this regard. What we want to show here is that the outcomes of our empirical model are the result of the majority getting it right (they want the economy to grow,  they believe it is growing, and it is in fact growing), rather than a minority getting it wrong (they want the economic to shrink, they believe it is shrinking, and it is in fact growing).} We try to get a handle on this by estimating the number of those who want the economy to contract is to ask what proportion of survey respondents answered  that ``the economy was doing much better'' given a value of $\Delta RDI$ in the bottom quartile. This puts the number at 1.2\% (with a 95\% confidence interval ranging form 0.9-1.5\%), but that is likely a large overestimate. %When we restrict this analysis to swing voters, those who have voted for both parties at some point, the percentage drops to $0.5\pm 0.3\%$. 
+The fact that surveys don't even ask respondents whether they wish the economy would contract is possibly the best evidence of the ubiquity of the assumption. Given this, it is just not possible for the observed effect to be due to a minority of voters who want the economy to shrink. 
+
+
+\section{Critiques}
+
+There are, however, standing critiques of the economic voting literature.  Christopher Anderson, for instance, doubts the link between economic performance and electoral outcomes (\cite{Anderson07}: 272), particularly given the myriad of other metrics that might motivate voters' decisions (ibid.: 274). Furthermore, he along with Bryan Caplan call into question whether the information voters do have allows them to make such inferences about the economy (\cite{Anderson07}: 279-281; \cite{Caplan2006}: chapter 3).
+
+We needn't suppose that most voters \emph{directly} observe $\Delta
+RDI$ in order for them to care about its performance, however. $\Delta RDI$ might well serve as
+a proxy voters observations of local and national economic
+trends. For instance, percent change in $\Delta
+RDI$ is correlated with percent change in GDP
+($\rho=$0.71) and inversely correlated with the change in  unemployment
+($\rho=$-0.43).\footnote{Data Source: FRED, Federal Reserve Economic
+  Data, Federal Reserve Bank of St. Louis:
+  \url{http://research.stlouisfed.org/fred2/graph/?g=DQL} accessed
+  06/20/2014. Estimates are based on quarterly data from 1960--2014.}
+ Yet $\Delta RDI$ is also something that voters can plausibly look around and
+observe---are those I see taking home more or less pay than in past?
+have their consumer habits changed? are they tightening their belts? This contention is consistent with our finding that $\Delta SDI$ (state-level real disposable income) also has marginally significant effect (at a 10\% level) on presidential vote share, loosely suggesting that people make political inferences using both national and regional economic signals (though the former is clearly more pronounced). 
+%Indeed we conducted a mediation analysis for our model and found that the mediated effect of $\Delta RDI$ on votes was strong and significant, while the unmediated effect was much smaller (coefficient of 0.017 upper 95\% CI contrasted with 0.043 for the mediated effect) and not significant (p value of 0.57 as opposed to 0.04, respectively).\footnote{The formal write-up of these results is also reserved for the appendix.}
+But we also have good theoretical reasons to think that voters 
+have access to rich empirical knowledge. Arthur Lupia and others have written
+that voters can key-in to sophisticated information using proxies
+and shortcuts which allow them to make refined decisions (\citet{Kinder1981}: 130-1; \citet{Lupia2000};
+\citet{Lupia2006}).
+
+Meanwhile Caplan's strongest counterexamples  indicate that voters are woefully ignorant about economic mechanisms such as whether ``technology is displacing workers'' (\cite{Caplan2006}: 65). As mentioned above, it is not necessary for voters to have access to the causal mechanisms that produces some outcome for the election to be thought veritistic. The question of whether RDI is growing at a normal clip is such a question that regards performance rather than policy, and which economists and lay-voters both do a fairly good job of assessing (\cite{Caplan2006}: 78). Whether take-home income has risen or fallen is something that people realistically have access to. The 0.68 correlation between RDI in successive years indicates that there is a rather low epistemic burden to predicting whether the economy will grow or shrink in the coming year. Just knowing the previous year's RDI provides a good deal of predictive power absent any sophisticated training. Indeed, even \cite{achen2016democracy}, who are not kind to epistemic interpretations of democracy, carve out an exception for economic voting (ibid.: 97-8).
+
+
+\section{Plausibility of the Theory in Light of the Evidence}
+To review, epistemic democrats claim that if voters are marginally better than random at assessing some set of facts, then they are more likely to select the ``right'' candidate than not. We stipulate three conditions that are sufficeint for the theory to hold, including that voters are independent and minimally competent. To examine plausibility of these claims we offer a linear model of voters' decisions in U.S. presidential elections. Here voters observe national economic conditions, which inform their beliefs about the economy's performance. Those beliefs, in turn, affect voters' choices. Voters who believe that the economy has improved or will improve are more likely to vote for the incumbent party.
+
+These results, together with the rest of the vast economic voting literature, give us good reason to think that  the majority rule results do indeed obtain, thereby indicating the epistemic virtues of democracy---that people's votes can tend to select the candidates they want. %epistemic channels modify people's perceptions of the world, resulting in revealed preferences in the form of votes.
+The coefficient on $\Delta RDI$  is substantial and significant only when economic beliefs are excluded from the model. Once included, the subjective measures soak up its explanatory role, illustrating the role of beliefs in affecting political outcomes. %Moreover, our mediation analysis demonstrates the strong likelihood that beliefs (\emph{Retro}) mediate between $\Delta RDI$ and \emph{Votes}, while the lack of evidence of a direct effect further strengthens our contention that economic performance affects the outcome of elections via people's beliefs about the economy (rather than, say, through some exogenous pathway).
+
+The theory is premised on people substantively agreeing on the value of some issue. While we do not show that everyone wants the economy to grow, we do provide evidence that the vast majority do, indicating that a correspondence between beliefs and economic trends on the one hand, and outcomes (vote share) on the other, result from the choices of a majority of voters. Condition one, that voters are as good or better than random at selecting the superior candidate, is tricky to substantiate with direct observational evidence. Our subgroup analysis, however, goes some distance to allay worries, as we fail to find any combination of subgroups for which a positive $\Delta RDI$  is anti-correlated with the variable \emph{retrospective}. Our empirical model supports this contention, too. As such we argue that the majority rules results, touted by epistemic democrats, inhibit unwanted effects from voting.
+%Insofar as the majority want to select the candidate better on economic issues, they are able to do so.
+
+%The theory is premised on people substantively agreeing on the value of some issue. Here, we perform a subgroup analysis along with additional estimation to show that the vast majority of voters do want the economy to grow.
+%Condition one, that voters are as good or better than random at selecting the superior candidate, is tricky to substantiate with direct observational evidence. Our subgroup analysis, however, goes some distance to allay worries, as we fail to find even one subgroup for which a positive $\Delta RDI$  is anti-correlated with vote share. Our empirical model supports this contention, too.
+
+%A limitation of the ANES data is that our models can't identify whether the judgements of specific voters are worse than random.\footnote{Indeed this problem seems pervasive as \cite{lupia2015uninformed} discusses in chapter 16.}% Moreover, we will never get to see what  the economy would have looked like under the other candidate. Absent directly observing voters' success or failure at judging candidates' abilities, our best recourse is to examine how the electoral outcomes conform to voters' values. 
+%That voters' decisions consistently track economic trends is positive evidence for the accuracy of their judgements.
+%%If voters use parties' recent economic performance to judge their respective economic abilities, we can infer that voters arrive at their judgements of candidates' abilities empirically, and hence their judgements are no worse than random.
+%In particular, since we find that $\Delta RDI$ predicts voters' choices, we have reason to infer that voters arrive at their judgements of candidates' abilities by reflecting on empirical evidence.
+%The most likely explanation here %, and the one that our mediation analysis supports, 
+%is that voters are using the recent economic past to judge candidates' economic prudence, and that these judgements influence their votes.
+%$\Delta RDI$'s role in predicting voters' choices indicates that their judgements are indeed meaningfully better than random.
+
+
+Our models' results also speak to assumption two, that voters' are not less likely to select a candidate they believe to be better on the issue. %candidates' true abilities are irrelevant to their electability \emph{once voters' perceptions are accounted for}. 
+Given our finding that voters' subjective impressions of economic performance in models (2)--(3) diminishes $\Delta RDI$'s predictive power, we can infer that it is their beliefs that affects their vote, substantiating the epistemic valence of democracy.
+If we account for the fact that voters' perceptions of the economy are colored by their perceptions of the political parties and candidates (e.g. \cite{evans2006political}), then subjective sociotropic variables measure something akin to voters' opinions of which party (and hence candidate) is most fit to manage the macroeconomy.
+The objective variable $\Delta RDI$, short term economic growth, does not reflect voters' subjective beliefs, but, rather, objective conditions.
+Therefore, since including subjective sociotropic measures in the regression leads to a near-0 coefficient on $\Delta RDI$, we conclude that, given voters' \emph{beliefs} about a candidate, the candidate's actual ability does not affect voters' choices. 
+
+Finally condition three is a simplifying assumption intended primarily to streamline the proof. Indeed we know that votes are not cast independently (e.g. \citet{sinclair2012social}), though it is hard to know the size of the effect of dependence. We put forward what can be considered the least complicated assumption and leave it to others to identify circumstances where dependent voting would undermine our results. There is no reason to think that our results disappear given small amounts of dependence. And as Dietrich and List point out (\citeyear{Dietrich2004}), independence most plausible when we have reason to think that voters are encountering heterogeneous information, as would be the case in a nation-wide presidential election with comparably high turnout.
+
+The proposition requires assumptions 1--3 after holding all
+else constant.%\marginpar{Feel free to take this paragraph out}
+This caveat is necessary because a candidates' superiority on one
+issue may correlate with an inferiority (in some voters' minds) on
+another. 
+This would be a problem if, say, candidates who are better able to
+increase $\Delta RDI$ tend to be Republican, so many voters who identify as
+Democrats would tend to prefer the economically inferior candidate. 
+However, conditional on party identification, Democrats and
+Republicans alike would prefer economically superior candidates.
+Seen this way, conditioning variables such as party identification
+weaken the assumptions.
+Models (1)--(3) condition on respondents' finances, race, and party
+identification, and the incumbent party; the model results support the
+assumptions conditional on those variables. 
+%ADAM: WE DON'T SAY ANYTHING HERE ABOUT THE LINE "HOLDING ALL ELSE CONSTANT." SHOULD WE? I'VE GOTTEN PUSH BACK ON THIS BEFORE. (BUT WHAT IF ECONOMIC GROWTH SACRIFICES SOME OTHER VALUE?) THE ANSWER THAT I'M THINKING OF IS THAT IT IS NOT A CONCERN ***IN OUR MODEL***. THAT IS, GIVEN HOW WE MODEL PEOPLE'S VOTES, IT IS POSSIBLE TO THINK THAT THERE DOES NOT EXIST A NEGATIVE COEFFICIENT ON SOME INTERACTION TERM.
+
+Our models speak directly to conditions one and two. Condition three must remain assumption, though the diversity of the electorate in U.S. presidential elections makes it an eminently reasonable one.  
+ What we do here is outline common assumptions to gain traction on how democracy can leverage the wisdom of the crowds and demonstrate the theory's correspondence to data. 
+
+\section{Conclusion}
+When political  theorists argue that majority rule results, such as the Condorcet Jury Theorem or Miracle of Aggregation, pertain to politics they do so assuming there exist cases in which these results actually obtain. We point out that such instrumental claims are weak absent a compelling example, which is non-trivial given that most decisions entail a bundle of propositions, many of which are normatively contested. We show that, given certain conditions, insofar as electors hold some value in common, democracy can be thought to be recommended veritistically, even if voters fundamentally disagree regarding many other aspects of the vote.
+
+The example of sociotropic economic voting in U.S. presidential elections offers an instance where a widely agreed upon value significantly effects an election's outcome, thereby plausibly meeting these conditions. In this binary contest, the data indicate that voters select candidates with an eye to the annual change in real disposable income, among other considerations. The broad agreement here comes to recommend the election's result by nudging the outcome in favor of the candidate that voters themselves would have chosen given full information. What's more, it provides evidence that people's perceptions affect their votes through epistemic means---that the effect of economic growth on electoral outcomes is mediated by people's beliefs of how the economy is fairing. Indeed we estimate that absent this effect outcomes of the popular vote in 1960, 1968, 1976, 1980, 2000, 2004, and 2012 would have been different. 
+
+Beyond the support of claims made by epistemic democrats, this paper shows the feasibility and usefulness of testing theoretical conjectures against empirical data. Whenever we make instrumental claims in politics, we do so conditional on a certain state of the world being the case. If we are to take these arguments seriously more needs to be done to determine that the empirical conditions are indeed satisfied. We hope to have offered one such effort here.
+
+
+
+\section{Appendix}
+\subsection{Proof of Proposition}
+
+
+In order to demonstrate our claim that \emph{in a binary election where votes are independently cast and, in part or whole, seek to select the candidate that maximizes a shared value, majority rule results recommends democracy on veritistic grounds} 
+%we argue only that the linear model admits the same sort of monotonic convergence results on the independent belief dimension as do the theorems above. We needn't claim, however, that the Condorcet Jury Theorem or Miracle of Aggregation theorems apply directly.
+we will prove a more general conjecture which admits the proposition in Section \ref{sec:theory} as a special case, which we then state as a corollary. 
+
+We are interested in the electability of a particular candidate in a binary election. Let $E=1$ if she is elected, and 0 otherwise.
+Say there is a fixed subset of the electorate, $\mathcal{S}$, such that $E=1$ if and only if the proportion of votes for a candidate from $\mathcal{S}$ exceeds a pre-determined (if unknown) threshold $\alpha$. In other words,
+\begin{equation}
+E =1 \text{ iff } \frac{1}{n} \sum_{i\in \mathcal{S}} V_i>\alpha
+\end{equation}
+where $n=|\mathcal{S}|$, the number of voters in $\mathcal{S}$. 
+For voters $i\in \mathcal{S}$ let $V_i=1$ if voter $i$ votes for the candidate in question, and 0 otherwise.
+Let $a_x=1$ denote the truth of a fact $x$ that sways voters to vote for the candidate (for instance, she is better than her rival at increasing RDI).
+For clarity, we will drop the $x$ subscript, so $a=1$ denotes $a_x=1$.
+Let $A_i=1$ if voter $i$ believes $a$.
+
+The consider the following assumptions:\\
+For all $i\in\mathcal{S}$:
+\begin{enumerate}
+%\item $\forall v_i \in V, ~ xRy ~\forall y\ne x$, that is every voter prefers some criterion x over all other possible
+\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$, where a strict inequality holds for some subset of the population; stated otherwise, that voters are better than random at judging $a$.
+\item $Pr(V_i=1|A_i=1)\ge Pr(V_i=1|A_i=0)$, where a strict inequality holds for some subset of the population; stated otherwise, $A$ affects all voters' choices in the same direction.
+\item $Pr(V_i=1|A_i, a)=Pr(V_i=1|A_i)$
+\item For all $j\ne i$, $V_i \independent V_j|a$
+\end{enumerate}
+
+It may be the case that some voters' attitudes on issue $x$ depend on a number of other facts as well,  in such a way that assumption 2 only holds for some voters in $S$ under certain additional conditions.
+For instance, a candidate's superiority on RDI might only appeal to environmentalist voters if that superiority is not due to environmentally harmful policies. 
+To allow for such situations, define a set of ``conditioning facts" $\tilde{a}$ consisting of those facts which may qualitatively moderate the relationship between $a$ and $V_i$, for some $i$.
+The composition of $\tilde{a}$ depends on the issue in question, and may in some circumstances be empty.
+In any case, we may restate assumptions 1--4 as conditional on $\tilde{a}$.
+
+\begin{prop}
+If assumptions 1--4 hold conditional on $\tilde{a}$, then
+\begin{equation}
+Pr(E=1|a=1,\tilde{a})>Pr(E=1|a=0,\tilde{a})
+\end{equation}
+\end{prop}
+
+\begin{proof}
+First note that
+%\begin{equation}
+%Pr(E=1|a=1)=Pr(\sum_i V_i>n\alpha|a=1)=1-Pr(\sum_i (1-V_i)>n\alpha|a=1)
+%\end{equation}
+%Next, notice that, given assumptions 1-3
+under assumptions 1-3, we have (letting all probabilities be conditional on $\tilde{a}$)
+\begin{align*}
+&Pr(V_i=1|a=1)\\
+=&\E Pr(V_i=1|a=1,A_i)\\
+=&Pr(V_i=1|A_i=1)Pr(A_i=1|a=1)+Pr(V_i=1|A_i=0)Pr(A_i=0|a=1)\\
+=&Pr(A_i=1|a=1)\{Pr(V_i=1|A_i=1)-Pr(V_i=1|A_i=0)\}+Pr(V_i=1|A_i=0)\\
+\ge&Pr(A_i=1|a=0)\{Pr(V_i=1|A_i=1)-Pr(V_i=1|A_i=0)\}+Pr(V_i=1|A_i=0)\\
+=&Pr(V_i=1|A_i=1)Pr(A_i=1|a=0)+Pr(V_i=1|A_i=0)Pr(A_i=0|a=0)\\
+=&Pr(V_i=1|a=0)
+\end{align*}
+Where the inequality is a result of assumptions 1 and 2, and is a strict $>$ for some members of the population.
+That is, $V_i|a=1$ is stochastically greater that $V_i|a=0$. That being the case, $\sum_{i=1}^n V_i |a=1$ is stochastically greater than $\sum_{i=1}^n V_i |a=0$ (\citet{shaked2007stochastic}).
+Therefore, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i >n\alpha|a=1)>Pr(\sum_{i=1}^n V_i>n\alpha |a=0)=Pr(E=1|a=0)$
+\end{proof}
+
+\begin{cor}
+Let $\alpha \subset \mathcal{S}$. If the conditions obtain for all $i\in\alpha$ then the result is the proposition still holds for members of $\alpha$.
+\end{cor}
+
+
+\subsection{Modeling Choices: Logit Model}
+Our models are based roughly on those presented in Nadeau and Lewis-Beck (2001). In particular, they estimated the following model:
+\begin{align*}
+  vote_{ind,elec}&=\alpha+\beta_1 RDI_{elec}+\beta_2 Finances_{ind,elec} +\beta_3 IncumbentParty_{elec}\\
+  &+\beta_4 PartyID_{ind,elec}+\beta_5 Race_{ind,elec}+\epsilon_{ind,elec}
+\end{align*}
+where $vote_{ind,elec}$ is an individual's vote, coded as 1 if she voted for the incumbent party, and 0 otherwise. $RDI_{elec}$ is the percent change in RDI per capita from the previous year, $Finances_{ind,elec}$ is an individual's assessment of his own personal finances, compared to the previous year (1 denotes
+``better,'' 0 ``the same,'' $-1$ ``worse''). $IncumbentParty_{elec}$ codes whether the Democratic or Republican
+party was the incumbent in the election. $PartyID_{ind,elec}$ is a five-point scale that codes to what extent
+the voter's party identification agrees with the incumbent party (3: strongly agrees, 2: weakly agrees, 0: indifferent, $-2$ weakly disagrees, $-3$: strongly disagrees) and $Race_{ind,elec}$ is an indicator for race, also aligned with incumbent party (if the incumbent party is Republican, 1 indicates 'white' and 0 'nonwhite,' with the opposite if the incumbent party is Democratic). The parameters $\alpha$ and $\beta_k$, $k=1,...,5$ are estimated with ordinary least squares, and $\epsilon_{ind,elec}$ is a regression error.\footnote{The individual-level data in the model came from the American National
+Election Survey (ANES) time series \cite{ANES} and the RDI data is from the National Bureau of Economic Research.}
+
+We model each individual's vote as a separate coin-toss.
+These coins, though, are not ``fair,'' in the usual sense: we assume that each voter has a different probability of voting for the incumbent party.
+The probability each voter chooses the incumbent party is modeled as a function of several factors, including $\Delta RDI$ and, in some versions of the model, their subjective beliefs regarding the state of the economy.
+In particular, the logit of the probability is a linear function of these factors.\footnote{If the probability of voting for the incumbent party is $p$, the logit is $log(p/(1-p))$.}
+
+Our model has two layers, the first one models an individual's probability of voting for the incumbent party:
+\begin{equation}\label{indMod}
+  logit(Pr(vote_{ind,elec}=1)) =\alpha+ \nu_{elec}+\eta_{state}+X_{ind,elec}\mathbf{\beta}
+\end{equation}
+where $X_{ind,elec}$ is a vector of all of the individual level regressors for voter $ind$ in election $elec$ and $logit(Pr(vote_{ind,elec}=1))$ is the logit of the probability that voter $ind$ votes for the incumbent party. In some models $X_{ind,elec}$ includes sociotropic measures: ``retrospective'' codes whether voters believe the economy has improved over the past year, and ``prospective'' codes voters' beliefs regarding whether the economy will improve in the coming year. These metrics are important because they give us a handle on the effect beliefs have on votes. The model also allows the states voters reside in, $\eta_{state}$, to idiosyncratically influence their voting decisions, with the random intercept $\eta_{state}\distras{iid} N(0, \sigma_s)$.
+
+In the second level of the model, $\nu_{elec}$ is a random effect for the election,
+\begin{equation}\label{elecMod}
+  \nu_{elec}=\gamma_1 \Delta RDI_{elec} + \gamma_2 incumbentParty_{elec}+\zeta_{elec}
+\end{equation}
+where $\zeta_{elec}\distras{iid} N(0,\sigma_e)$. Here voters' choices are affected, on an election-to-election basis by $\Delta RDI$ and the incumbent party, in addition to idiosyncratic factors. The variance parameters $\sigma_e$ and $\sigma_s$ are estimated from the data, along with the coefficients $\alpha$, $\mathbf{\beta}$, $\gamma_1$, and $\gamma_2$.
+Since voters in each election are not independent of each other, we include random effects for each election.
+Including a random election effect $\nu_{elec}$ models that dependence and corrects the overly-optimistic standard errors in \citet{Nadeau:2001tw}.
+
+
+Since each election has its own idiosyncrasies---for instance, the Vietnam war and Lyndon Johnson's surprising decision not to run in 1968, or the fallout from the Lewinsky scandal in the 2000 election---the error term from each election must be independently modeled. %---\st{inferences cannot reliably be made from a strictly deterministic model} voting choices in an individual election cannot be modeled as independent. Mistakingly ignoring year effects artificially deflates standard errors and p-values \citep[see ][]{hedges2007correcting}.
+We account for this by explicitly modeling the multilevel structure in the data with a mixed-model, measuring some variables at the voter level and others at the election level  \citep[e.g.][]{raudenbush2002hierarchical}. We also included state random effects, to account for state-level idiosyncrasies that are stable over time.\footnote{An alternative approach is to use cluster-robust standard errors \citep[see][]{freedman2006so}. Doing so, in our model, gave broadly similar results.}
+
+ 
+
+Another issue with the Nadeau and Lewis-Beck model is its use of OLS to model binary outcomes. Since binary outcomes are restricted to be either one or zero, the regression errors $\epsilon$ are necessarily heteroskedastic, which can also bias standard error estimates. Some linear probability modeling techniques can overcome this difficulty \citep[see, e.g.][ sec. 4.6]{agresti2002categorical}, but another issue remains: the fitted values of a linear probability model might fall outside of the range 0--1, which hinders their interpretation. Indeed, when replicating NLB's specification, we found that greater than 10\% of the fitted values fell outside this range. We avoided these problems by modeling the data to fit a logistic regression.%We followed the conventional route in sidestepping this difficulty, which was to model not the probability, but the natural logarithm of the odds %, \hl{that is, the logit of the probability,} of voting for the incumbent party as linear in the regressors: logistic regression. So the second major difference is to make the regression logistic in order to properly account for the binary nature of the dependent variable.
+
+
+
+We further expanded on NLB's model in two different ways. First, the model in NLB was fit using years 1956--1996, which we extended through 2012, using, in part, the ANES 2012 time-series file \cite{ANES2012}. 
+We chose to use individual-level data post-1976 because our scientific question fundamentally regards individual voting decisions as a function of their beliefs. As such we gain substantive purchase on our research question by omitting these aggregate level data. By including four more presidential elections than \citet{Nadeau:2001tw}, those from 2000--2012, we could also mitigate the consequences of omitting elections from 1956--1976.
+Second, while their model used an aggregate sociotropic metric for economic voting, we included individual-levels where possible, which conveniently allows us to skirt any worries associated with the ecological fallacy. These sociotropic measures take two forms:
+The ``retrospective'' measure is a voter's answer to the question: ``Would you say that over the past year the nation's economy has gotten better, stayed (all yrs. exc 1984: about) the same or gotten worse?'' while
+ the ``prospective'' measure is subjects' answer to the question: ``Do you expect the economy to get better, get
+worse, or stay about the same?'' (1: better, $-1$: worse, 0: same). Model (1) draws from data on presidential voting from 1956--2012. Models (2)--(3), which include belief variables, are fit to data from presidential elections from 1980--2012, since the ANES only began measuring individual's beliefs of sociotropic economic performance following the 1976 election.\footnote{The lack of data regarding individual beliefs about economic performance led \citet{Nadeau:2001tw} to fit their models to an aggregate sociotropic measure, which they termed the ``National Business Index,'' computed using data from a separate survey (page 162). We included the retrospective belief measure in alone individually and coupled with a prospective measure too.}
+
+%\st{Finally, motivated in part by NLB's results, we devised a combination measure, which is equal to to retrospective measure when an incumbent \emph{candidate} is running, and equal to the prospective measure otherwise.}
+
+For the sake of simplicity, the results in Table 1 came from a ``complete case analysis'' of the data, which dropped any case with any missing regressors. However, in a supplemental analysis we accounted for item-level non-response with multiple imputation \citep{rubin2004multiple}.
+With the \verb|R| package \verb|mice| \citep{mice}, we created five datasets, with missing values for the regressors randomly imputed.
+Next, we used the package \verb|lme4| \citep{lme4} to fit mixed-effects models in each imputed dataset, and combined the results to yield estimates very similar to those in Table \ref{results}.
+This relaxes the strong assumption that item-level nonresponse is entirely random, replacing it with an assumption that nonresponse is random after accounting for the observed regressors.
+
+%I moved this from the body to the appendix ZB 8/18
+Aside from computational tractability, one of the advantages of the
+multilevel logistic regression model is that it allows us to independently assess
+the %effects of %%% added ``respective... votes'' took out ``effects'' A 1/30
+ respective relationships between votes and each variable on the
+right-hand side.
+In particular, each coefficient can be interpreted as the relationship
+between its corresponding variable and votes, after modeling the effects of all of the other variables in the model.
+For instance, let $\hat{\gamma}_{1}$ be the estimated coefficient on $\Delta RDI$ in Model 1 found in Table 1. %ADAM(\ref{elecMod}).
+One way of interpreting this result would be that, everything else (in
+the model) being equal, when $\Delta RDI$ increases by 1 percentage
+point, one may expect the logit of the probability of a voter choosing
+the incumbent party to increase by about $\hat{\gamma}_{1}$.
+
+Regarding epistemic heterogeneity, since each wave of the ANES survey selects a different set of voters, the ANES data don't allow us to identify the individuals who
+systematically misjudge the economy, and thereby directly rule out
+such a possibility. 
+However, the ANES data do allow us to identify the correlations between
+$\Delta RDI$ and voters' perceptions of the economy within demographic
+sub-groups. 
+A demographic whose members' retrospective judgement of the economy
+correlate negatively with $\Delta RDI$ may indicate a problem.
+To attempt to identify such a sub-group, we fit a multilevel linear model to the
+data, predicting \emph{retrospective} as a function $\Delta RDI$. 
+The model included interactions between $\Delta RDI$ and a thick set of probative variables including personal finances, incumbent party, race, and party ID (variables incorporated in models (1)--(3)), %(\ref{indMod})-(\ref{elecMod}), 
+in addition to social class, education, gender, Hispanic
+identification, marital status, urbanism, and state. This test seeks
+to find exceptional cases, subsets of the population that
+systematically misjudge the health of the economy. 
+Though it is large, we needn't worry that the model is overfit, since the setup here is meant to serve as a conservative test, identifying subgroups that could challenge our conjecture. 
+
+To test the possible heterogeneity of values held among the electorate we estimate the conceivable size of such a minority that might unwittingly vote for the right candidate given mistaken beliefs by asking whether there exists some subset of the sample that prefers a shrinking economy. %, by examining how the relationship between $\Delta RDI$ and votes varies along with observed individual-level variables.
+To do this we fit our multilevel model to the data, this time including interactions between $\Delta RDI$ and a thick set of probative variables including personal finances, incumbent party, race, and party ID (variables incorporated in models (1)--(3)), %(\ref{indMod})-(\ref{elecMod}), 
+in addition to social class, education, gender, Hispanic identification, marital status, urbanism, and state. This test seeks to find exceptional cases, subsets of the population that prefer the economy to shrink.\footnote{
+This model, in effect, searches for the existence subgroups of the population (defined by these variables) for which the linear relationship between $\Delta RDI$ and the log-odds of voting for the incumbent party in a presidential election varies considerably from the estimate given in Table 1.}  We needn't worry that we have overfit our model by including so many interaction terms, since the setup here is meant to serve as a conservative test, identifying subgroups that could challenge our conjecture. 
+
+Only two groups could be identified at all for which $\Delta RDI$ was negatively correlated with election outcome (1) Respondents who reported that they do not know if they are Hispanic and (2) respondents who identified as ``upper class," and both of these are likely due to noise. Together, these groups comprised a quarter of a percent of the dataset, neither statistically significance.
+Even if members of these two groups would prefer that the economy shrink, the minuscule effect size is exceedingly unlikely to practically effect any election outcome.\footnote{A full report of the model results is available as an online supplement.}
+
+\begin{comment}
+Though we argue that RDI's lack of significance when prospective and retrospective variables are included in the model is not a problem, we must admit that this informal path analysis \citep{baron1986moderator} should be taken with a grain of salt.
+In particular; \citet{imai2010identification} has shown that the path analysis estimators of indirect and direct effects rely upon sequential ignorability.
+Among other things, this implies that, conditioning on the other variables in the model, the relationship between subjects' perceptions of the economy and their votes are unconfounded.
+This would be violated if, say, a different macroeconomic indicator, such as unemployment, predicted both subjects' perceptions of the economy and RDI.
+Nevertheless, it is hard to see how RDI would affect voters' choices other than by affecting their perceptions of the macroeconomy, and these results support that intuition.
+\end{comment}
+
+A final caveat is that, though ANES is a nationally representative survey, our coefficient estimates are design consistent for the subjects in the study who voted or reported their votes.
+Due to the difficulty of fitting a multilevel model with survey weights \citep{gelman2007struggles}, we fit an unweighted model, which limits the external validity of its estimates.
+That being said, our attempts to fit weighted models in Stata \citep{stata} with the \verb|gllamm| function \citep{gllamm} yielded broadly similar results.
+
+We examined several alternative model specifications, as a robustness check.
+The results of % our approximate replication of \citet{Nadeau:2001tw}'s model, 
+our multiple-imputation model, our mediation model, robustness checks and residual plots, along with the code to produce them, are available at \url{http://tinyurl.com/EpDemSupplement-pdf}.
+
+%\subsection{Modeling Choices: Mediation Analysis}\label{sec:mediationAppendix}
+%We specified and fit a causal version of the multilevel models of Section~\ref{sec:model}.
+%First, we dichotomized $\Delta RDI$ into low and high by splitting it at its median.
+%Next, we modeled votes with model (\ref{indMod})--(\ref{elecMod}), including $Retro$ as a predictor, and specifying fixed, not random, effects for state, due to software constraints.
+%Next, we modeled $Retro$ as linear in $\Delta RDI$ (dichotomized), finances, incumbent party, race, and party identification, with random effects for year and fixed effects for state.
+%Finally, we combined the two models using the \verb|mediation| package in \verb|R| \citep{mediation}.
+%
+%Moving from correlational analysis, as in the model described by
+%equations (\ref{indMod}) and (\ref{elecMod}), to a causal analysis,
+%requires making untestable assumptions.
+%First, the very definitions in equations (\ref{eq:mediated}) and
+%(\ref{eq:direct}) require that one election's $\Delta RDI$ does not
+%affect a different election's votes.
+%This assumption would be problematic if, for instance, voters tend to
+%account for past elections' $\Delta RDI$ when they vote.
+%A second assumption is that the relationship between $\Delta RDI$ and
+%votes is unconfounded, conditional on the other variables in the
+%model.
+%There are any number of ways for this to be violated, for instance, if
+%wars simultaneously boost $\Delta RDI$ and cause voters to endorse the
+%incumbent party.
+%Mediational analysis adds yet two more assummptions:
+%first, that conditional on the other variables in the model, the
+%relationship between  $\Delta
+%RDI$ and $Retro$ is unconfounded (which identifies the effect of
+%$\Delta RDI$ on $Retro$), and second,
+%that conditional
+%on $\Delta RDI$ and the other variables in the model, the relationship
+%between $Retro$ and votes is unconfounded.
+%This last assumption would be untestable even if $\Delta RDI$ were
+%assigned randomly.
+
+ % Table created by stargazer v.5.1 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Fri, Aug 22, 2014 - 18:41:57
+% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Fri, Aug 29, 2014 - 08:46:16
+
+
+
+
+\bibliographystyle{philreview}	% (uses file "plain.bst")
+\bibliography{betting}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
