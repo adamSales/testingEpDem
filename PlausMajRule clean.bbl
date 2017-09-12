@@ -1,0 +1,263 @@
+\begin{thebibliography}{47}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Achen and Bartels(2016)}]{achen2016democracy}
+Achen, Christopher~H and Bartels, Larry~M. 2016.
+\newblock \emph{Democracy for realists: Why elections do not produce responsive
+  government}.
+\newblock Princeton University Press.
+
+\bibitem[{Agresti(2002)}]{agresti2002categorical}
+Agresti, Alan. 2002.
+\newblock \emph{Categorical data analysis}, volume 359.
+\newblock John Wiley \& Sons.
+
+\bibitem[{Anderson(2007)}]{Anderson07}
+Anderson, Christopher~J. 2007.
+\newblock \enquote{The End of Economic Voting? Contingency Dilemmas and the
+  Limits of Democratic Accountability.}
+\newblock \emph{Annual Review of Political Science} 10.
+
+\bibitem[{Anderson(2006)}]{Anderson2006}
+Anderson, Elizabeth. 2006.
+\newblock \enquote{The Epistemology of Democracy.}
+\newblock \emph{Episteme} .
+
+\bibitem[{Bates et~al.(2014)Bates, Maechler, Bolker, and Walker}]{lme4}
+Bates, Douglas, Maechler, Martin, Bolker, Ben, and Walker, Steven. 2014.
+\newblock \emph{lme4: Linear mixed-effects models using Eigen and S4}.
+\newblock R package version 1.1-6.
+
+\bibitem[{Blinder and Watson(2014)}]{blinder2014presidents}
+Blinder, Alan~S and Watson, Mark~W. 2014.
+\newblock \enquote{Presidents and the us economy: An econometric exploration.}
+\newblock Technical report, National Bureau of Economic Research.
+
+\bibitem[{Caplan(2006)}]{Caplan2006}
+Caplan, Bryan. 2006.
+\newblock \emph{The Myth of the Rational Voter}.
+\newblock Princeton University Press.
+
+\bibitem[{Congress(2011)}]{congress2011trends}
+Congress, US. 2011.
+\newblock \enquote{Trends in the Distribution of Household Income between 1979
+  and 2007.}
+\newblock \emph{Congressional Budget Office} 25.
+
+\bibitem[{Dietrich and List(2004)}]{Dietrich2004}
+Dietrich, Franz and List, Christain. 2004.
+\newblock \enquote{A Model of Jury Decisions Where All Jurors Have the Same
+  Evidence.}
+\newblock \emph{Synthese} 142.
+
+\bibitem[{Duch and Stevenson(2008)}]{Duch2008}
+Duch, Raymond~M. and Stevenson, Randolph~T. 2008.
+\newblock \emph{The Economic Vote: How Political and Economic Institutions
+  Condition Election Results}.
+\newblock Cambridge University Press.
+
+\bibitem[{Estlund(1997)}]{Estlund1997}
+Estlund, David. 1997.
+\newblock \enquote{Beyond Fairness and Deliberation: The Epistemic Dimension of
+  Democratic Authority.}
+\newblock In \emph{Deliberative Democracy: Essays on Reason and Politics},
+  chapter~6, 173--204. MIT Press.
+
+\bibitem[{Estlund(2008)}]{Estlund08}
+---. 2008.
+\newblock \emph{Democratic Authority}.
+\newblock Princeton University Press.
+
+\bibitem[{Evans and Andersen(2006)}]{evans2006political}
+Evans, Geoffrey and Andersen, Robert. 2006.
+\newblock \enquote{The political conditioning of economic perceptions.}
+\newblock \emph{Journal of Politics} 68:194--207.
+
+\bibitem[{Fiorina(1978)}]{Fiorina:1978tz}
+Fiorina, M~P. 1978.
+\newblock \enquote{{Economic retrospective voting in American national
+  elections: A micro-analysis}.}
+\newblock \emph{American Journal of Political Science} .
+
+\bibitem[{Freedman(2006)}]{freedman2006so}
+Freedman, David~A. 2006.
+\newblock \enquote{On the so-called ``Huber sandwich estimator'' and ``robust
+  standard errors''.}
+\newblock \emph{The American Statistician} 60.
+
+\bibitem[{Gelman(2007)}]{gelman2007struggles}
+Gelman, Andrew. 2007.
+\newblock \enquote{Struggles with survey weighting and regression modeling.}
+\newblock \emph{Statistical Science} 153--164.
+
+\bibitem[{Ingham(2012)}]{Ingham2013}
+Ingham, Sean. 2012.
+\newblock \enquote{Disagreement and epistemic arguments for democracy.}
+\newblock \emph{Politics, Philosophy, and Economics} 12.
+
+\bibitem[{Kinder and Kiewiet(1981)}]{Kinder1981}
+Kinder, Donald~R. and Kiewiet, D.~Roderick. 1981.
+\newblock \enquote{Sociotropic Politics: The American Case.}
+\newblock \emph{British Journal of Political Science} 11.
+
+\bibitem[{Landemore(2013)}]{Landemore13}
+Landemore, Helene. 2013.
+\newblock \emph{Democratic Reason: Politics, Collective Intellegence, and the
+  Rule of Many}.
+\newblock Princeton University Press.
+
+\bibitem[{Lanoue(1994)}]{Lanoue:1994bl}
+Lanoue, D~J. 1994.
+\newblock \enquote{{Retrospective and Prospective Voting in Presidential-Year
+  Elections}.}
+\newblock \emph{Political Research Quarterly} 47:193--205.
+
+\bibitem[{Lewis et~al.(2009)Lewis, Jacoby, Norpoth, and Weisberg}]{Revisited09}
+Lewis, Michael~S., Jacoby, William~G., Norpoth, Helmut, and Weisberg,
+  Herbert~F. 2009.
+\newblock \emph{The American Voter Revisited}.
+\newblock University of Michigan Press.
+
+\bibitem[{Lewis-Beck and Stegmaier(2000)}]{LewisBeck:2000ww}
+Lewis-Beck, M~S and Stegmaier, M. 2000.
+\newblock \enquote{Economic determinants of electoral outcomes.}
+\newblock \emph{Annual Review of Political Science} 183--219.
+
+\bibitem[{List and Goodin(2001)}]{List2001}
+List, Christain and Goodin, Robert~E. 2001.
+\newblock \enquote{Epistemic democracy: generalizing the Condorcet jury
+  theorem.}
+\newblock \emph{Journal of Political Philosophy} 277--306.
+
+\bibitem[{Lockerbie(1992)}]{Lockerbie:1992js}
+Lockerbie, B. 1992.
+\newblock \enquote{{Prospective Voting in Presidential Elections, 1956-1988}.}
+\newblock \emph{American Politics Research} 20:308--325.
+
+\bibitem[{Lupia(2006)}]{Lupia2006}
+Lupia, Arthur. 2006.
+\newblock \enquote{How Elitism Undermines the Study of Voter Competence.}
+\newblock \emph{Critical Review} 18:217‐232.
+
+\bibitem[{Lupia and McCubbins(2000)}]{Lupia2000}
+Lupia, Arthur and McCubbins, Matthew~D. 2000.
+\newblock \enquote{The Institutional Foundation of Political Competence: How
+  Citizens Learn What They Need to Know.}
+\newblock In \emph{Elements of Reason}. Cambridge Univ Press.
+
+\bibitem[{Markus(1988)}]{Markus88}
+Markus, Gregory. 1988.
+\newblock \enquote{The Impact of Personal and National Economic Conditions on
+  the Presidential Vote: A Pooled Cross-Sectional Analysis.}
+\newblock \emph{American Journal of Political Science} .
+
+\bibitem[{Miller and Wattenberg(1985)}]{miller1985throwing}
+Miller, Arthur~H and Wattenberg, Martin~P. 1985.
+\newblock \enquote{Throwing the rascals out: Policy and performance evaluations
+  of presidential candidates, 1952--1980.}
+\newblock \emph{American Political Science Review} 79:359--372.
+
+\bibitem[{Nadeau and Lewis-Beck(2001)}]{Nadeau:2001tw}
+Nadeau, R and Lewis-Beck, Michael~S. 2001.
+\newblock \enquote{{National economic voting in US presidential elections}.}
+\newblock \emph{Journal of Politics} .
+
+\bibitem[{Page(2007)}]{Page2007}
+Page, Scott. 2007.
+\newblock \emph{The Difference: How the Power of Diversity Creates Better
+  Groups, Firms, Schools, and Societies}.
+\newblock Princeton University Press.
+
+\bibitem[{Rabe-Hesketh et~al.(2004)Rabe-Hesketh, Skrondal, and
+  Pickles}]{gllamm}
+Rabe-Hesketh, Sophia, Skrondal, Anders, and Pickles, Andrew. 2004.
+\newblock \enquote{GLLAMM manual.}
+\newblock \emph{U.C. Berkeley Division of Biostatistics Working Paper Series.
+  Working Paper} 160.
+
+\bibitem[{Raudenbush and Bryk(2002)}]{raudenbush2002hierarchical}
+Raudenbush, Stephen~W and Bryk, Anthony~S. 2002.
+\newblock \emph{Hierarchical linear models: Applications and data analysis
+  methods}, volume~1.
+\newblock SAGE Publications, Incorporated.
+
+\bibitem[{Reeve(1998)}]{reeve1998aristotle}
+Reeve, CDC. 1998.
+\newblock \enquote{Aristotle: Politics.}
+\newblock \emph{Indianapolis: Hackett} .
+
+\bibitem[{Rehfeld(2010)}]{rehfeld2010offensive}
+Rehfeld, Andrew. 2010.
+\newblock \enquote{Offensive political theory.}
+\newblock \emph{Perspectives on Politics} 8:465--486.
+
+\bibitem[{Rubin(2004)}]{rubin2004multiple}
+Rubin, Donald~B. 2004.
+\newblock \emph{Multiple imputation for nonresponse in surveys}, volume~81.
+\newblock John Wiley \& Sons.
+
+\bibitem[{Schwartzberg(2015)}]{schwartzberg2015epistemic}
+Schwartzberg, Melissa. 2015.
+\newblock \enquote{Epistemic Democracy and Its Challenges.}
+\newblock \emph{Annual Review of Political Science} 18.
+
+\bibitem[{Shaked and Shanthikumar(2007)}]{shaked2007stochastic}
+Shaked, Moshe and Shanthikumar, J~George. 2007.
+\newblock \emph{Stochastic orders}.
+\newblock Springer.
+
+\bibitem[{Sinclair(2012)}]{sinclair2012social}
+Sinclair, Betsy. 2012.
+\newblock \emph{The Social Citizen}.
+\newblock Chicago: University of Chicago Press.
+
+\bibitem[{StataCorp(2013)}]{stata}
+StataCorp. 2013.
+\newblock \enquote{Stata Statistical Software: Release 13.}
+
+\bibitem[{Stein(1990)}]{Stein:1990tt}
+Stein, R~M. 1990.
+\newblock \enquote{{Economic voting for governor and US senator: The electoral
+  consequences of federalism}.}
+\newblock \emph{The Journal of Politics} .
+
+\bibitem[{Studies(2010{\natexlab{a}})}]{ANES2012}
+Studies, The American National~Election. 2010{\natexlab{a}}.
+\newblock \enquote{The ANES 2012 Time Series Study [dataset].}
+
+\bibitem[{Studies(2010{\natexlab{b}})}]{ANES}
+---. 2010{\natexlab{b}}.
+\newblock \enquote{Time Series Cumulative Data File [dataset].}
+
+\bibitem[{Surowiecki(2004)}]{Surowiecki2004}
+Surowiecki, James. 2004.
+\newblock \emph{The Wisdom of the Crowds}.
+\newblock Doubleday.
+
+\bibitem[{Urbinati(2014)}]{urbinati2014democracy}
+Urbinati, Nadia. 2014.
+\newblock \emph{Democracy Disfigured}.
+\newblock Harvard University Press.
+
+\bibitem[{{van Buuren} and Groothuis-Oudshoorn(2011)}]{mice}
+{van Buuren}, Stef and Groothuis-Oudshoorn, Karin. 2011.
+\newblock \enquote{{mice}: Multivariate Imputation by Chained Equations in R.}
+\newblock \emph{Journal of Statistical Software} 45:1--67.
+
+\bibitem[{Wiens(2015)}]{wiens2015against}
+Wiens, David. 2015.
+\newblock \enquote{Against Ideal Guidance.}
+\newblock \emph{The Journal of Politics} 77:433--446.
+
+\bibitem[{Woon(2012)}]{woon2012democratic}
+Woon, Jonathan. 2012.
+\newblock \enquote{Democratic accountability and retrospective voting: A
+  laboratory experiment.}
+\newblock \emph{American Journal of Political Science} 56:913--930.
+
+\end{thebibliography}

@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: PlausMajRule clean.aux
+The style file: philreview.bst
+Database file #1: betting.bib
+You've used 47 entries,
+            2948 wiz_defined-function locations,
+            863 strings with 10718 characters,
+and the built_in function-call counts, 23253 in all, are:
+= -- 1898
+> -- 680
+< -- 48
++ -- 281
+- -- 207
+* -- 1330
+:= -- 3767
+add.period$ -- 219
+call.type$ -- 47
+change.case$ -- 263
+chr.to.int$ -- 46
+cite$ -- 47
+duplicate$ -- 1887
+empty$ -- 1923
+format.name$ -- 316
+if$ -- 4642
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 415
+newline$ -- 240
+num.names$ -- 188
+pop$ -- 933
+preamble$ -- 1
+purify$ -- 257
+quote$ -- 0
+skip$ -- 798
+stack$ -- 0
+substring$ -- 883
+swap$ -- 789
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 381
+warning$ -- 0
+while$ -- 168
+width$ -- 0
+write$ -- 592

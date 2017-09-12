@@ -74,6 +74,7 @@
 \newtheorem*{prop*}{Proposition}
 \newtheorem*{comm}{Comment}
 \newtheorem{cor}{Corollary} 
+\newtheorem{ass}{Assumption}
 
 
 \begin{document}
@@ -87,8 +88,8 @@
 \vfill
 {\LARGE \bf Testing Epistemic Democracy's Majority Rule Result}\ \\
 \ \\
-{\Large By William J. Berger\footnote{University of Michigan, Center for the Study of Complex Systems, zberger@umich.edu.} and Adam Sales\footnote{UT Austin, College of Education, asales@utexas.edu.}%\thanks{We received some very helpful feedback from Scott Page and Patrick Grim}
-}\\
+%{\Large By William J. Berger\footnote{University of Michigan, Center for the Study of Complex Systems, zberger@umich.edu.} and Adam Sales\footnote{UT Austin, College of Education, asales@utexas.edu.}%\thanks{We received some very helpful feedback from Scott Page and Patrick Grim}
+%}\\
 %{\normalsize Prepared for the Political Theory Workshop 3/12/10}\\
 %\today\\
  \end{center}
@@ -152,25 +153,38 @@ Though this effect needn't be decisive, we estimate that without it the result o
 While there are many instances in which it is difficult to determine what a community should do or which values it ought to endorse, there might be issues where there is broad normative agreement, leaving the facts of the matter to be contested.
  Consider a multidimensional decision illustrated here by voters' choices in the 2012 U.S. Presidential election. Along one dimension Alice and Bernice fundamentally disagree about the access women ought to have to abortions. Since Alice identifies as pro-life, she is more likely to vote for Mitt Romney. Bernice, on the other hand, is pro-choice and feels strongly that President Obama should be reelected. Along another dimension, however, both Alice and Bernice agree that the government should effect the greatest number of Americans to carry health insurance. Given that they both endorse this same value, cashed out using the same metric, their disagreement can be construed as partly factual in kind (\citet{Page2007}: 258)---which candidate will in fact lead more Americans to be insured? If Alice and Bernice are each better than random at determining the fact of the matter, we then have reason to think that the candidate more adept at implementing healthcare policy has his chances of winning boosted. Holding their disagreement about abortion constant, the candidate's fitness on the second dimension enhances his electability.
 
-\begin{prop*}
-If we model votes in a majoritarian election with two candidates as
-binary random variables, insofar as voters agree to the value of some
-issue and, holding all else constant, the following conditions hold:
-\begin{enumerate}
-	\item Each voter is more likely to believe a candidate is
-          superior when she actually is than when she is not\label{ass:belief}%Each voter is no worse---and some better---than random at judging a candidate's superiority on that issue
-	\item Every voter is at least as---and some more---likely as otherwise to select a candidate if she believes  that the candidate is superior to her rival on that issue\label{ass:preference}  % 1/30 added "than otherwise"
-	%\item A candidate's actual superiority affects voters' choices only through voters' perception of her superiority
-	\item Votes are mutually independent\label{ass:independent}
-\end{enumerate}
-%then, holding all else constant, 
+Modeling votes in a majoritarian election with two candidates as
+binary random variables, we can formally establish the link between voters' agreement on the value of some issue and electoral results, given some additional assumptions.
+The assumptions may be regarded as conditional on the facts relevant to the election. 
+The first assumption instrumentalizes voters' agreement on the issue:
+\begin{ass}\label{ass:preference}
+Every voter is at least as---and some more---likely as otherwise to select a candidate if she believes  that the candidate is superior to her rival on that issue
+\end{ass}
+The second assumption characterizes voters' competence: that their beliefs correlate with reality. 
+\begin{ass}\label{ass:belief}%
+Each voter is more likely to believe a candidate is
+          superior when she actually is than when she is not. 
+\end{ass}
+Were this otherwise, the instrumental value of the contest would be at best null and at worst it would hazard producing unwanted effects, whereby voting for a candidate $A$ in virtue of some criterion $c_i$ would diminish the chances that $c_i$ would be realized (say, in this case, more wide-spread healthcare).
+
+Assumptions \ref{ass:preference} and \ref{ass:belief} help determine expected vote totals:
+\begin{prop}\label{prop:voteTotal}
+Under assumptions \ref{ass:preference} and \ref{ass:belief}, 
+A candidate's superiority to her rival on that issue increases her expected vote total.
+\end{prop}
+Increasing a candidate's expected vote total does not necessarily imply increasing her chances of winning; for that we need an assumption about the statistical relationship between votes.
+The simplest (if, perhaps, the strongest) such assumption is independence:
+\begin{ass}\label{ass:independent}
+Votes are mutually independent
+\end{ass}
+Then we have the following proposition:
+\begin{prop}
+Under Assumptions \ref{ass:preference}, \ref{ass:belief}, and \ref{ass:independent}, 
 a candidate's superiority to her rival on that issue increases her probability of being elected.
-\end{prop*}
+\end{prop}
 
 
-Our claim is this: in a binary election (even when the decision function is multidimensional) where independent and minimally competent voters seek to select the candidate that maximizes a shared value, the majority rule mechanism comes to recommend democracy on veritistic grounds. %The claim is that insofar as people agree the outcome of the election can be thought to be truth-tracking by epistemic means. 
-%The point here is not that the capacity to afford more Americans healthcare is sufficient for victory. Rather, to the extent that a majority of voters hold that value and are able to ascertain which candidate is better on this dimension, that candidate has his chances of victory boosted. Thus, Though the result is easiest to see in instances of value-consensus, it's not limited to such cases.  
-By ``minimally competent'' here we mean that voters' decisions are no worse than random at assessing which candidate is better regarding some shared value. Were this otherwise, the instrumental value of the contest would be at best null and at worst it would hazard producing unwanted effects, whereby voting for a candidate $A$ in virtue of some criterion $c_i$ would diminish the chances that $c_i$ would be realized (say, in this case, more wide-spread healthcare).\footnote{The technical restatement of this proposition and its proof for the appendix.}
+Our claim is this: in a binary election (even when the decision function is multidimensional) where independent and minimally competent voters seek to select the candidate that maximizes a shared value, the majority rule mechanism comes to recommend democracy on veritistic grounds.\footnote{The technical restatement of this proposition and its proof for the appendix.}
 
 Though the result is easiest to see in the case of consensus, where everyone agrees to some value, it's not limited to such cases. The claim here is \emph{insofar as people agree}, the outcome of the election can be thought to be truth-tracking by epistemic means.  Instead of thinking of complete consensus of the electorate, consider instead a majority consensus, where a simple majority of Americans want more people to carry health insurance. 
 %In as much as democratic elections (and particularly U.S. presidential elections) are legitimate on majoritarian grounds, we can think of consensus in terms of the majority's agreement. 
@@ -581,7 +595,9 @@ our multiple-imputation model, our mediation model, robustness checks and residu
 % Date and time: Fri, Aug 29, 2014 - 08:46:16
 
 
-
+%%I want to be up font about the fact that we have submitted this paper previously to AJPS. We think that the paper has gone through a substantial revision (in part by reflecting on the helpful comments of the reviewers) in the intervening period and might warrant reconsideration. If you do not feel that is the case we completely understand if this paper gets desk-rejected.
+%%
+%%One further note: this paper is intended to weigh in on an ongoing literature in democratic theory. While we provide fresh data analysis, there is no substantive contribution to the empirical literature on economic voting. Some reviewers have been confused about this point in the past, so we just wanted to clarify the point.
 
 \bibliographystyle{philreview}	% (uses file "plain.bst")
 \bibliography{betting}
