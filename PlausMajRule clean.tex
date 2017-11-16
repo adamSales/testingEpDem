@@ -119,22 +119,22 @@ Indeed, Aristotle already noted in book three of the \emph{Politics} that ``the 
 But it is not obvious when Aristotle's contention is correct, or even what constitutes correctness. A nagging worry remains that beyond aggregating beliefs, votes also tally people's divergent values. The examples epistemic democrats frequently use are cases where the criteria of correctness are uncontested, such as a guilty verdict or an ox's weight. Political disagreements, however, are commonly  disputes of value rather than of attendant facts or consequences. Disagreements such as gun control, abortion, and civil rights all lack a clear right answer. %\footnote{See Landemore \citeyear{Landemore2014} for a discussion of the ``fact of disagreement''.} 
   For this reason many have argued that the machinery of epistemic democracy cannot plausibly endorse electoral outcomes (\citet{Anderson2006}; \citet{Estlund1997}; \citet{Estlund08}; \citet{Ingham2013}; \cite{urbinati2014democracy}).
 
-In this paper we push back against such skepticism and argue that, under certain conditions, 
-the result of a democratic election can be considered veritistic. Were voters epistemically biased against the candidates that advanced their commitments, the institution would systematically produce `unwanted effects,' where a constituency would be less likely to obtain its preferred outcome by voting for it. We provide a set of conditions where, to the extent that voters substantively agree on some issue that affects an election's outcome, their votes can be thought to nudge the election in favor of the `right' candidate---the candidate that they would endorse on some particular grounds given full information---thereby inhibiting unwanted effects.\footnote{Indeed, assumptions such as single-peakedness can also be employed to  make sense of aggregating values. These routes, however, would preclude the kind empirical analysis we provide, since they would necessitate considering both the strength and accuracy of the ``yeas'' and ``nays,'' which our data just don't permit.} 
+In this paper we push back against such skepticism and argue that though some political disagreements may be disputes of value, other disagreements pertain to facts; there is broad consusus on ends, but not on which means are most likely to effect those ends. 
+Regarding these latter disputes, the result of a democratic election can be considered veritistic.\marginpar{this needs to be re-written but I hope you get the idea.}
+Were voters epistemically biased against the candidates that advanced their commitments, the institution would systematically produce `unwanted effects,' where a constituency would be less likely to obtain its preferred outcome by voting for it. We provide a set of conditions where, to the extent that voters substantively agree on some issue that affects an election's outcome, their votes can be thought to nudge the election in favor of the `right' candidate---the candidate that they would endorse on some particular grounds given full information---thereby inhibiting unwanted effects.\footnote{Indeed, assumptions such as single-peakedness can also be employed to  make sense of aggregating values. These routes, however, would preclude the kind empirical analysis we provide, since they would necessitate considering both the strength and accuracy of the ``yeas'' and ``nays,'' which our data just don't permit.} 
 
 %This allows us to then demonstrate that the arguments made by epistemic democrats plausibly correspond to empirical cases.
 Since the claim is instrumental in kind---democracy is good in virtue of the outcomes it produces---it is still necessary to demonstrate that the processes in question arrive at the stipulated ends, as a matter of fact. Previous treatments of majority rule results don't provide sufficient evidence to support their empirical relevance  
 (\cite{schwartzberg2015epistemic}). And though there are matters on which we imagine consensus exists, such as public health or the competence of political officials (e.g. \cite{Page2007}: 256-7; \cite{Landemore13}: 145), there has been no move to identify a case in which the conditions of majority rule results are met. By going beyond the formal results to provide an empirical case that tracks the conjectures of epistemic democrats, this paper both makes good on admonishments to demonstrate the plausibility of normative theory (e.g. \cite{rehfeld2010offensive}, \cite{wiens2015against}), while also pointing to the purchase of arguments made by epistemic democrats to recommend democracy against alternative regimes.
 
 
-Our plan for this paper is to first briefly explain how majority rule
-yields veritistic outcomes and address some of its limitations. We specify three jointly sufficient conditions
-under which the \emph{majority rule mechanism}---akin to those that drive CJT and MA---can obtain on a single dimension of a decision
+Our plan for this paper is to first explain how majority rule
+yields veritistic outcomes on a single dimension of a decision
 function, independent of other contested components.
-The mechanism we specify recruits the same kind of aggregative features as these other theorems while also allowing for multidimensional considerations. %show how such veritistic outcomes can
-%result even when voters must consider a wide range of issues
-%simultaneously. 
-And though CJT and MA are commonly asymptotic, they share the same core probabilisitic assumptions as those specified in the formal proposition provided here. 
+In general, no one issue will itself determine the results of an election, regardless of the number of voters, their competance, or the extent of their agreement.
+However, when voters agree on a the desireability of a particular outcome---though they may disagree on how best to achieve it---a candidate's superiority on that issue may increase her chances of winning the election. 
+We specify three jointly sufficient conditions under which this property will hold. 
+The formal proposition we present shares the core probabalistic assumptions as CJT and MA, albeit in a weaker form, but allows for multidimensional considerations. (Section \ref{sec:cjt-compare} addresses the similarities and differences between CJT and our approach.)
 
 Next, we turn to the case of sociotropic economic voting in U.S. presidential elections to illustrate the empirical plausibility of the majority rule results. That voters by and large want economic growth provides a ready case where a majority of voters agree on some value, leaving that facts to be contested.
  Our analysis here builds on a trove of both theoretical and empirical evidence for the retrospective economic voting model (\cite{Duch2008}, \cite{Revisited09}). Beyond their own economic well-being, voters select the U.S. president with an eye to  recent economic trends. We recruit these findings and models in the service of our point here: that given the electorate's preference for economic growth, their epistemic capacities allow them to select the better candidate.
@@ -414,12 +414,12 @@ To allow for such situations, define a set of ``conditioning facts" $\tilde{a}$ 
 The composition of $\tilde{a}$ depends on the issue in question, and may in some circumstances be empty.
 In any case, we may restate assumptions 1--4 as conditional on $\tilde{a}$.
 
-\begin{prop}
+\begin{prop*}
 If assumptions 1--4 hold conditional on $\tilde{a}$, then
 \begin{equation}
 Pr(E=1|a=1,\tilde{a})>Pr(E=1|a=0,\tilde{a})
 \end{equation}
-\end{prop}
+\end{prop*}
 
 \begin{proof}
 First note that
@@ -446,6 +446,13 @@ Therefore, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i >n\alpha|a=1)>Pr(\sum_{i=1}^n V_i>n\
 Let $\alpha \subset \mathcal{S}$. If the conditions obtain for all $i\in\alpha$ then the result is the proposition still holds for members of $\alpha$.
 \end{cor}
 
+\subsection{A Comparison with CJT}\label{sec:cjt-compare}
+
+The proposition described informally in Section \ref{sec:theory} and formally in this appendix builds on prior theoretical work in epistemic democracy, perhaps most famously the Condorcet Jury Theorem (CJT).
+In this section we will briefly compare and contrast our proposition with the CJT, as stated in \citet{dietrich2008premises}.
+We will argue that our proposition may be thought of as a generalization of the CJT to the multidimensional case.
+
+\citet{dietrich2008premises} 
 
 \subsection{Modeling Choices: Logit Model}
 Our models are based roughly on those presented in Nadeau and Lewis-Beck (2001). In particular, they estimated the following model:
