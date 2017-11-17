@@ -57,6 +57,10 @@
 \setlength\headsep{0.25in}
 %\addtolength{\parskip}{1.5ex}
 
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \makeatletter
 \newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}% %%% THIS STUFF ALLOWS THE ~iid TO COME OUT NICE
@@ -402,10 +406,10 @@ The consider the following assumptions:\\
 For all $i\in\mathcal{S}$:
 \begin{enumerate}
 %\item $\forall v_i \in V, ~ xRy ~\forall y\ne x$, that is every voter prefers some criterion x over all other possible
-\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$, where a strict inequality holds for some subset of the population; stated otherwise, that voters are better than random at judging $a$.
 \item $Pr(V_i=1|A_i=1)\ge Pr(V_i=1|A_i=0)$, where a strict inequality holds for some subset of the population; stated otherwise, $A$ affects all voters' choices in the same direction.
-\item $Pr(V_i=1|A_i, a)=Pr(V_i=1|A_i)$
+\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$, where a strict inequality holds for some subset of the population; stated otherwise, that voters are better than random at judging $a$.
 \item For all $j\ne i$, $V_i \independent V_j|a$
+\item $Pr(V_i=1|A_i, a)=Pr(V_i=1|A_i)$
 \end{enumerate}
 
 It may be the case that some voters' attitudes on issue $x$ depend on a number of other facts as well,  in such a way that assumption 2 only holds for some voters in $S$ under certain additional conditions.
@@ -415,7 +419,7 @@ The composition of $\tilde{a}$ depends on the issue in question, and may in some
 In any case, we may restate assumptions 1--4 as conditional on $\tilde{a}$.
 
 \begin{prop*}
-If assumptions 1--4 hold conditional on $\tilde{a}$, then
+If assumptions 1,2, and 4 hold conditional on $\tilde{a}$, then
 \begin{equation}
 Pr(E=1|a=1,\tilde{a})>Pr(E=1|a=0,\tilde{a})
 \end{equation}
@@ -449,10 +453,104 @@ Let $\alpha \subset \mathcal{S}$. If the conditions obtain for all $i\in\alpha$ 
 \subsection{A Comparison with CJT}\label{sec:cjt-compare}
 
 The proposition described informally in Section \ref{sec:theory} and formally in this appendix builds on prior theoretical work in epistemic democracy, perhaps most famously the Condorcet Jury Theorem (CJT).
-In this section we will briefly compare and contrast our proposition with the CJT, as stated in \citet{dietrich2008premises}.
+In this section we will briefly compare and contrast our proposition with the CJT.
 We will argue that our proposition may be thought of as a generalization of the CJT to the multidimensional case.
 
-\citet{dietrich2008premises} 
+The CJT may be stated as follows \citep[e.g.][]{boland1989majority}:
+\begin{prop*}[CJT]
+A decision-making body is comprised of $n\ge 3$ voters who cast votes
+$V_i,\dots,V_n\in \{0,1\}$. The group's decision $E= 1$ if and only if
+$\sum_i V_i>n/2$ and $E=0$ otherwise.
+If:
+\begin{enumerate}
+\item There is a unique correct decision $a\in \{0,1\}$
+\item $p_i=Pr(V_i=a|a)=p>1/2$ for all $i$ (Competence) and
+\item $V_i \independent V_j|a$, $i\nej$ (Independence)
+\end{enumerate}
+Then $Pr(E=a|a)>p$ and $Pr(E=a|a)\rightarrow 1$ as
+$n\rightarrow\infty$
+\end{prop*}
+
+Our proposition extends the CJT to political elections.
+The existance of a ``correct'' decision
+between candidates is arguable, and typically hinges on voters'
+personal values, as well as matters of fact. 
+Therefore, assumption 1 in our theorem is not that there is a correct
+overall decision, but that, on one particular issue values are not in
+dispute among members of the electorate---for this particular issue,
+the ``correct'' decision $a$ is the one that conforms with the
+universal value. 
+The formal statement $Pr(V_i=1|A_i=1) > Pr(V_i=1|A_i=0)$ means
+that voter $i$'s perception of candidate 1's superiority on the
+particular issue in question increases the chances he'll vote for
+her; to state it for all voters $i$ is to say that they all agree on
+the issue's choice-worthiness. 
+
+Focusing on one dimension among possibly many that influence votes $V$
+required two additional modifications to the CJT.
+First, we introduced the ``individual belief'' variable $A_i$ encoding
+$i$'s belief about which candidate is superior on the issue in
+question.
+In the classic CJT setup, voters are assumed to vote for the option
+they believe is best \citep[See][however]{austen1996information}, so
+$V_i\equiv A_i$, necessarily. 
+However, in a political election $i$ may believe candidate 1 to be
+superior to 0 on the issue in question, so $A_i=1$, but believe
+candidate 0 to be superior on other issues, so that $V_i=0$.
+
+Secondly, we have weakend the relationship between truth $a$ and,
+respectively, beliefs $A$, votes $V$, and the outcome $E$.
+In place of the CJT assumption 2 that voters are more likely to pick
+the correct than the incorrect option, we assume that a fact's truth
+makes voters more likely to believe it than were it false.
+So, for instance, say $a=1$, so candidate 1 is superior on the issue
+in question. 
+However, perhaps because of voter $i$'s prejudice or confusion, he is
+unlikely to believe in 1's superiority under any circumstances.
+That said, he is slightly more likely to believe 1 is superior if that
+is the truth than if 0 is in fact better.
+For instance, $Pr(A_i=1|a=1)=0.1$ and $Pr(A_i=1|a=0)=0.01$. 
+Voter $i$ would violate assumption 2 of the CJT, since $p<1/2$, but
+does not violate our assumption 2.
+Conversely, $p>1/2$ as in the CJT implies that
+$Pr(A_i=1|a=1)>1/2>Pr(A_i=1|a=0)$, so our assumption 2 is strictly
+weaker.
+
+That said, \citet{dietrich2008premises} has stated that for CJT to
+hold, we must merely have $\bar{p}=\sum_i p_i/n>1/2$.\footnote{
+This assumption is neither strictly weaker nor stronger than ours.
+On the one hand, if, say, as above 
+$Pr(A_i=1|a=1)=0.1$ and $Pr(A_i=1|a=0)=0.01$, but this time for all
+voters $i$, our assumption would be satisfied, but
+\citet{dietrich2008premises} would not.
+On the other hand, it is possible for some subset of the electorate to
+violate our assumption but be outweighted by the remainder of the
+electorate, so $\bar{p}>1/2$.
+In any event, simply substituting $\bar{p}>1/2$ into our proposition
+would not suffice---if the group of voters who are more likely to
+believe in a candidate's superiority when the candidate is in fact
+inferior than when she is actually superior are also more fervent
+believes in the importance of the issue, they can undermine the
+result. 
+
+Our result is weaker as well---indeed, it ought to be. 
+If broad agreement holds for only one of many issues, it would be
+troubling to state that $Pr(E=1|a=1)\rightarrow 1$ as the electorate
+grows, implying that all other issues---legitimate, if
+ambiguous---become irrelevent. 
+Instead, as in the case with belief, we merely show that a candidate's
+superiority on the issue increases her probability of being elected,
+relative to what it would have been had she instead been inferior. 
+That is, we claim that superiority on an agreed-upon issue boosts a
+candidate's chances, but provides no guarentees. 
+
+Additionally, unlike the CJT, our result holds for finite samples.
+
+Finally, our independence assumption is the same as CJT's. 
+This suggest that relaxations of independence in the CJT case
+\citep[e.g.]{boland1989modelling} may work in our case as well. 
+
+
 
 \subsection{Modeling Choices: Logit Model}
 Our models are based roughly on those presented in Nadeau and Lewis-Beck (2001). In particular, they estimated the following model:
