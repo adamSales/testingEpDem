@@ -1,9 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 NOV 2017 01:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 NOV 2017 02:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\input "PlausMajRule clean.tex"
+**"PlausMajRule clean.tex"
 (./PlausMajRule clean.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/size11.clo
@@ -694,25 +696,10 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
 )))
 \mybox=\box43
 \mysim=\box44
-
-
-! LaTeX Error: Command \independent already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...\mathpalette{\protect\independenT}{\perp}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 \c@prop=\count182
 \c@cor=\count183
 \c@ass=\count184
-(./PlausMajRule clean.aux)
+ (./PlausMajRule clean.aux)
 \openout1 = `"PlausMajRule clean.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
@@ -801,42 +788,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
  []
 
 
-Package natbib Warning: Citation `Landemore13' on page 1 undefined on input lin
-e 119.
-
-
-Package natbib Warning: Citation `Surowiecki2004' on page 1 undefined on input 
-line 119.
-
-
-Package natbib Warning: Citation `List2001' on page 1 undefined on input line 1
-19.
-
-
-Package natbib Warning: Citation `reeve1998aristotle' on page 1 undefined on in
-put line 121.
-
-
-Package natbib Warning: Citation `Anderson2006' on page 1 undefined on input li
-ne 124.
-
-
-Package natbib Warning: Citation `Estlund1997' on page 1 undefined on input lin
-e 124.
-
-
-Package natbib Warning: Citation `Estlund08' on page 1 undefined on input line 
-124.
-
-
-Package natbib Warning: Citation `Ingham2013' on page 1 undefined on input line
- 124.
-
-
-Package natbib Warning: Citation `urbinati2014democracy' on page 1 undefined on
- input line 124.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 127--127
 []\OT1/cmr/m/n/10.95 this needs
  []
@@ -864,243 +815,59 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 128.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1]
-
-Package natbib Warning: Citation `schwartzberg2015epistemic' on page 2 undefine
-d on input line 132.
-
-
-Package natbib Warning: Citation `Page2007' on page 2 undefined on input line 1
-32.
-
-
-Package natbib Warning: Citation `Landemore13' on page 2 undefined on input lin
-e 132.
-
-
-Package natbib Warning: Citation `rehfeld2010offensive' on page 2 undefined on 
-input line 132.
-
-
-Package natbib Warning: Citation `wiens2015against' on page 2 undefined on inpu
-t line 132.
-
-
-Package natbib Warning: Citation `Duch2008' on page 2 undefined on input line 1
-44.
-
-
-Package natbib Warning: Citation `Revisited09' on page 2 undefined on input lin
-e 144.
-
-[2]
-
-Package natbib Warning: Citation `Page2007' on page 3 undefined on input line 1
-58.
-
-[3] [4]
-
-Package natbib Warning: Citation `Stein:1990tt' on page 5 undefined on input li
-ne 205.
-
-
-Package natbib Warning: Citation `Nadeau:2001tw' on page 5 undefined on input l
-ine 205.
-
-
-Package natbib Warning: Citation `miller1985throwing' on page 5 undefined on in
-put line 205.
-
-
-Package natbib Warning: Citation `Fiorina:1978tz' on page 5 undefined on input 
-line 205.
-
-
-Package natbib Warning: Citation `Lockerbie:1992js' on page 5 undefined on inpu
-t line 205.
-
-
-Package natbib Warning: Citation `Lanoue:1994bl' on page 5 undefined on input l
-ine 205.
-
-
-Package natbib Warning: Citation `LewisBeck:2000ww' on page 5 undefined on inpu
-t line 205.
-
-
-Package natbib Warning: Citation `Nadeau:2001tw' on page 5 undefined on input l
-ine 205.
-
-
-Package natbib Warning: Citation `Markus88' on page 5 undefined on input line 2
-05.
-
-
-Package natbib Warning: Citation `Kinder1981' on page 5 undefined on input line
- 205.
-
-
-Package natbib Warning: Citation `blinder2014presidents' on page 5 undefined on
- input line 205.
-
-
-Package natbib Warning: Citation `Duch2008' on page 5 undefined on input line 2
-05.
-
-
-Package natbib Warning: Citation `Revisited09' on page 5 undefined on input lin
-e 205.
-
-
-Package natbib Warning: Citation `Nadeau:2001tw' on page 5 undefined on input l
-ine 205.
-
-
-Package natbib Warning: Citation `woon2012democratic' on page 5 undefined on in
-put line 205.
-
-[5]
-
-Package natbib Warning: Citation `congress2011trends' on page 6 undefined on in
-put line 207.
-
-
-Package natbib Warning: Citation `Nadeau:2001tw' on page 6 undefined on input l
-ine 208.
-
-
-Package natbib Warning: Citation `Nadeau:2001tw' on page 6 undefined on input l
-ine 211.
-
-[6]
-
-LaTeX Warning: Reference `indMod' on page 7 undefined on input line 259.
-
-
-LaTeX Warning: Reference `elecMod' on page 7 undefined on input line 259.
-
-
-LaTeX Warning: Reference `indMod' on page 7 undefined on input line 259.
-
-
-LaTeX Warning: Reference `elecMod' on page 7 undefined on input line 259.
-
+) [1] [2]
+[3] [4] [5] [6]
 
 LaTeX Warning: Float too large for page by 8.35689pt on input line 261.
 
-
-Package natbib Warning: Citation `Nadeau:2001tw' on page 7 undefined on input l
-ine 267.
-
-[7] [8]
-
-Package natbib Warning: Citation `Anderson07' on page 9 undefined on input line
- 303.
-
-
-Package natbib Warning: Citation `Anderson07' on page 9 undefined on input line
- 303.
-
-
-Package natbib Warning: Citation `Caplan2006' on page 9 undefined on input line
- 303.
-
-[9]
-
-Package natbib Warning: Citation `Kinder1981' on page 10 undefined on input lin
-e 322.
-
-
-Package natbib Warning: Citation `Lupia2000' on page 10 undefined on input line
- 322.
-
-
-Package natbib Warning: Citation `Lupia2006' on page 10 undefined on input line
- 323.
-
-
-Package natbib Warning: Citation `Caplan2006' on page 10 undefined on input lin
-e 325.
-
-
-Package natbib Warning: Citation `Caplan2006' on page 10 undefined on input lin
-e 325.
-
-
-Package natbib Warning: Citation `achen2016democracy' on page 10 undefined on i
-nput line 325.
-
-[10]
-
-Package natbib Warning: Citation `evans2006political' on page 11 undefined on i
-nput line 351.
-
-[11]
-
-Package natbib Warning: Citation `sinclair2012social' on page 12 undefined on i
-nput line 355.
-
-
-Package natbib Warning: Citation `Dietrich2004' on page 12 undefined on input l
-ine 355.
-
-[12] [13]
+[7] [8] [9] [10] [11] [12] [13] [14]
 Overfull \hbox (10.38779pt too wide) in paragraph at lines 443--443
 [] 
  []
 
+[15] [16] [17] [18] [19] [20] Excluding 'comment' comment. [21]
+(./PlausMajRule clean.bbl [22] [23]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
 
-Package natbib Warning: Citation `shaked2007stochastic' on page 14 undefined on
- input line 445.
+Underfull \hbox (badness 3148) in paragraph at lines 201--205
+[]\OT1/cmr/m/n/10.95 Rabe-Hesketh, Sophia, Skro-n-dal, An-ders, and Pick-les, A
+n-drew. 2004.
+ []
 
-[14]
-
-Package natbib Warning: Citation `boland1989majority' on page 15 undefined on i
-nput line 459.
-
-! Undefined control sequence.
-l.468 \item $V_i \independent V_j|a$, $i\nej
-                                            $ (Independence)
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Package natbib Warning: Citation `austen1996information' on page 15 undefined o
-n input line 495.
-
-[15]
-
-Package natbib Warning: Citation `dietrich2008premises' on page 16 undefined on
- input line 519.
-
-)
-Runaway argument?
-{ This assumption is neither strictly weaker nor stronger than ours. \ETC.
-! File ended while scanning use of \@footnotetext.
-<inserted text> 
-                \par 
-<*> \input "PlausMajRule clean.tex"
-                                   
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
-
-! Emergency stop.
-<*> \input "PlausMajRule clean.tex"
-                                   
-*** (job aborted, no legal \end found)
-
- 
+[24]) [25] (./PlausMajRule clean.aux) ) 
 Here is how much of TeX's memory you used:
- 15793 strings out of 493089
- 294969 string characters out of 6134842
- 389349 words of memory out of 5000000
- 18907 multiletter control sequences out of 15000+600000
- 18380 words of font info for 67 fonts, out of 8000000 for 9000
+ 15920 strings out of 493089
+ 297854 string characters out of 6134842
+ 390664 words of memory out of 5000000
+ 19028 multiletter control sequences out of 15000+600000
+ 18548 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 54i,10n,54p,2045b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 54i,10n,54p,2038b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmti9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+tt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+t9.pfb>
+Output written on "PlausMajRule clean.pdf" (26 pages, 295353 bytes).
+PDF statistics:
+ 164 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+

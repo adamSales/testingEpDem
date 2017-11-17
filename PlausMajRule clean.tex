@@ -57,8 +57,8 @@
 \setlength\headsep{0.25in}
 %\addtolength{\parskip}{1.5ex}
 
-\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
-\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+%\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+%\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 
 
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
@@ -465,7 +465,7 @@ If:
 \begin{enumerate}
 \item There is a unique correct decision $a\in \{0,1\}$
 \item $p_i=Pr(V_i=a|a)=p>1/2$ for all $i$ (Competence) and
-\item $V_i \independent V_j|a$, $i\nej$ (Independence)
+\item $V_i \independent V_j|a$, $i\ne j$ (Independence)
 \end{enumerate}
 Then $Pr(E=a|a)>p$ and $Pr(E=a|a)\rightarrow 1$ as
 $n\rightarrow\infty$
@@ -517,7 +517,9 @@ $Pr(A_i=1|a=1)>1/2>Pr(A_i=1|a=0)$, so our assumption 2 is strictly
 weaker.
 
 That said, \citet{dietrich2008premises} has stated that for CJT to
-hold, we must merely have $\bar{p}=\sum_i p_i/n>1/2$.\footnote{
+hold, we must merely have $\bar{p}=\sum_i
+p_i/n>1/2$.\footnote{\citet{boland1989majority} shows that for
+  $Pr(E=a|a)>\bar{p}$ to hold in finite samples, we must assume $\bar{p}>1/2 +1/2n$.}
 This assumption is neither strictly weaker nor stronger than ours.
 On the one hand, if, say, as above 
 $Pr(A_i=1|a=1)=0.1$ and $Pr(A_i=1|a=0)=0.01$, but this time for all
