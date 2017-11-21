@@ -57,6 +57,10 @@
 \setlength\headsep{0.25in}
 %\addtolength{\parskip}{1.5ex}
 
+%\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+%\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \makeatletter
 \newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}% %%% THIS STUFF ALLOWS THE ~iid TO COME OUT NICE
@@ -120,24 +124,29 @@ Democratic theory's epistemic turn ought to be exciting for political scientists
 A nagging worry remains that beyond aggregating beliefs, votes also tally people's divergent values. The examples epistemic democrats frequently use are cases where the criteria of correctness are uncontested, such as a guilty verdict or an ox's weight. Political disagreements, however, are commonly  disputes of value rather than of attendant facts or consequences. Disagreements such as gun control, abortion, and civil rights all lack a clear right answer. %\footnote{See Landemore \citeyear{Landemore2014} for a discussion of the ``fact of disagreement''.} 
   For this reason many have argued that the machinery of epistemic democracy cannot plausibly endorse electoral outcomes (\citet{Anderson2006}; \citet{Ingham2013}; \cite{urbinati2014democracy}).
 
+<<<<<<< HEAD
 In this paper we push back against such skepticism and argue that, under certain conditions, 
  democratic election can be considered veritistic. The thinking is like this: voters are either better or worse than random at assessing the facts of the matter.\footnote{The probability that voters' judgements are exactly random is zero.} Were voters epistemically biased against the candidates that advanced their commitments, the institution would systematically produce `unwanted effects,' where a constituency would be less likely to obtain its preferred outcome by voting for it. Were they perfectly random, the elections outcomes would provide no instrumental guidance. We provide a set of conditions under which voter competence---even on a single dimension of one's decision function---will militated against unwanted effects.
  
 %We provide a set of conditions where, to the extent that voters substantively agree on some issue that affects an election's outcome, their votes can be thought to nudge the election in favor of the `right' candidate---the candidate that they would endorse on some particular grounds given full information---thereby inhibiting unwanted effects.\footnote{Indeed, assumptions such as single-peakedness can also be employed to  make sense of aggregating values. These routes, however, would preclude the kind empirical analysis we provide, since they would necessitate considering both the strength and accuracy of the ``yeas'' and ``nays,'' which our data just don't permit.} 
+=======
+In this paper we push back against such skepticism and argue that though some political disagreements may be disputes of value, other disagreements pertain to facts; there is broad consusus on ends, but not on which means are most likely to effect those ends. 
+Regarding these latter disputes, the result of a democratic election can be considered veritistic.\marginpar{this needs to be re-written but I hope you get the idea.}
+Were voters epistemically biased against the candidates that advanced their commitments, the institution would systematically produce `unwanted effects,' where a constituency would be less likely to obtain its preferred outcome by voting for it. We provide a set of conditions where, to the extent that voters substantively agree on some issue that affects an election's outcome, their votes can be thought to nudge the election in favor of the `right' candidate---the candidate that they would endorse on some particular grounds given full information---thereby inhibiting unwanted effects.\footnote{Indeed, assumptions such as single-peakedness can also be employed to  make sense of aggregating values. These routes, however, would preclude the kind empirical analysis we provide, since they would necessitate considering both the strength and accuracy of the ``yeas'' and ``nays,'' which our data just don't permit.} 
+>>>>>>> 79991b74dbdf1452d9b828a81bad3da2c5308e18
 
 %This allows us to then demonstrate that the arguments made by epistemic democrats plausibly correspond to empirical cases.
 Since the claim is instrumental in kind---democracy is good in virtue of the outcomes it produces---it is still necessary to demonstrate that the process yields the stipulated outcomes, as a matter of fact. Previous treatments of majority rule results don't provide sufficient evidence to support their empirical relevance  
 (\cite{schwartzberg2015epistemic}). And though there are matters on which we imagine consensus exists, such as public health or the competence of political officials (e.g. \cite{Page2007}: 256-7; \cite{Landemore13}: 145), there has been no move to identify an empirical case in which the conditions of majority rule results are met. By going beyond the formal results to provide an empirical case that tracks the conjectures of epistemic democrats, this paper both makes good on admonishments to demonstrate the plausibility of normative theory (e.g. \cite{rehfeld2010offensive}, \cite{wiens2015against}), while also pointing to the purchase of arguments made by epistemic democrats to recommend democracy against alternative regimes.
 
 
-Our plan for this paper is to first briefly explain how majority rule
-yields veritistic outcomes and address some of its limitations. We specify three jointly sufficient conditions
-under which the \emph{majority rule mechanism}---akin to those that drive CJT and MA---can obtain on a single dimension of a decision
+Our plan for this paper is to first explain how majority rule
+yields veritistic outcomes on a single dimension of a decision
 function, independent of other contested components.
-The mechanism we specify recruits the same kind of aggregative features as these other theorems while also allowing for multidimensional considerations. %show how such veritistic outcomes can
-%result even when voters must consider a wide range of issues
-%simultaneously. 
-And though CJT and MA are commonly asymptotic, they share the same core probabilisitic assumptions as those specified in the formal proposition provided here. 
+In general, no one issue will itself determine the results of an election, regardless of the number of voters, their competance, or the extent of their agreement.
+However, when voters agree on a the desireability of a particular outcome---though they may disagree on how best to achieve it---a candidate's superiority on that issue may increase her chances of winning the election. 
+We specify three jointly sufficient conditions under which this property will hold. 
+The formal proposition we present shares the core probabalistic assumptions as CJT and MA, albeit in a weaker form, but allows for multidimensional considerations. (Section \ref{sec:cjt-compare} addresses the similarities and differences between CJT and our approach.)
 
 Next, we turn to the case of sociotropic economic voting in U.S. presidential elections to illustrate the empirical plausibility of the majority rule mechanism. That voters by and large want economic growth provides a ready case where a decisive majority of voters agree on some value, leaving that facts to be contested.
  Our analysis here builds on a trove of both theoretical and empirical evidence for the economic voting model (\cite{Duch2008}, \cite{Revisited09}). Beyond their own economic well-being, voters select the U.S. president with an eye to recent economic trends. We recruit these findings and models in the service of our point here: that given the electorate's preference for economic growth, their epistemic capacities provide an advantage for better candidate.
@@ -405,10 +414,10 @@ The consider the following assumptions:\\
 For all $i\in\mathcal{S}$:
 \begin{enumerate}
 %\item $\forall v_i \in V, ~ xRy ~\forall y\ne x$, that is every voter prefers some criterion x over all other possible
-\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$, where a strict inequality holds for some subset of the population; stated otherwise, that voters are better than random at judging $a$.
 \item $Pr(V_i=1|A_i=1)\ge Pr(V_i=1|A_i=0)$, where a strict inequality holds for some subset of the population; stated otherwise, $A$ affects all voters' choices in the same direction.
-\item $Pr(V_i=1|A_i, a)=Pr(V_i=1|A_i)$
+\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$, where a strict inequality holds for some subset of the population; stated otherwise, that voters are better than random at judging $a$.
 \item For all $j\ne i$, $V_i \independent V_j|a$
+\item $Pr(V_i=1|A_i, a)=Pr(V_i=1|A_i)$
 \end{enumerate}
 
 It may be the case that some voters' attitudes on issue $x$ depend on a number of other facts as well,  in such a way that assumption 2 only holds for some voters in $S$ under certain additional conditions.
@@ -417,12 +426,12 @@ To allow for such situations, define a set of ``conditioning facts" $\tilde{a}$ 
 The composition of $\tilde{a}$ depends on the issue in question, and may in some circumstances be empty.
 In any case, we may restate assumptions 1--4 as conditional on $\tilde{a}$.
 
-\begin{prop}
-If assumptions 1--4 hold conditional on $\tilde{a}$, then
+\begin{prop*}
+If assumptions 1,2, and 4 hold conditional on $\tilde{a}$, then
 \begin{equation}
 Pr(E=1|a=1,\tilde{a})>Pr(E=1|a=0,\tilde{a})
 \end{equation}
-\end{prop}
+\end{prop*}
 
 \begin{proof}
 First note that
@@ -448,6 +457,109 @@ Therefore, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i >n\alpha|a=1)>Pr(\sum_{i=1}^n V_i>n\
 \begin{cor}
 Let $\alpha \subset \mathcal{S}$. If the conditions obtain for all $i\in\alpha$ then the result is the proposition still holds for members of $\alpha$.
 \end{cor}
+
+\subsection{A Comparison with CJT}\label{sec:cjt-compare}
+
+The proposition described informally in Section \ref{sec:theory} and formally in this appendix builds on prior theoretical work in epistemic democracy, perhaps most famously the Condorcet Jury Theorem (CJT).
+In this section we will briefly compare and contrast our proposition with the CJT.
+We will argue that our proposition may be thought of as a generalization of the CJT to the multidimensional case.
+
+The CJT may be stated as follows \citep[e.g.][]{boland1989majority}:
+\begin{prop*}[CJT]
+A decision-making body is comprised of $n\ge 3$ voters who cast votes
+$V_i,\dots,V_n\in \{0,1\}$. The group's decision $E= 1$ if and only if
+$\sum_i V_i>n/2$ and $E=0$ otherwise.
+If:
+\begin{enumerate}
+\item There is a unique correct decision $a\in \{0,1\}$
+\item $p_i=Pr(V_i=a|a)=p>1/2$ for all $i$ (Competence) and
+\item $V_i \independent V_j|a$, $i\ne j$ (Independence)
+\end{enumerate}
+Then $Pr(E=a|a)>p$ and $Pr(E=a|a)\rightarrow 1$ as
+$n\rightarrow\infty$
+\end{prop*}
+
+Our proposition extends the CJT to political elections.
+The existance of a ``correct'' decision
+between candidates is arguable, and typically hinges on voters'
+personal values, as well as matters of fact. 
+Therefore, assumption 1 in our theorem is not that there is a correct
+overall decision, but that, on one particular issue values are not in
+dispute among members of the electorate---for this particular issue,
+the ``correct'' decision $a$ is the one that conforms with the
+universal value. 
+The formal statement $Pr(V_i=1|A_i=1) > Pr(V_i=1|A_i=0)$ means
+that voter $i$'s perception of candidate 1's superiority on the
+particular issue in question increases the chances he'll vote for
+her; to state it for all voters $i$ is to say that they all agree on
+the issue's choice-worthiness. 
+
+Focusing on one dimension among possibly many that influence votes $V$
+required two additional modifications to the CJT.
+First, we introduced the ``individual belief'' variable $A_i$ encoding
+$i$'s belief about which candidate is superior on the issue in
+question.
+In the classic CJT setup, voters are assumed to vote for the option
+they believe is best \citep[See][however]{austen1996information}, so
+$V_i\equiv A_i$, necessarily. 
+However, in a political election $i$ may believe candidate 1 to be
+superior to 0 on the issue in question, so $A_i=1$, but believe
+candidate 0 to be superior on other issues, so that $V_i=0$.
+
+Secondly, we have weakend the relationship between truth $a$ and,
+respectively, beliefs $A$, votes $V$, and the outcome $E$.
+In place of the CJT assumption 2 that voters are more likely to pick
+the correct than the incorrect option, we assume that a fact's truth
+makes voters more likely to believe it than were it false.
+So, for instance, say $a=1$, so candidate 1 is superior on the issue
+in question. 
+However, perhaps because of voter $i$'s prejudice or confusion, he is
+unlikely to believe in 1's superiority under any circumstances.
+That said, he is slightly more likely to believe 1 is superior if that
+is the truth than if 0 is in fact better.
+For instance, $Pr(A_i=1|a=1)=0.1$ and $Pr(A_i=1|a=0)=0.01$. 
+Voter $i$ would violate assumption 2 of the CJT, since $p<1/2$, but
+does not violate our assumption 2.
+Conversely, $p>1/2$ as in the CJT implies that
+$Pr(A_i=1|a=1)>1/2>Pr(A_i=1|a=0)$, so our assumption 2 is strictly
+weaker.
+
+That said, \citet{dietrich2008premises} showed that for CJT to
+hold, we must merely have $\bar{p}=\sum_i
+p_i/n>1/2$.\footnote{\citet{boland1989majority} shows that for
+  $Pr(E=a|a)>\bar{p}$ to hold in finite samples, we must assume $\bar{p}>1/2 +1/2n$.}
+This assumption is neither strictly weaker nor stronger than ours.
+On the one hand, if, say, as above 
+$Pr(A_i=1|a=1)=0.1$ and $Pr(A_i=1|a=0)=0.01$, but this time for all
+voters $i$, our assumption would be satisfied, but
+\citet{dietrich2008premises} would not.
+On the other hand, it is possible for some subset of the electorate to
+violate our assumption but be outweighted by the remainder of the
+electorate, so $\bar{p}>1/2$.
+In any event, simply substituting $\bar{p}>1/2$ into our proposition
+would not suffice---if the group of voters who are more likely to
+believe in a candidate's superiority when the candidate is in fact
+inferior than when she is actually superior are also more fervent
+believes in the importance of the issue, they can undermine the
+result. 
+
+Our result of our proposition is weaker as well---indeed, it ought to be. 
+If broad agreement holds for only one of many issues, it would be
+troubling to state that $Pr(E=1|a=1)\rightarrow 1$ as the electorate
+grows, implying that all other issues---legitimate, if
+ambiguous---become irrelevent. 
+Instead, as in the case with belief, we merely show that a candidate's
+superiority on the issue increases her probability of being elected,
+relative to what it would have been had she instead been inferior. 
+That is, we claim that superiority on an agreed-upon issue boosts a
+candidate's chances, but provides no guarentees. 
+
+Additionally, unlike the CJT, our result holds for finite samples.
+
+Finally, our independence assumption is the same as CJT's. 
+This suggest that relaxations of independence in the CJT case
+\citep[e.g.]{boland1989modelling} may work in our case as well. 
+
 
 
 \subsection{Modeling Choices: Logit Model}
