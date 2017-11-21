@@ -394,7 +394,7 @@ we will prove a more general conjecture which admits the proposition in Section 
 We are interested in the electability of a particular candidate in a binary election. Let $E=1$ if she is elected, and 0 otherwise.
 Say there is a fixed subset of the electorate, $\mathcal{S}$, such that $E=1$ if and only if the proportion of votes for a candidate from $\mathcal{S}$ exceeds a pre-determined (if unknown) threshold $\alpha$. In other words,
 \begin{equation}
-E =1 \text{ iff } \frac{1}{n} \sum_{i\in \mathcal{S}} V_i>\alpha
+E =1 \text{ iff } \frac{1}{n} \sum_{i\in \mathcal{S}} V_i>n\alpha
 \end{equation}
 where $n=|\mathcal{S}|$, the number of voters in $\mathcal{S}$. 
 For voters $i\in \mathcal{S}$ let $V_i=1$ if voter $i$ votes for the candidate in question, and 0 otherwise.
@@ -447,7 +447,8 @@ Therefore, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i >n\alpha|a=1)>Pr(\sum_{i=1}^n V_i>n\
 \end{proof}
 
 \begin{cor}
-Let $\alpha \subset \mathcal{S}$. If the conditions obtain for all $i\in\alpha$ then the result is the proposition still holds for members of $\alpha$.
+Setting $\mathcal{S}$ as the entire electorate and $\alpha=1/2$
+yields Proposition 2 in the body of the text. 
 \end{cor}
 
 \subsection{A Comparison with CJT}\label{sec:cjt-compare}

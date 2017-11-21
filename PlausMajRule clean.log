@@ -1,11 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 NOV 2017 02:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  21 NOV 2017 12:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**"PlausMajRule clean.tex"
+**\input "PlausMajRule clean.tex"
 (./PlausMajRule clean.tex
-LaTeX2e <2015/01/01>
-Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/size11.clo
@@ -840,11 +838,11 @@ n-drew. 2004.
 Here is how much of TeX's memory you used:
  15920 strings out of 493089
  297854 string characters out of 6134842
- 390664 words of memory out of 5000000
+ 390665 words of memory out of 5000000
  19028 multiletter control sequences out of 15000+600000
  18548 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 54i,10n,54p,2038b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,10n,54p,2045b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/font
 s/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/
@@ -864,7 +862,7 @@ cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
 cmti9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t9.pfb>
-Output written on "PlausMajRule clean.pdf" (26 pages, 295367 bytes).
+Output written on "PlausMajRule clean.pdf" (26 pages, 295167 bytes).
 PDF statistics:
  164 PDF objects out of 1000 (max. 8388607)
  116 compressed objects within 2 object streams
