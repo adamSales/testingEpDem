@@ -1,46 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: PlausMajRule clean.aux
 The style file: philreview.bst
 Database file #1: betting.bib
-You've used 51 entries,
+You've used 48 entries,
             2948 wiz_defined-function locations,
-            886 strings with 11257 characters,
-and the built_in function-call counts, 25597 in all, are:
-= -- 2107
-> -- 748
-< -- 51
-+ -- 308
-- -- 228
-* -- 1477
-:= -- 4130
-add.period$ -- 239
-call.type$ -- 51
-change.case$ -- 286
-chr.to.int$ -- 50
-cite$ -- 51
-duplicate$ -- 2069
-empty$ -- 2109
-format.name$ -- 347
-if$ -- 5116
+            870 strings with 10928 characters,
+and the built_in function-call counts, 23978 in all, are:
+= -- 1968
+> -- 718
+< -- 47
++ -- 296
+- -- 219
+* -- 1391
+:= -- 3883
+add.period$ -- 223
+call.type$ -- 48
+change.case$ -- 269
+chr.to.int$ -- 47
+cite$ -- 48
+duplicate$ -- 1932
+empty$ -- 1961
+format.name$ -- 335
+if$ -- 4776
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 453
-newline$ -- 260
-num.names$ -- 204
-pop$ -- 1009
+missing$ -- 426
+newline$ -- 245
+num.names$ -- 192
+pop$ -- 951
 preamble$ -- 1
-purify$ -- 280
+purify$ -- 265
 quote$ -- 0
-skip$ -- 871
+skip$ -- 810
 stack$ -- 0
-substring$ -- 1018
-swap$ -- 877
-text.length$ -- 4
+substring$ -- 932
+swap$ -- 818
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 417
+type$ -- 390
 warning$ -- 0
-while$ -- 189
+while$ -- 176
 width$ -- 0
-write$ -- 644
+write$ -- 605

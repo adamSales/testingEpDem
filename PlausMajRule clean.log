@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  21 NOV 2017 17:00
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  28 NOV 2017 16:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -767,43 +767,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 128.
+LaTeX Font Info:    Try loading font information for U+msa on input line 127.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 128.
+LaTeX Font Info:    Try loading font information for U+msb on input line 127.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1] [2]
 [3] [4] [5] [6]
 
-LaTeX Warning: Float too large for page by 8.42195pt on input line 263.
+LaTeX Warning: Float too large for page by 8.42195pt on input line 262.
 
-[7] [8] [9] [10] [11] [12] [13]
-Overfull \hbox (10.38779pt too wide) in paragraph at lines 445--445
+[7] [8]
+Overfull \vbox (0.65544pt too high) has occurred while \output is active []
+
+
+[9] [10] [11] [12] [13]
+Overfull \hbox (10.38779pt too wide) in paragraph at lines 434--434
 [] 
  []
 
 [14] [15] [16] [17] [18] [19] [20] Excluding 'comment' comment.
-(./PlausMajRule clean.bbl [21] [22] [23]
-Underfull \hbox (badness 3158) in paragraph at lines 201--205
+(./PlausMajRule clean.bbl [21] [22]
+Underfull \hbox (badness 3158) in paragraph at lines 194--198
 []\TU/lmr/m/n/10.95 Rabe-Hesketh, Sophia, Skrondal, Anders, and Pickles, Andrew
 . 2004.
  []
 
-[24]) [25] (./PlausMajRule clean.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[23]) [24] (./PlausMajRule clean.aux) ) 
 Here is how much of TeX's memory you used:
- 16586 strings out of 493005
- 311278 string characters out of 6134596
- 445325 words of memory out of 5000000
- 20159 multiletter control sequences out of 15000+600000
+ 16577 strings out of 493005
+ 311065 string characters out of 6134596
+ 445291 words of memory out of 5000000
+ 20150 multiletter control sequences out of 15000+600000
  15534 words of font info for 74 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 54i,10n,54p,2038b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,10n,54p,1798b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on PlausMajRule clean.pdf (26 pages).
+Output written on PlausMajRule clean.pdf (25 pages).
