@@ -1,0 +1,290 @@
+---
+title: Replication Code and Results for "Testing Epistemic Democracy's Claims for Majority Rule"
+author: Adam C Sales and Zev Berger
+format: html_document
+---
+
+```{r include=FALSE}
+library(knitr)
+opts_chunk$set(echo=TRUE,cache=TRUE,message=FALSE,warning=FALSE,error=FALSE,results='markup')
+```
+
+```{r loadStuff}
+
+library(lme4)
+library(stargazer)
+library(splines)
+#print(load('datNonImputed.RData'))
+```
+
+
+```{r makeData}
+
+if(!is.element('anes',ls())){
+anes <- read.table('data/anes_timeseries_cdf_rawdata.txt', sep='|',header=TRUE)
+}
+
+## keep only years of interest
+anes <- anes[anes$VCF0004%in%seq(1956,2012,4),]
+
+anes$vote <- anes$VCF0706
+anes$vote[anes$vote%in%c(0,7)] <- NA
+
+dat <- data.frame(year=anes$VCF0004)
+
+dat$weight <- anes$VCF0009x
+
+dat$state <- anes$VCF0901b
+
+dat$repub <- dat$year %in% c(1956,1960,1972,1976,1984,1988,1992,2004,2008)
+
+dat$inc <- ifelse(dat$repub,2,1)
+
+dat$vote <- anes$vote==dat$inc
+
+
+dat$vote <- rep(NA,nrow(dat))
+dat$vote[dat$repub & anes$vote==2] <- 1
+dat$vote[dat$repub & anes$vote==1] <- 0
+dat$vote[!dat$repub & anes$vote==2] <- 0
+dat$vote[!dat$repub & anes$vote==1] <- 1
+
+
+
+dat$incumbentParty <- ifelse(dat$repub,-1,1)
+dat$finances <- ifelse(anes$VCF0880==1,1,
+                       ifelse(anes$VCF0880==2,0,
+                              ifelse(anes$VCF0880==3,-1,NA)))
+dat$finances1 <- ifelse(anes$VCF0880b==1,1,
+                       ifelse(anes$VCF0880b==3,0,
+                              ifelse(anes$VCF0880b==5,-1,NA)))
+dat$finances[dat$year<1966] <- dat$finances1[dat$year<1966]
+
+dat$partyID <- ifelse(anes$VCF0301==1,3,
+                      ifelse(anes$VCF0301%in%c(2,3),2,
+                             ifelse(anes$VCF0301%in%c(4,9),0, #Apolitical=ind??
+                                    ifelse(anes$VCF0301%in%c(5,6),-2,
+                                           ifelse(anes$VCF0301==7,-3,NA)))))
+dat$region <- anes$VCF0112
+
+dat$retrospective <- anes$VCF0871
+dat$retrospective <- ifelse(dat$retrospective%in%c(8,9),
+                            ifelse(anes$VCF0870==1, 2,
+                                   ifelse(anes$VCF0870==5,4,NA)),dat$retrospective)
+dat$retrospective[dat$retrospective==0] <- NA
+dat$retrospective <- -(dat$retrospective-3)/2
+
+dat$prospective <- -(anes$VCF0872-3)/2
+dat$prospective[dat$prospective%in%c(-2.5,-3)] <- NA
+
+dat$race <- as.numeric(anes$VCF0106!=1)
+dat$race[anes$VCF0106==9] <- NA
+dat$race6 <- factor(anes$VCF0105b)
+dat$race6[dat$race6==0] <- 9
+#dat$race6[dat$race6%in%c('3','4')] <- '7'
+
+
+
+nbiRdi <- read.csv('data/NBI.RDI.csv') #this is cut and pasted from Table 1 in Nadeau Lewis-Beck.
+## I'm assuming the data they put in the table is the data they used in the analysis.
+
+dat <- merge(dat,nbiRdi,by='year',all.x=TRUE)
+
+dat$finances1 <- NULL
+dat$repub <- NULL
+
+
+### add in some more variables to help with the imputation
+dat$age <- anes$VCF0101
+dat$age <- dat$age/sd(dat$age,na.rm=TRUE)
+dat$gender <- factor(anes$VCF0104,exclude=NULL)
+dat$hisp <- factor(anes$VCF0107  )
+dat$hisp[dat$hisp%in%c('1','2','3','4')] <- '1'
+dat$educ <- factor(anes$VCF0110,ordered=TRUE,exclude=NULL)
+dat$urbanism <- factor(anes$VCF0111,exclude=NULL)
+dat$marital <- anes$VCF0147
+dat$marital[dat$marital==4] <- 3
+dat$marital[dat$marital==7] <- 2
+dat$marital[dat$marital>7] <- NA
+dat$marital <- factor(dat$marital)
+dat$class <- factor(anes$VCF0148,exclude=NULL)
+dat$class[dat$class=='7'] <- '9'
+
+
+
+yearExt=c(2000,2004,2008,2012)
+rdiDat <- read.csv('data/RDI.csv',na.st='.',stringsAsFactors=FALSE)
+# downloaded from FRED http://research.stlouisfed.org/fred2/series/A229RX0/downloaddata 5/27/14
+
+
+nbiDat <- read.csv('data/NBIquarterly.csv',skip=1)
+# downloaded from http://www.sca.isr.umich.edu/data-archive/mine.php 'Table 25: Current Business Conditions Compared with a Year Ago' 5/27/14
+nbiDat$index <- nbiDat[,'Better.Now']-nbiDat[,'Worse.Now']
+
+
+nbiYear <- function(year){
+
+    row <- function(quarter)
+        which(nbiDat$Year==year & nbiDat$Quarter==quarter)
+
+
+    nbiDat$index[row(4)]
+}
+
+nbiRdiExtend <- cbind(
+    year=yearExt,
+    NBI=sapply(yearExt, nbiYear),
+
+    RDI=sapply(yearExt,function(year)
+        rdiDat[rdiDat$DATE==paste(year,'-11-01',sep=''),'VALUE'])
+)
+
+for(y in c(2000,2004,2008,2012)){
+    row <- nbiRdiExtend[nbiRdiExtend[,'year']==y,]
+    dat$NBI[dat$year==y] <- row['NBI']
+    dat$RDI[dat$year==y] <- row['RDI']
+}
+
+
+
+```
+
+## Models reported in paper
+
+```{r runMultilevelModels,resuts='asis'}
+
+rf <- glmer(vote~RDI+finances+incumbentParty+incumbentParty:race+incumbentParty:partyID+(1|year)+(1|state),
+            data=dat,family=binomial(logit),weights=weight)
+ret <- update(rf,.~.+retrospective)
+pro <- update(rf,.~.+prospective)
+both <- update(rf,.~.+retrospective+prospective)
+#incumbency <- update(rf,.~.+retrospective*incCand+prospective*incCand)
+#rfPost80 <- update(rf,subset=year>=1980)
+
+stargazer(rf,ret,pro,both,type='html')
+```
+
+## Are there any "anti-RDI" sub-populations?
+
+```{r hetero1}
+dat <- within(dat,{
+    financesFac <- factor(finances,exclude=NULL)
+    partyIDFac <- factor(partyID,exclude=NULL)})
+fullInteraction <- glmer(vote~RDI*(financesFac+partyIDFac+
+                                   race6+age+class+educ+gender+marital+urbanism)+
+                             incumbentParty*(race6+partyID)+
+                             (RDI|state)+(1|year),data=dat,family=binomial(logit))
+
+
+slopes <- fixef(fullInteraction)
+slopes <- slopes[grep('RDI',names(slopes))]
+slopes[-1] <- slopes[-1]+slopes['RDI']
+
+### for whom is the coefficient on RDI negative?
+terms <- names(fixef(fullInteraction))
+intTerms <- terms[grep('RDI:',terms)]
+intWith <- gsub('RDI:','',intTerms)
+
+RDIslope <- slopes['RDI']+model.matrix(fullInteraction)[,intWith]%*%slopes[intTerms]+
+    ranef(fullInteraction)$state[as.character(fullInteraction@frame$state),'RDI']
+hist(RDIslope,main='Individual RDI Coefficients by Covariates',xlab='RDI Coefficient')
+```
+
+## Are there any sub-populations that can't judge RDI?
+
+```{r hetero2}
+fullInteractionRet <- lmer(retrospective~RDI*(financesFac+partyIDFac+
+                                   race6+age+class+educ+gender+marital+urbanism)+
+                             incumbentParty*(race6+partyID)+
+                             (RDI|state)+(1|year),data=dat)
+
+slopes <- fixef(fullInteractionRet)
+slopes <- slopes[grep('RDI',names(slopes))]
+slopes[-1] <- slopes[-1]+slopes['RDI']
+
+### for whom is the coefficient on RDI negative?
+terms <- names(fixef(fullInteractionRet))
+intTerms <- terms[grep('RDI:',terms)]
+intWith <- gsub('RDI:','',intTerms)
+
+RDIslope <- slopes['RDI']+model.matrix(fullInteractionRet)[,intWith]%*%slopes[intTerms]+
+        ranef(fullInteractionRet)$state[as.character(fullInteractionRet@frame$state),'RDI']
+hist(RDIslope,main='Individual RDI Coefficients by Covariates',xlab='RDI Coefficient')
+
+```
+
+## Which presidential popular votes would flip...
+### ... were RDI at its mean value?
+```{r meanRDI}
+## state-by-state too hard; look at popular vote
+pop <- read.csv('data/popularVote.csv',header = TRUE)[1:15,]
+
+### what if each year RDI had been at its mean?
+ddd <- rf@frame
+meanRDI <- mean(aggregate(ddd$RDI,list(year=ddd$year),mean)$x)
+factual <- predict(rf)
+counterfactual <- factual-fixef(rf)['RDI']*(ddd$RDI-meanRDI)
+predPropFac <- aggregate(plogis(factual),by=list(year=ddd$year),mean)
+predPropCouFac <- aggregate(plogis(counterfactual),by=list(year=ddd$year),mean)
+pop$diff <- 100*(predPropCouFac$x-predPropFac$x)
+
+print(with(pop,year[(-1)^(incWin)*diff> Margin/2]))
+```
+
+### ... were RDI to shift by 1 SD? (in the "wrong" direction)
+
+```{r}
+
+rdisd <- sd(vapply(unique(dat$year),function(y) mean(dat$RDI[dat$year==y]),1))
+
+pop$logodds <- log((pop$incVote/100)/(1-pop$incVote/100))
+pop$counter <- ilogit(pop$logodds+(-1)^(pop$incWin)*fixef(rf)['RDI'])
+
+
+print(pop$year[abs(pop$incVote/100-pop$counter)>pop$Margin/200])
+```
+
+
+### ... were retro at its mean value?
+```{r meanRETROSPECTIVE}
+pop2 <- subset(pop,year>1979)
+ddd <- ret@frame
+meanRET <- mean(aggregate(ddd$retrospective,list(year=ddd$year),mean)$x)
+factual <- predict(ret)
+counterfactual <- factual-fixef(ret)['retrospective']*(ddd$retrospective-meanRET)
+predPropFac <- aggregate(plogis(factual),by=list(year=ddd$year),mean)
+predPropCouFac <- aggregate(plogis(counterfactual),by=list(year=ddd$year),mean)
+pop2$diff <- 100*(predPropCouFac$x-predPropFac$x)
+
+print(with(pop2,year[(-1)^(incWin)*diff> Margin/2]))
+```
+
+### ... were retro to shift by 1 SD? (in the "wrong" direction)
+
+```{r}
+
+retsd <- sd(vapply(unique(ddd$year),function(y) mean(ddd$retrospective[ddd$year==y]),1))
+ilogit <- function(x) exp(x)/(1+exp(x))
+
+pop2$logodds <- log((pop2$incVote/100)/(1-pop2$incVote/100))
+pop2$counter <- ilogit(pop2$logodds+(-1)^(pop2$incWin)*fixef(ret)['retrospective'])
+
+
+print(pop2$year[abs(pop2$incVote/100-pop2$counter)>pop2$Margin/200])
+```
+
+
+
+
+## upper bound on proportion anti-growth
+
+```{r ub}
+n <- with(dat,sum(!is.na(RDI) & !is.na(retrospective) & RDI<1.7))
+succsesses <- with(dat,sum(!is.na(RDI) & !is.na(retrospective) & RDI<1.7& retrospective==1))
+print(binom.test(61,5089,alternative='less',conf.level=0.95))
+print(binom.test(61,5089,alternative='less',conf.level=0.99))
+print(binom.test(61,5089,alternative='less',conf.level=0.999))
+
+```
+
+
