@@ -48,5 +48,4 @@ Temporary Items
 *.tex~
 
 cache/*
-figure/*
 data/*
