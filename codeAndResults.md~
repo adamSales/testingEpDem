@@ -4,13 +4,10 @@ author: Adam C Sales and Zev Berger
 format: html_document
 ---
 
-```{r include=FALSE}
-library(knitr)
-opts_chunk$set(echo=TRUE,cache=TRUE,message=FALSE,warning=FALSE,error=FALSE,results='markup')
-```
 
-```{r loadStuff}
 
+
+```r
 library(lme4)
 library(stargazer)
 library(splines)
@@ -18,8 +15,8 @@ library(splines)
 ```
 
 
-```{r makeData}
 
+```r
 if(!is.element('anes',ls())){
 anes <- read.table('data/anes_timeseries_cdf_rawdata.txt', sep='|',header=TRUE)
 }
@@ -127,7 +124,6 @@ nbiYear <- function(year){
     row <- function(quarter)
         which(nbiDat$Year==year & nbiDat$Quarter==quarter)
 
-
     nbiDat$index[row(4)]
 }
 
@@ -144,15 +140,12 @@ for(y in c(2000,2004,2008,2012)){
     dat$NBI[dat$year==y] <- row['NBI']
     dat$RDI[dat$year==y] <- row['RDI']
 }
-
-
-
 ```
 
 ## Models reported in paper
 
-```{r runMultilevelModels}
 
+```r
 rf <- glmer(vote~RDI+finances+incumbentParty+incumbentParty:race+incumbentParty:partyID+(1|year)+(1|state),
             data=dat,family=binomial(logit),weights=weight)
 ret <- update(rf,.~.+retrospective)
@@ -160,14 +153,51 @@ pro <- update(rf,.~.+prospective)
 both <- update(rf,.~.+retrospective+prospective)
 ```
 
-```{r table1 ,results='asis'}
-stargazer(rf,ret,pro,both,type='html',star.cutoffs=c(0.05,0.01,0.001),
-          notes=' <sup> * </sup>p<0.05; <sup> ** </sup>p<0.01; <sup> *** </sup>p<0.001',notes.append=FALSE)
+
+```r
+stargazer(rf,ret,pro,both,type='html',star.cutoffs=c(0.05,0.01,0.001))
 ```
+
+
+<table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="4">vote</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">RDI</td><td>0.207<sup>***</sup></td><td>0.025</td><td>0.200<sup>***</sup></td><td>0.028</td></tr>
+<tr><td style="text-align:left"></td><td>(0.060)</td><td>(0.053)</td><td>(0.057)</td><td>(0.057)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">finances</td><td>0.305<sup>***</sup></td><td>0.180<sup>***</sup></td><td>0.316<sup>***</sup></td><td>0.185<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.030)</td><td>(0.041)</td><td>(0.042)</td><td>(0.044)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">incumbentParty</td><td>-0.490<sup>***</sup></td><td>-0.466<sup>***</sup></td><td>-0.325<sup>***</sup></td><td>-0.454<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.102)</td><td>(0.087)</td><td>(0.094)</td><td>(0.093)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">retrospective</td><td></td><td>1.126<sup>***</sup></td><td></td><td>1.066<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.075)</td><td></td><td>(0.080)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">prospective</td><td></td><td></td><td>0.435<sup>***</sup></td><td>0.293<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.050)</td><td>(0.052)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">incumbentParty:race</td><td>1.188<sup>***</sup></td><td>1.082<sup>***</sup></td><td>1.056<sup>***</sup></td><td>1.045<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.075)</td><td>(0.091)</td><td>(0.094)</td><td>(0.096)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">incumbentParty:partyID</td><td>0.854<sup>***</sup></td><td>0.882<sup>***</sup></td><td>0.888<sup>***</sup></td><td>0.865<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.012)</td><td>(0.016)</td><td>(0.017)</td><td>(0.017)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-0.355<sup>*</sup></td><td>0.169</td><td>-0.436<sup>**</sup></td><td>0.142</td></tr>
+<tr><td style="text-align:left"></td><td>(0.179)</td><td>(0.141)</td><td>(0.148)</td><td>(0.150)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>19,358</td><td>13,190</td><td>12,040</td><td>11,977</td></tr>
+<tr><td style="text-align:left">Log Likelihood</td><td>-6,223.000</td><td>-3,189.000</td><td>-2,944.000</td><td>-2,835.000</td></tr>
+<tr><td style="text-align:left">Akaike Inf. Crit.</td><td>12,462.000</td><td>6,397.000</td><td>5,907.000</td><td>5,690.000</td></tr>
+<tr><td style="text-align:left">Bayesian Inf. Crit.</td><td>12,525.000</td><td>6,464.000</td><td>5,973.000</td><td>5,763.000</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.05; <sup>**</sup>p<0.01; <sup>***</sup>p<0.001</td></tr>
+</table>
 
 ## Are there any "anti-RDI" sub-populations?
 
-```{r hetero1}
+
+```r
 dat <- within(dat,{
     financesFac <- factor(finances,exclude=NULL)
     partyIDFac <- factor(partyID,exclude=NULL)})
@@ -191,9 +221,12 @@ RDIslope <- slopes['RDI']+model.matrix(fullInteraction)[,intWith]%*%slopes[intTe
 hist(RDIslope,main='Individual RDI Coefficients by Covariates',xlab='RDI Coefficient')
 ```
 
+![plot of chunk hetero1](figure/hetero1-1.png)
+
 ## Are there any sub-populations that can't judge RDI?
 
-```{r hetero2}
+
+```r
 fullInteractionRet <- lmer(retrospective~RDI*(financesFac+partyIDFac+
                                    race6+age+class+educ+gender+marital+urbanism)+
                              incumbentParty*(race6+partyID)+
@@ -211,12 +244,14 @@ intWith <- gsub('RDI:','',intTerms)
 RDIslope <- slopes['RDI']+model.matrix(fullInteractionRet)[,intWith]%*%slopes[intTerms]+
         ranef(fullInteractionRet)$state[as.character(fullInteractionRet@frame$state),'RDI']
 hist(RDIslope,main='Individual RDI Coefficients by Covariates',xlab='RDI Coefficient')
-
 ```
+
+![plot of chunk hetero2](figure/hetero2-1.png)
 
 ## Which presidential popular votes would flip...
 ### ... were RDI at its mean value?
-```{r meanRDI}
+
+```r
 ## state-by-state too hard; look at popular vote
 pop <- read.csv('data/popularVote.csv',header = TRUE)[1:15,]
 
@@ -232,10 +267,14 @@ pop$diff <- 100*(predPropCouFac$x-predPropFac$x)
 print(with(pop,year[(-1)^(incWin)*diff> Margin/2]))
 ```
 
+```
+## [1] 1960 1980
+```
+
 ### ... were RDI to shift by 1 SD? (in the "wrong" direction)
 
-```{r}
 
+```r
 rdisd <- sd(vapply(unique(dat$year),function(y) mean(dat$RDI[dat$year==y]),1))
 
 pop$logodds <- log((pop$incVote/100)/(1-pop$incVote/100))
@@ -245,9 +284,14 @@ pop$counter <- ilogit(pop$logodds+(-1)^(pop$incWin)*fixef(rf)['RDI'])
 print(pop$year[abs(pop$incVote/100-pop$counter)>pop$Margin/200])
 ```
 
+```
+##  [1] 1960 1968 1976 1980 1988 1992 1996 2000 2004 2008 2012
+```
+
 
 ### ... were retro at its mean value?
-```{r meanRETROSPECTIVE}
+
+```r
 pop2 <- subset(pop,year>1979)
 ddd <- ret@frame
 meanRET <- mean(aggregate(ddd$retrospective,list(year=ddd$year),mean)$x)
@@ -260,10 +304,14 @@ pop2$diff <- 100*(predPropCouFac$x-predPropFac$x)
 print(with(pop2,year[(-1)^(incWin)*diff> Margin/2]))
 ```
 
+```
+## [1] 1980 1992 2008
+```
+
 ### ... were retro to shift by 1 SD? (in the "wrong" direction)
 
-```{r}
 
+```r
 retsd <- sd(vapply(unique(ddd$year),function(y) mean(ddd$retrospective[ddd$year==y]),1))
 ilogit <- function(x) exp(x)/(1+exp(x))
 
@@ -274,18 +322,73 @@ pop2$counter <- ilogit(pop2$logodds+(-1)^(pop2$incWin)*fixef(ret)['retrospective
 print(pop2$year[abs(pop2$incVote/100-pop2$counter)>pop2$Margin/200])
 ```
 
+```
+## [1] 1980 1984 1988 1992 1996 2000 2004 2008 2012
+```
+
 
 
 
 ## upper bound on proportion anti-growth
 
-```{r ub}
+
+```r
 n <- with(dat,sum(!is.na(RDI) & !is.na(retrospective) & RDI<1.7))
 succsesses <- with(dat,sum(!is.na(RDI) & !is.na(retrospective) & RDI<1.7& retrospective==1))
 print(binom.test(61,5089,alternative='less',conf.level=0.95))
-print(binom.test(61,5089,alternative='less',conf.level=0.99))
-print(binom.test(61,5089,alternative='less',conf.level=0.999))
+```
 
+```
+## 
+## 	Exact binomial test
+## 
+## data:  61 and 5089
+## number of successes = 61, number of trials = 5100, p-value
+## <0.0000000000000002
+## alternative hypothesis: true probability of success is less than 0.5
+## 95 percent confidence interval:
+##  0.00000 0.01481
+## sample estimates:
+## probability of success 
+##                0.01199
+```
+
+```r
+print(binom.test(61,5089,alternative='less',conf.level=0.99))
+```
+
+```
+## 
+## 	Exact binomial test
+## 
+## data:  61 and 5089
+## number of successes = 61, number of trials = 5100, p-value
+## <0.0000000000000002
+## alternative hypothesis: true probability of success is less than 0.5
+## 99 percent confidence interval:
+##  0.00000 0.01604
+## sample estimates:
+## probability of success 
+##                0.01199
+```
+
+```r
+print(binom.test(61,5089,alternative='less',conf.level=0.999))
+```
+
+```
+## 
+## 	Exact binomial test
+## 
+## data:  61 and 5089
+## number of successes = 61, number of trials = 5100, p-value
+## <0.0000000000000002
+## alternative hypothesis: true probability of success is less than 0.5
+## 99.9 percent confidence interval:
+##  0.00000 0.01748
+## sample estimates:
+## probability of success 
+##                0.01199
 ```
 
 

@@ -151,49 +151,49 @@ rf <- glmer(vote~RDI+finances+incumbentParty+incumbentParty:race+incumbentParty:
 ret <- update(rf,.~.+retrospective)
 pro <- update(rf,.~.+prospective)
 both <- update(rf,.~.+retrospective+prospective)
-#incumbency <- update(rf,.~.+retrospective*incCand+prospective*incCand)
-#rfPost80 <- update(rf,subset=year>=1980)
-
-stargazer(rf,ret,pro,both,type='html')
 ```
 
+
+```r
+stargazer(rf,ret,pro,both,type='html',star.cutoffs=c(0.05,0.01,0.001),
+          notes=' <sup> * </sup>p<0.05; <sup> ** </sup>p<0.01; <sup> *** </sup>p<0.001',notes.append=FALSE)
 ```
-## 
-## <table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
-## <tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
-## <tr><td style="text-align:left"></td><td colspan="4">vote</td></tr>
-## <tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
-## <tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">RDI</td><td>0.207<sup>***</sup></td><td>0.025</td><td>0.200<sup>***</sup></td><td>0.028</td></tr>
-## <tr><td style="text-align:left"></td><td>(0.060)</td><td>(0.053)</td><td>(0.057)</td><td>(0.057)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td style="text-align:left">finances</td><td>0.305<sup>***</sup></td><td>0.180<sup>***</sup></td><td>0.316<sup>***</sup></td><td>0.185<sup>***</sup></td></tr>
-## <tr><td style="text-align:left"></td><td>(0.030)</td><td>(0.041)</td><td>(0.042)</td><td>(0.044)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td style="text-align:left">incumbentParty</td><td>-0.490<sup>***</sup></td><td>-0.466<sup>***</sup></td><td>-0.325<sup>***</sup></td><td>-0.454<sup>***</sup></td></tr>
-## <tr><td style="text-align:left"></td><td>(0.102)</td><td>(0.087)</td><td>(0.094)</td><td>(0.093)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td style="text-align:left">retrospective</td><td></td><td>1.126<sup>***</sup></td><td></td><td>1.066<sup>***</sup></td></tr>
-## <tr><td style="text-align:left"></td><td></td><td>(0.075)</td><td></td><td>(0.080)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td style="text-align:left">prospective</td><td></td><td></td><td>0.435<sup>***</sup></td><td>0.293<sup>***</sup></td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td>(0.050)</td><td>(0.052)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td style="text-align:left">incumbentParty:race</td><td>1.188<sup>***</sup></td><td>1.082<sup>***</sup></td><td>1.056<sup>***</sup></td><td>1.045<sup>***</sup></td></tr>
-## <tr><td style="text-align:left"></td><td>(0.075)</td><td>(0.091)</td><td>(0.094)</td><td>(0.096)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td style="text-align:left">incumbentParty:partyID</td><td>0.854<sup>***</sup></td><td>0.882<sup>***</sup></td><td>0.888<sup>***</sup></td><td>0.865<sup>***</sup></td></tr>
-## <tr><td style="text-align:left"></td><td>(0.012)</td><td>(0.016)</td><td>(0.017)</td><td>(0.017)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td style="text-align:left">Constant</td><td>-0.355<sup>**</sup></td><td>0.169</td><td>-0.436<sup>***</sup></td><td>0.142</td></tr>
-## <tr><td style="text-align:left"></td><td>(0.179)</td><td>(0.141)</td><td>(0.148)</td><td>(0.150)</td></tr>
-## <tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
-## <tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>19,358</td><td>13,190</td><td>12,040</td><td>11,977</td></tr>
-## <tr><td style="text-align:left">Log Likelihood</td><td>-6,223.000</td><td>-3,189.000</td><td>-2,944.000</td><td>-2,835.000</td></tr>
-## <tr><td style="text-align:left">Akaike Inf. Crit.</td><td>12,462.000</td><td>6,397.000</td><td>5,907.000</td><td>5,690.000</td></tr>
-## <tr><td style="text-align:left">Bayesian Inf. Crit.</td><td>12,525.000</td><td>6,464.000</td><td>5,973.000</td><td>5,763.000</td></tr>
-## <tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
-## </table>
-```
+
+
+<table style="text-align:center"><tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="4">vote</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">RDI</td><td>0.207<sup>***</sup></td><td>0.025</td><td>0.200<sup>***</sup></td><td>0.028</td></tr>
+<tr><td style="text-align:left"></td><td>(0.060)</td><td>(0.053)</td><td>(0.057)</td><td>(0.057)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">finances</td><td>0.305<sup>***</sup></td><td>0.180<sup>***</sup></td><td>0.316<sup>***</sup></td><td>0.185<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.030)</td><td>(0.041)</td><td>(0.042)</td><td>(0.044)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">incumbentParty</td><td>-0.490<sup>***</sup></td><td>-0.466<sup>***</sup></td><td>-0.325<sup>***</sup></td><td>-0.454<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.102)</td><td>(0.087)</td><td>(0.094)</td><td>(0.093)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">retrospective</td><td></td><td>1.126<sup>***</sup></td><td></td><td>1.066<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.075)</td><td></td><td>(0.080)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">prospective</td><td></td><td></td><td>0.435<sup>***</sup></td><td>0.293<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.050)</td><td>(0.052)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">incumbentParty:race</td><td>1.188<sup>***</sup></td><td>1.082<sup>***</sup></td><td>1.056<sup>***</sup></td><td>1.045<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.075)</td><td>(0.091)</td><td>(0.094)</td><td>(0.096)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">incumbentParty:partyID</td><td>0.854<sup>***</sup></td><td>0.882<sup>***</sup></td><td>0.888<sup>***</sup></td><td>0.865<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.012)</td><td>(0.016)</td><td>(0.017)</td><td>(0.017)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-0.355<sup>*</sup></td><td>0.169</td><td>-0.436<sup>**</sup></td><td>0.142</td></tr>
+<tr><td style="text-align:left"></td><td>(0.179)</td><td>(0.141)</td><td>(0.148)</td><td>(0.150)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>19,358</td><td>13,190</td><td>12,040</td><td>11,977</td></tr>
+<tr><td style="text-align:left">Log Likelihood</td><td>-6,223.000</td><td>-3,189.000</td><td>-2,944.000</td><td>-2,835.000</td></tr>
+<tr><td style="text-align:left">Akaike Inf. Crit.</td><td>12,462.000</td><td>6,397.000</td><td>5,907.000</td><td>5,690.000</td></tr>
+<tr><td style="text-align:left">Bayesian Inf. Crit.</td><td>12,525.000</td><td>6,464.000</td><td>5,973.000</td><td>5,763.000</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup> * </sup>p<0.05; <sup> ** </sup>p<0.01; <sup> *** </sup>p<0.001</td></tr>
+</table>
 
 ## Are there any "anti-RDI" sub-populations?
 
