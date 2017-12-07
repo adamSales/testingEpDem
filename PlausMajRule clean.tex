@@ -642,21 +642,30 @@ sub-groups.
 A demographic whose members' retrospective judgement of the economy
 correlate negatively with $\Delta RDI$ may indicate a problem.
 To attempt to identify such a sub-group, we fit a multilevel linear model to the
-data, predicting \emph{retrospective} as a function $\Delta RDI$.
+data, predicting \emph{retrospective} as a function of $\Delta RDI$.
 The model included interactions between $\Delta RDI$ and a thick set of probative variables including personal finances, incumbent party, race, and party ID (variables incorporated in models (1)--(4)), %(\ref{indMod})-(\ref{elecMod}),
 in addition to social class, education, gender, Hispanic
 identification, marital status, urbanism, and state. This test seeks
 to find exceptional cases, subsets of the population that
 systematically misjudge the health of the economy.
-Though it is large, we needn't worry that the model is overfit, since the setup here is meant to serve as a conservative test, identifying subgroups that could challenge our conjecture.
+Though it is large, we needn't worry that the model is overfit, since
+the setup here is meant to serve as a conservative test, identifying
+subgroups that could challenge our conjecture.
+The estimated slope of the relationship between \emph{retrospective}
+and $\Delta RDI$ for each survey respondent is the sum of the $\Delta
+RDI$ main effect and the interaction coefficients corresponding to
+that respondent's demographic information.
+Calculated thusly, no respondant's estimated slope was negative---for
+every subgroup we identified, higher $\Delta RDI$ was associated with
+higher retrospective judgements of the economy.
 
 To test the possible heterogeneity of values held among the electorate we estimate the conceivable size of such a minority that might unwittingly vote for the right candidate given mistaken beliefs by asking whether there exists some subset of the sample that prefers a shrinking economy. %, by examining how the relationship between $\Delta RDI$ and votes varies along with observed individual-level variables.
-To do this we fit our multilevel model to the data, this time including interactions between $\Delta RDI$ and a thick set of probative variables including personal finances, incumbent party, race, and party ID (variables incorporated in models (1)--(4)), %(\ref{indMod})-(\ref{elecMod}),
-in addition to social class, education, gender, Hispanic identification, marital status, urbanism, and state. This test seeks to find exceptional cases, subsets of the population that prefer the economy to shrink.\footnote{
-This model, in effect, searches for the existence subgroups of the population (defined by these variables) for which the linear relationship between $\Delta RDI$ and the log-odds of voting for the incumbent party in a presidential election varies considerably from the estimate given in Table 1.}  We needn't worry that we have overfit our model by including so many interaction terms, since the setup here is meant to serve as a conservative test, identifying subgroups that could challenge our conjecture.
-
-Only two groups could be identified at all for which $\Delta RDI$ was negatively correlated with election outcome (1) Respondents who reported that they do not know if they are Hispanic and (2) respondents who identified as ``upper class," and both of these are likely due to noise. Together, these groups comprised a quarter of a percent of the dataset, neither statistically significance.
-Even if members of these two groups would prefer that the economy shrink, the minuscule effect size is exceedingly unlikely to practically effect any election outcome.\footnote{A full report of the model results is available as an online supplement.}
+To do this we fit another large interaction model: this time, a
+multilevel logit model model predicting votes as a function of $\Delta
+RDI$ interacted with all of the same probitive covariates as above.
+Again, no respondant's estimated $\Delta RDI$ slope was negative---for
+every subgroup we identified, higher $\Delta RDI$ was associated with
+a higher probability of voting for the incumbent.\footnote{A full report of the model results is available as an online supplement.}
 
 \begin{comment}
 Though we argue that RDI's lack of significance when prospective and retrospective variables are included in the model is not a problem, we must admit that this informal path analysis \citep{baron1986moderator} should be taken with a grain of salt.

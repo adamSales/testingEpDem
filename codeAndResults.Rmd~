@@ -214,13 +214,6 @@ hist(RDIslope,main='Individual RDI Coefficients by Covariates',xlab='RDI Coeffic
 
 ```
 
-### Full interaction model results
-
-```{r heteroTable, results='asis'}
-stargazer(fullInteraction,fullInteractionRet,type='html',star.cutoffs=c(0.05,0.01,0.001),
-          notes=' <sup> * </sup>p<0.05; <sup> ** </sup>p<0.01; <sup> *** </sup>p<0.001',notes.append=FALSE)
-```
-
 ## Which presidential popular votes would flip...
 ### ... were RDI at its mean value?
 ```{r meanRDI}
