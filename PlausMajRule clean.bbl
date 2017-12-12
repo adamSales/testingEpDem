@@ -1,4 +1,4 @@
-\begin{thebibliography}{48}
+\begin{thebibliography}{47}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -83,11 +83,6 @@ Duch, Raymond~M. and Stevenson, Randolph~T. 2008.
 \newblock \emph{The Economic Vote: How Political and Economic Institutions
   Condition Election Results}.
 \newblock Cambridge University Press.
-
-\bibitem[{Evans and Andersen(2006)}]{evans2006political}
-Evans, Geoffrey and Andersen, Robert. 2006.
-\newblock \enquote{The political conditioning of economic perceptions.}
-\newblock \emph{Journal of Politics} 68:194--207.
 
 \bibitem[{Fiorina(1978)}]{Fiorina:1978tz}
 Fiorina, M~P. 1978.
