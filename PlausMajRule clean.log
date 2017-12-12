@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  7 DEC 2017 23:02
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  11 DEC 2017 21:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -778,9 +778,64 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1] [2]
 [3] [4] [5] [6]
 
-LaTeX Warning: Float too large for page by 8.42195pt on input line 262.
+LaTeX Warning: Float too large for page by 22.02196pt on input line 262.
 
-[7] [8] [9] [10] [11] [12] [13]
+[7] [8] [9] [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+[]\TU/lmr/m/n/10.95 ADAM: I
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 paragraph
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 (LaTeX)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 you think
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 I have left
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 out some-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 thing of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 substance.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 ”Primarily”
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 is supposed
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
+\TU/lmr/m/n/10.95 to replace
+ []
+
+[12] [13]
 Overfull \hbox (10.38779pt too wide) in paragraph at lines 452--452
 [] 
  []
@@ -792,11 +847,7 @@ Underfull \hbox (badness 3158) in paragraph at lines 194--198
 . 2004.
  []
 
-[23]) [24] (./PlausMajRule clean.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[23]) [24] (./PlausMajRule clean.aux) ) 
 Here is how much of TeX's memory you used:
  16577 strings out of 493005
  311065 string characters out of 6134596
@@ -804,6 +855,6 @@ Here is how much of TeX's memory you used:
  20150 multiletter control sequences out of 15000+600000
  15534 words of font info for 74 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 54i,10n,54p,1798b,289s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,10n,54p,1799b,289s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on PlausMajRule clean.pdf (25 pages).
