@@ -1,6 +1,5 @@
 ---
 title: Replication Code and Results for "Testing Epistemic Democracy's Claims for Majority Rule"
-author: Adam C Sales and Zev Berger
 format: html_document
 ---
 
