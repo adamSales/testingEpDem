@@ -179,7 +179,7 @@ a candidate's superiority to her rival on that issue increases her expected vote
 \end{prop}
 In order for an increase in expected votes to reliably translate into
 an increase in the probability of being elected, another assumption is
-necessary. 
+necessary.
 The simplest (if, perhaps, the strongest) such assumption is independence:
 \begin{ass}\label{ass:independent}
 Votes are mutually independent, conditional on candidates' true superiority.
@@ -272,7 +272,7 @@ As in Nadeau and Lewis-Beck's model, subjective measures have a large, positive 
  %We find that retrospective assessments of the economy are correlated with $\Delta RDI$ at a level of 0.30, consistent with Nadeau and Lewis-Beck's finding that when \emph{retrospective} is regressed on $\Delta RDI$ the $R^2$ value is 0.77,  indicating that people's economic beliefs correspond to empirical fact (\cite{Nadeau:2001tw}: 161, 174).
   This is consistent with Nadeau and Lewis-Beck's finding that when \emph{retrospective} is regressed on $\Delta RDI$ the $R^2$ value is 0.77 and $R^2=0.39$ when \emph{prospective} is regressed on $\Delta RDI$,  indicating that people's economic beliefs correspond to empirical fact (\cite{Nadeau:2001tw}: 161, 174).
 These results are consistent with earlier findings that voters reflect on economic performance to select policies that favor growth, thereby lending support to the epistemic quality of democratic elections.
-%These results support claims of epistemic democrats who argue that people's correct beliefs come to be aggregated in democratic contests to bias the outcome in favor of the better candidate. 
+%These results support claims of epistemic democrats who argue that people's correct beliefs come to be aggregated in democratic contests to bias the outcome in favor of the better candidate.
 Indeed the size of the effect here is large. Were voters to assess economic progress merely at random the popular presidential vote might well have flipped as many as eight elections in our dataset (1980--2012).\footnote{We look at the problem like this: Voters' beliefs about economic growth vary from election to election, a function of the information they possess. What if their beliefs were generated random, however? We assess that question in two ways. First, what if instead of varying beliefs from year to year, voters merely stuck to the mean belief for all years? The mean is just the expectation that one would pull without knowing anything about the local empirical reality---a baseline or default. Were the actual values for \emph{retrospective} to be swapped for the variable's mean value across all years the magnitude would have been large enough to alter the popular vote totals in 1980, 1992, and 2008. (Conforming perfectly to magnitude of the economic downturns in and around those years.) Second, what if instead of varying beliefs from year to year, voters somehow converged on beliefs one standard deviation from the mean? Since standard deviation is a measure of the expected variation from the mean, if voters' beliefs were just random they \emph{could} fall anywhere, but on average within one standard deviation. In that case the magnitude of the effect would have been sufficiently large to swing the popular vote in every election \emph{retrospective} was measured, namely 1980--2012. The results and corresponding code are posted online at: .}
 %Moreover, the role of $\Delta RDI$ is meaningfully large---taking the
 %model's results at face value (i.e. by imposing an alternative value
@@ -426,8 +426,12 @@ For all $i\in\mathcal{S}$:
 It may be the case that some voters' attitudes on issue $x$ depend on a number of other facts as well,  in such a way that assumption 2 only holds for some voters in $S$ under certain additional conditions.
 For instance, a candidate's superiority on RDI might only appeal to environmentalist voters if that superiority is not due to environmentally harmful policies.
 To allow for such situations, define a set of ``conditioning facts" $\tilde{a}$ consisting of those facts which may qualitatively moderate the relationship between $a$ and $V_i$, for some $i$.
-The composition of $\tilde{a}$ depends on the issue in question, and may in some circumstances be empty.
-In any case, we may restate assumptions 1--4 as conditional on $\tilde{a}$.
+The composition of $\tilde{a}$ depends on the issue in question, and
+may in some circumstances be empty.
+In any case, we may restate assumptions 1--4 as conditional on
+$\tilde{a}$.
+Doing so weakens the assumptions---they may hold unconditionally or
+conditionally.
 
 \begin{prop*}
 If assumptions 1,2, and 4 hold conditional on $\tilde{a}$, then
@@ -456,7 +460,7 @@ under assumptions 1,2 and 4, we have (letting all probabilities be conditional o
 =&Pr(V_i=1|a=0)
 \end{align*}
 Where the inequality is a result of assumptions 1 and 2, and is a strict $>$ for some members of the population.
-(\ref{eq:prop2ap}) follows immediately. 
+(\ref{eq:prop2ap}) follows immediately.
 We have that $V_i|a=1$ is stochastically greater that $V_i|a=0$. That being the case, $\sum_{i=1}^n V_i |a=1$ is stochastically greater than $\sum_{i=1}^n V_i |a=0$ (\citet{shaked2007stochastic}).
 Therefore, under Assumption 3, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i
 >n\alpha|a=1)>Pr(\sum_{i=1}^n V_i>n\alpha |a=0)=Pr(E=1|a=0)$, as in (\ref{eq:prop2ap}).
@@ -489,7 +493,7 @@ $n\rightarrow\infty$
 \end{prop*}
 
 Our proposition extends the CJT to political elections.
-Skeptics of claims advanced by epistemic democrats argue that there is no obvious means to evaluate which candidate is right or better. We respond to this worry by constraining our analysis to a particular dimension of voters' decision function, insofar as voters agree. 
+Skeptics of claims advanced by epistemic democrats argue that there is no obvious means to evaluate which candidate is right or better. We respond to this worry by constraining our analysis to a particular dimension of voters' decision function, insofar as voters agree.
 %The existence of a ``correct'' decision
 %between candidates is arguable, and typically hinges on voters'
 %personal values, as well as matters of fact.
@@ -497,12 +501,12 @@ Skeptics of claims advanced by epistemic democrats argue that there is no obviou
 %overall decision, but that, on one particular issue values are not in
 %dispute among members of the electorate---for this particular issue,
  The ``correct'' decision $a$ is the one that conforms with the
-consensus value. Thus the superior alternative (that which voters value) is also the correct alternative (that which would in fact bring about the ends that voters value). 
+consensus value. Thus the superior alternative (that which voters value) is also the correct alternative (that which would in fact bring about the ends that voters value).
 The formal statement $Pr(V_i=1|A_i=1) > Pr(V_i=1|A_i=0)$ means
 that voter $i$'s perception of candidate 1's superiority on the
 particular issue in question increases the chances he'll vote for
 her; to state it for all voters $i$ is to say that they all agree on
-the issue's choice-worthiness. 
+the issue's choice-worthiness.
 
 Focusing on one dimension among possibly many that influence votes $V$
 required two additional modifications to the CJT.
