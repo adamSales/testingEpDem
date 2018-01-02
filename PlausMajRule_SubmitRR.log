@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  1 JAN 2018 20:12
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  25 DEC 2017 21:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"PlausMajRule clean.tex"
-(./PlausMajRule clean.tex
+**PlausMajRule_SubmitRR.tex
+(./PlausMajRule_SubmitRR.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
@@ -741,8 +741,8 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 \c@prop=\count191
 \c@cor=\count192
 \c@ass=\count193
- (./PlausMajRule clean.aux)
-\openout1 = `"PlausMajRule clean.aux"'.
+ (./PlausMajRule_SubmitRR.aux)
+\openout1 = `PlausMajRule_SubmitRR.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
@@ -767,39 +767,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
+[1]
 LaTeX Font Info:    Try loading font information for U+msa on input line 129.
-(/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 129.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1] [2]
-[3] [4] [5]
+) [2] [3]
+[4] [5] [6] [7] [8] [9] [10]
 
 LaTeX Warning: Float too large for page by 22.02196pt on input line 268.
 
-[6] [7] [8] [9] [10] [11] [12] [13]
+[11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22]
 Overfull \hbox (10.38779pt too wide) in paragraph at lines 467--467
 [] 
  []
 
-[14] [15] [16] [17] [18] [19] Excluding 'comment' comment. [20]
-(./PlausMajRule clean.bbl [21] [22]
+[23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33]
+Excluding 'comment' comment. (./PlausMajRule_SubmitRR.bbl [34] [35] [36]
+[37]
 Underfull \hbox (badness 3158) in paragraph at lines 195--199
 []\TU/lmr/m/n/10.95 Rabe-Hesketh, Sophia, Skrondal, Anders, and Pickles, Andrew
 . 2004.
  []
 
-[23]) [24] (./PlausMajRule clean.aux) ) 
+[38] [39]) [40] (./PlausMajRule_SubmitRR.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  16579 strings out of 493005
- 311098 string characters out of 6134596
- 450291 words of memory out of 5000000
+ 311131 string characters out of 6134596
+ 448291 words of memory out of 5000000
  20152 multiletter control sequences out of 15000+600000
  15534 words of font info for 74 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 54i,10n,54p,1639b,293s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,10n,54p,1640b,315s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on PlausMajRule clean.pdf (25 pages).
+Output written on PlausMajRule_SubmitRR.pdf (41 pages).
