@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  1 JAN 2018 20:12
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2017.5.23)  8 JAN 2018 18:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -780,26 +780,32 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: Float too large for page by 22.02196pt on input line 268.
 
-[6] [7] [8] [9] [10] [11] [12] [13]
+[6] [7] [8] [9] [10] [11]
+Overfull \hbox (2.06079pt too wide) in paragraph at lines 397--398
+[]\TU/lmr/m/n/10.95 Finally, Assumption 3 is a simplifying condition primarily 
+intended to stream-
+ []
+
+[12] [13]
 Overfull \hbox (10.38779pt too wide) in paragraph at lines 467--467
 [] 
  []
 
-[14] [15] [16] [17] [18] [19] Excluding 'comment' comment. [20]
-(./PlausMajRule clean.bbl [21] [22]
-Underfull \hbox (badness 3158) in paragraph at lines 195--199
+[14] [15] [16] [17] [18] [19] [20] Excluding 'comment' comment.
+(./PlausMajRule clean.bbl [21] [22] [23]
+Underfull \hbox (badness 3158) in paragraph at lines 200--204
 []\TU/lmr/m/n/10.95 Rabe-Hesketh, Sophia, Skrondal, Anders, and Pickles, Andrew
 . 2004.
  []
 
-[23]) [24] (./PlausMajRule clean.aux) ) 
+) [24] (./PlausMajRule clean.aux) ) 
 Here is how much of TeX's memory you used:
- 16579 strings out of 493005
- 311098 string characters out of 6134596
- 450291 words of memory out of 5000000
- 20152 multiletter control sequences out of 15000+600000
+ 16582 strings out of 493005
+ 311185 string characters out of 6134596
+ 450300 words of memory out of 5000000
+ 20155 multiletter control sequences out of 15000+600000
  15534 words of font info for 74 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 54i,10n,54p,1639b,293s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,10n,54p,1867b,287s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on PlausMajRule clean.pdf (25 pages).

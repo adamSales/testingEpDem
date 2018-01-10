@@ -1,4 +1,4 @@
-\begin{thebibliography}{48}
+\begin{thebibliography}{49}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -83,6 +83,11 @@ Dietrich, Franz and List, Christain. 2004.
 \newblock \enquote{A Model of Jury Decisions Where All Jurors Have the Same
   Evidence.}
 \newblock \emph{Synthese} 142.
+
+\bibitem[{Dietrich and Spiekermann(2013)}]{dietrich2013epistemic}
+Dietrich, Franz and Spiekermann, Kai. 2013.
+\newblock \enquote{EPISTEMIC DEMOCRACY WITH DEFENSIBLE PREMISES1.}
+\newblock \emph{Economics \& Philosophy} 29:87--120.
 
 \bibitem[{Duch and Stevenson(2008)}]{Duch2008}
 Duch, Raymond~M. and Stevenson, Randolph~T. 2008.
