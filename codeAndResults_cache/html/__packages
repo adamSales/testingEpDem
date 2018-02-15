@@ -1,0 +1,12 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+knitr
+Matrix
+lme4
+stargazer
+splines

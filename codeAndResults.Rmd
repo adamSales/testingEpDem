@@ -178,7 +178,7 @@ fullInteraction <- glmer(vote~RDI*(financesFac+partyIDFac+
 
 slopes <- fixef(fullInteraction)
 slopes <- slopes[grep('RDI',names(slopes))]
-slopes[-1] <- slopes[-1]+slopes['RDI']
+slopes[-1] <- slopes[-1]#+slopes['RDI']
 
 ### for whom is the coefficient on RDI negative?
 terms <- names(fixef(fullInteraction))
