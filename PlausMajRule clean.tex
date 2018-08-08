@@ -200,6 +200,7 @@ Though the result is easiest to see in the case of consensus, where everyone agr
  
 Importantly, they need not possess epistemic access to the policy mechanisms for the election's result to maintain a veritistic quality---say, whether single-payer is superior to market-based exchanges. It need only be the case that the outcome be the intended one. And sure, just because a candidate's superiority on \emph{some} issue that a majority agrees to enhances her chances of victory, it doesn't mean that the effect is necessarily decisive. That being said, we show here that the effect of sociotropic economic voting in U.S. presidential elections  has had consistent and measurable  effects on (popular) electoral outcomes.
 
+
 \section{The Empirical Plausibility of Democracy's Truth-Tending Properties}%%&
 The propositions above outline epistemic considerations relevant to majoritarian voting, stipulating conditions under which a candidate's fitness on some issue increases the probability of her being elected, mediated by voters' beliefs.
 The practical relevance, however, hinges on whether the conditions actually obtain. To establish this we need to identify a case that tracks how people evaluate some particular and salient dimension of their voting decision. %}\st{ two questions, though.} %First, do the conditions ever (roughly) obtain, that is are they reasonable assumptions? And second, is the effect actually significant?
@@ -424,11 +425,13 @@ Then consider the following assumptions:\\
 For all $i\in\mathcal{S}$:
 \begin{enumerate}
 %\item $\forall v_i \in V, ~ xRy ~\forall y\ne x$, that is every voter prefers some criterion x over all other possible
-\item $Pr(V_i=1|A_i=1)\ge Pr(V_i=1|A_i=0)$, where a strict inequality holds for some subset of the population; stated otherwise, $A$ affects all voters' choices in the same direction.
-\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$, where a strict inequality holds for some subset of the population; stated otherwise, that voters are better than random at judging $a$.
+\item $Pr(V_i=1|A_i=1)\ge Pr(V_i=1|A_i=0)$, stated otherwise, $A$ affects all voters' choices in the same direction.\label{ass:pref}
+\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$ stated otherwise, that voters are better than random at judging $a$.\label{ass:judge}
 \item For all $j\ne i$, $V_i \independent V_j|a$
 \item $Pr(V_i=1|A_i, a)=Pr(V_i=1|A_i)$
 \end{enumerate}
+Finally, the inequalities in both \ref{ass:pref} and \ref{ass:judge}
+must be strict for some non-empty subset of $\mathcal{S}$. 
 
 It may be the case that some voters' attitudes on issue $x$ depend on a number of other facts as well,  in such a way that assumption 2 only holds for some voters in $S$ under certain additional conditions.
 For instance, a candidate's superiority on RDI might only appeal to environmentalist voters if that superiority is not due to environmentally harmful policies.
