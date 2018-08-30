@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 AUG 2018 12:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 AUG 2018 14:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -796,16 +796,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1] [2]
 [3] [4] [5] [6] [7]
 
-LaTeX Warning: Float too large for page by 21.9569pt on input line 338.
+LaTeX Warning: Float too large for page by 21.9569pt on input line 355.
 
 [8] [9] [10] [11] [12]
-Overfull \hbox (2.00801pt too wide) in paragraph at lines 467--469
+Overfull \hbox (2.00801pt too wide) in paragraph at lines 484--486
 []\OT1/cmr/m/n/10.95 Finally, As-sump-tion 3 is a sim-pli-fy-ing con-di-tion pr
 i-mar-ily in-tended to stream-
  []
 
 [13] [14]
-Overfull \hbox (10.38779pt too wide) in paragraph at lines 538--538
+Overfull \hbox (10.38779pt too wide) in paragraph at lines 555--555
 [] 
  []
 
@@ -822,10 +822,10 @@ n-drew. 2004.
 
 [25]) [26] (./PlausMajRule clean.aux) ) 
 Here is how much of TeX's memory you used:
- 15919 strings out of 493089
- 297789 string characters out of 6134842
- 390691 words of memory out of 5000000
- 19027 multiletter control sequences out of 15000+600000
+ 15920 strings out of 493089
+ 297805 string characters out of 6134842
+ 392706 words of memory out of 5000000
+ 19028 multiletter control sequences out of 15000+600000
  18548 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  54i,10n,54p,1694b,309s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -848,7 +848,7 @@ cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
 cmti9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t9.pfb>
-Output written on "PlausMajRule clean.pdf" (27 pages, 302415 bytes).
+Output written on "PlausMajRule clean.pdf" (27 pages, 302940 bytes).
 PDF statistics:
  167 PDF objects out of 1000 (max. 8388607)
  118 compressed objects within 2 object streams
