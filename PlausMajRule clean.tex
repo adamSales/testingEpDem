@@ -186,15 +186,61 @@ Under assumptions \ref{ass:preference} and \ref{ass:belief},
 a candidate's superiority to her rival on that issue increases her expected vote total.
 \end{prop}
 
-Perhaps surprisingly, Proposition \ref{prop:voteTotal} does not
-necessarily imply that a candidate's superiority makes her more likely
-to win the election.
+Typically, increasing a candidate's expected vote total implies
+increasing her probability of winning the election.
+However, in some circumstances that relationship breaks.
+For instance, consider a small numerical example with three voters in
+Table \ref{tab:threeVoters}. 
+In the table, $p_{\bm{v}}$ denotes the probability that voters
+$\bm{v}$ (and only $\bm{v}$) vote for a candidate.
+For instance, so $p_{12}$ is the probability that
+voters 1 \& 2 vote for her, and voter 3 votes for her opponent; $p_1$
+is the probability that only voter 1 votes for her.
+$p_\varnothing$ is the probability that none of the voters votes for
+her. 
+With 3 voters, there are $2^3=8$ possible outcomes, which we have
+arranged in two columns by whether she wins or loses the election.
+The table enumerates two hypothetical scenarios A and B. 
 
-One further assumption  is necessary for an increase in expected votes to reliably translate into
-an increase in the probability of being elected.
+\begin{table}
+\begin{tabular}{cc|cc}
+\multicolumn{4}{c}{Scenario}\\
+\multicolumn{2}{c}{A}&\multicolumn{2}{c}{B}\\
+Wins&Loses&Wins&Loses\\
+\hline
+$p_{12}=.3$ & $p_1=0 $& $p_{12}=0$ & $p_1=0$\\
+$p_{13}=.3$ & $p_2=0 $& $p_{13}=0$ & $p_2=0$\\
+$p_{23}=.3$ & $p_3=0 $& $p_{23}=0$ & $p_3=0$\\
+$p_{123}=0$ & $p_\varnothing=.1$& $p_{123}=.8$ & $p_\varnothing=.2$\\
+\hline
+\multicolumn{2}{c|}{$Pr(Vote)=.6$}&\multicolumn{2}{c}{$Pr(Vote)=.8$}\\
+\multicolumn{2}{c|}{$\mathbb{E}[\# Votes]=1.8$}&\multicolumn{2}{c}{$\mathbb{E}[\# Votes]=2.4$}\\
+\multicolumn{2}{c|}{$Pr(Win)=.9$}&\multicolumn{2}{c}{$Pr(Win)=.8$}\\
+\hline
+\end{tabular}
+\caption{An example of higher expected vote counts, but lower
+  probability of winning}
+\label{tab:threeVoters}
+\end{table}
 
+In scenario A, the probability she wins the election is $Pr(Win)=.3+.3+.3=.9$.
+The probability voter 1 votes for her is
+$p_1+p_{12}+p_{13}+p_{123}=0+.3+.3+0=.6$. The same calculation holds
+for voters 2 and 3---this is denoted by $Pr(Vote)=.6$.
+Her expected vote total is $\mathbb{E}[\# Votes]=.6\times 3=1.8$.
+In scenario B, all three voters vote in lock-step; with .8 probability
+they vote for the candidate, and with .2 they vote against. 
+Hence, the probablity each individual votes for her is $Pr(Vote)=.8$, and the
+probability she wins is likewise $Pr(Win)=.8$.
+Her expected vote total is now $\mathbb{E}[\# Votes]=.8\times 3=2.4$.
+Here is the paradox: in scenario B, each voter is (marginally) more
+likely to vote for her, and her expected vote total is greater, yet
+she's less likely to win! 
 
-
+The paradox in Table \ref{tab:threeVoters} is due to dependence
+between the votes: when she wins, she wins by more than necessary.
+Another assumption is necessary to avoid this paradox, and move from Proposition
+\ref{prop:voteTotal} to actual electoral outcomes. 
 The simplest (if, perhaps, the strongest) such assumption is independence:
 \begin{ass}\label{ass:independent}
 Votes are mutually independent, conditional on candidates' true superiority.
