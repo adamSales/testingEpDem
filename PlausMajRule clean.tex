@@ -80,6 +80,12 @@
 \newtheorem{cor}{Corollary}
 \newtheorem{ass}{Assumption}
 
+\newenvironment{propbis}[1]
+  {\renewcommand{\theprop}{\ref{#1}$'$}%
+   \addtocounter{prop}{-1}%
+   \begin{prop}}
+  {\end{prop}}
+
 
 \begin{document}
 
@@ -194,7 +200,7 @@ The simplest (if, perhaps, the strongest) such assumption is independence:
 Votes are mutually independent, conditional on candidates' true superiority.
 \end{ass}
 Taking assumptions 1--3 together, we have the following proposition:
-\begin{prop}
+\begin{prop}\label{prop:main}
 Under Assumptions \ref{ass:preference}, \ref{ass:belief}, and \ref{ass:independent},
 a candidate's superiority to her rival on an issue increases her probability of being elected.
 \end{prop}
@@ -211,16 +217,17 @@ Importantly, they need not possess epistemic access to the policy mechanisms for
 \subsection{Interactions Between Issues}
 An anonymous reviewer pointed out that universal agreement on an issue
 need not imply assumption \ref{ass:preference}.
-To see why, imagine two universal preferences among the electorate, 
-say higher health-care coverage rates and lower taxes.
-Say candidates who are better fit to achieve higher health-care
+To see why, imagine that the preference for higher health-care
+coverage rates is universal in the electorate.
+However, a portion of the electorate (called ``anti-taxers'') prefers
+lower taxes, and cares more about taxes than about healthcare coverage. 
+Finally, say candidates who are better fit to achieve higher health-care
 coverage tend to be less likely to lower taxes.
-Then, for the segment of voters who care more about taxes than health
-coverage, a candidate's competence with regards to health-care
-coverage will be \emph{anti}-correlated with her likelihood of getting
-votes.
-Seen from another angle, this segment of the population tends to vote
-against their own preference on health-care coverage, because of their
+Then, the probability that an anti-taxer votes for a candidate will
+be \emph{anti}-correlated with her ability to increase health care
+coverage rates. 
+Seen from another angle, anti-taxers tends to vote
+against their own preference for health-care coverage, because of their
 weightier preference for low taxes.
 In the world of competing priorities, decisions need not always follow
 preferences. 
@@ -240,9 +247,26 @@ As stated, it demands an issue on which voters' preferences both
 align, and are strong enough to outweigh competing concerns.
 Such issues may in fact exist---the case of economic voting in the
 following section may be an example.
-However, a small modification of the assumptions and propositions
+However, a modification of the assumptions and propositions
 broadens their applicability. 
+For instance, say that a candidate is more likely than her rival to
+raise taxes; the probability that an anti-taxers will vote for her,
+say $Pr_{at}(V|Tax)$, will be quite low.
+However, if she is \emph{also} more likely than her rival to increase
+healthcare coverage, that probability increases, however slightly:
+$Pr_{at}(V|Tax,HC)>Pr_{at}(V|Tax)$. 
+If assumptions \ref{ass:belief} and \ref{ass:independent} also hold
+conditional on tax policies, then Propositions \ref{prop:main} does,
+too---also conditional on tax policy.
 
+In general, let $\mathcal{F}$ be some set of facts about a particular
+race or candidate. Then the following proposition holds:
+\begin{propbis}{prop:main}
+If Assumptions \ref{ass:preference}, \ref{ass:belief}, and
+\ref{ass:independent} hold conditional on $\mathcal{F}$, then
+a candidate's superiority to her rival on an issue increases her
+probability of being elected, conditional on $\mathcal{F}$.
+\end{propbis}
 
 
 
