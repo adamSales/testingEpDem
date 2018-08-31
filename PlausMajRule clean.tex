@@ -80,6 +80,12 @@
 \newtheorem{cor}{Corollary}
 \newtheorem{ass}{Assumption}
 
+\newenvironment{propbis}[1]
+  {\renewcommand{\theprop}{\ref{#1}$'$}%
+   \addtocounter{prop}{-1}%
+   \begin{prop}}
+  {\end{prop}}
+
 
 \begin{document}
 
@@ -180,21 +186,67 @@ Under assumptions \ref{ass:preference} and \ref{ass:belief},
 a candidate's superiority to her rival on that issue increases her expected vote total.
 \end{prop}
 
-Perhaps surprisingly, Proposition \ref{prop:voteTotal} does not
-necessarily imply that a candidate's superiority makes her more likely
-to win the election.
+Typically, increasing a candidate's expected vote total implies
+increasing her probability of winning the election.
+However, in some circumstances that relationship breaks.
+For instance, consider a small numerical example with three voters in
+Table \ref{tab:threeVoters}. 
+In the table, $p_{\bm{v}}$ denotes the probability that voters
+$\bm{v}$ (and only $\bm{v}$) vote for a candidate.
+For instance, so $p_{12}$ is the probability that
+voters 1 \& 2 vote for her, and voter 3 votes for her opponent; $p_1$
+is the probability that only voter 1 votes for her.
+$p_\varnothing$ is the probability that none of the voters votes for
+her. 
+With 3 voters, there are $2^3=8$ possible outcomes, which we have
+arranged in two columns by whether she wins or loses the election.
+The table enumerates two hypothetical scenarios A and B. 
 
-One further assumption  is necessary for an increase in expected votes to reliably translate into
-an increase in the probability of being elected.
+\begin{table}
+\begin{tabular}{cc|cc}
+\multicolumn{4}{c}{Scenario}\\
+\multicolumn{2}{c}{A}&\multicolumn{2}{c}{B}\\
+Wins&Loses&Wins&Loses\\
+\hline
+$p_{12}=.3$ & $p_1=0 $& $p_{12}=0$ & $p_1=0$\\
+$p_{13}=.3$ & $p_2=0 $& $p_{13}=0$ & $p_2=0$\\
+$p_{23}=.3$ & $p_3=0 $& $p_{23}=0$ & $p_3=0$\\
+$p_{123}=0$ & $p_\varnothing=.1$& $p_{123}=.8$ & $p_\varnothing=.2$\\
+\hline
+\multicolumn{2}{c|}{$Pr(Vote)=.6$}&\multicolumn{2}{c}{$Pr(Vote)=.8$}\\
+\multicolumn{2}{c|}{$\mathbb{E}[\# Votes]=1.8$}&\multicolumn{2}{c}{$\mathbb{E}[\# Votes]=2.4$}\\
+\multicolumn{2}{c|}{$Pr(Win)=.9$}&\multicolumn{2}{c}{$Pr(Win)=.8$}\\
+\hline
+\end{tabular}
+\caption{An example of higher expected vote counts, but lower
+  probability of winning}
+\label{tab:threeVoters}
+\end{table}
 
+In scenario A, the probability she wins the election is $Pr(Win)=.3+.3+.3=.9$.
+The probability voter 1 votes for her is
+$p_1+p_{12}+p_{13}+p_{123}=0+.3+.3+0=.6$. The same calculation holds
+for voters 2 and 3---this is denoted by $Pr(Vote)=.6$.
+Her expected vote total is $\mathbb{E}[\# Votes]=.6\times 3=1.8$.
+In scenario B, all three voters vote in lock-step; with .8 probability
+they vote for the candidate, and with .2 they vote against. 
+Hence, the probablity each individual votes for her is $Pr(Vote)=.8$, and the
+probability she wins is likewise $Pr(Win)=.8$.
+Her expected vote total is now $\mathbb{E}[\# Votes]=.8\times 3=2.4$.
+Here is the paradox: in scenario B, each voter is (marginally) more
+likely to vote for her, and her expected vote total is greater, yet
+she's less likely to win! 
 
-
+The paradox in Table \ref{tab:threeVoters} is due to dependence
+between the votes: when she wins, she wins by more than necessary.
+Another assumption is necessary to avoid this paradox, and move from Proposition
+\ref{prop:voteTotal} to actual electoral outcomes. 
 The simplest (if, perhaps, the strongest) such assumption is independence:
 \begin{ass}\label{ass:independent}
 Votes are mutually independent, conditional on candidates' true superiority.
 \end{ass}
 Taking assumptions 1--3 together, we have the following proposition:
-\begin{prop}
+\begin{prop}\label{prop:main}
 Under Assumptions \ref{ass:preference}, \ref{ass:belief}, and \ref{ass:independent},
 a candidate's superiority to her rival on an issue increases her probability of being elected.
 \end{prop}
@@ -211,19 +263,71 @@ Importantly, they need not possess epistemic access to the policy mechanisms for
 \subsection{Interactions Between Issues}
 An anonymous reviewer pointed out that universal agreement on an issue
 need not imply assumption \ref{ass:preference}.
-To see why, imagine two universal preferences among the electorate, 
-say higher health-care coverage rates and lower taxes.
-Say candidates who are better fit to achieve higher health-care
+To see why, imagine that the preference for higher health-care
+coverage rates is universal in the electorate.
+However, a portion of the electorate (called ``anti-taxers'') prefers
+lower taxes, and cares more about taxes than about healthcare coverage. 
+Finally, say candidates who are better fit to achieve higher health-care
 coverage tend to be less likely to lower taxes.
-Then, for the segment of voters who care more about taxes than health
-coverage, a candidate's competence with regards to health-care
-coverage will be \emph{anti}-correlated with her likelihood of getting
-votes.
-Seen from another angle, this segment of the population tends to vote
-against their own preference on health-care coverage, because of their
+Then, the probability that an anti-taxer votes for a candidate will
+be \emph{anti}-correlated with her ability to increase health care
+coverage rates. 
+Seen from another angle, anti-taxers tends to vote
+against their own preference for health-care coverage, because of their
 weightier preference for low taxes.
 In the world of competing priorities, decisions need not always follow
 preferences. 
+
+It would be prepostorous to claim that electoral outcomes tend
+to follow voters' shared preferences, without regard to the weight of
+those preferences.
+Indeed, it would be hard to recommend any electoral system in which
+that were the case, in which electoral outcomes were driven primarily by
+consensus on issues of secondary importance to voters, rather than by
+the issues the voters cared most about. 
+
+That being said, conflicting preferences, such as health care coverage
+and low taxas, present a challenge to the assumption
+\ref{ass:preference}.
+As stated, it demands an issue on which voters' preferences both
+align, and are strong enough to outweigh competing concerns.
+Such issues may in fact exist---the case of economic voting in the
+following section may be an example.
+However, a modification of the assumptions and propositions
+broadens their applicability. 
+For instance, say that a candidate is more likely than her rival to
+raise taxes; the probability that an anti-taxers will vote for her,
+say $Pr_{at}(V|Tax)$, will be quite low.
+However, if she is \emph{also} more likely than her rival to increase
+healthcare coverage, that probability increases, however slightly:
+$Pr_{at}(V|Tax,HC)>Pr_{at}(V|Tax)$. 
+If assumptions \ref{ass:belief} and \ref{ass:independent} also hold
+conditional on tax policies, then Propositions \ref{prop:main} does,
+too---also conditional on tax policy  \citep[see][for a similar argument]{dietrich2013epistemic}.
+
+In general, say there exists a set of facts, $\mathcal{F}$ such that
+assumption \ref{ass:preference} holds conditional on $\mathcal{F}$.
+Then the following proposition holds:
+\begin{propbis}{prop:main}\label{prop:mainPrime}
+If Assumptions \ref{ass:preference}, \ref{ass:belief}, and
+\ref{ass:independent} hold conditional on $\mathcal{F}$, then
+a candidate's superiority to her rival on an issue increases her
+probability of being elected, conditional on $\mathcal{F}$.
+\end{propbis}
+
+Taking a more expansive view of the conditioning set $\mathcal{F}$
+allows us to conceptualize the model in terms of counterfactuals. 
+Voters first learn all they need to (or want to or can) know about the two
+candidates in a race, then arrive at subjective conclusions as to each
+candidate's fitness on a range of relevent issues, then finally decide
+how to cast their votes. 
+If the set $\mathcal{F}$ is sufficiently inclusive, Proposition
+\ref{prop:main}$'$ could be understood as describing difference in the
+probability of a candidate's election between a scenario in which she
+is superior to her rival on an issue of broad consensus, to one in
+which she is inferior on that same issue, holding constant her
+position on all other relevant issues. 
+
 
 
 
