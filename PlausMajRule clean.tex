@@ -260,7 +260,7 @@ Though the result is easiest to see in the case of consensus, where everyone agr
  
 Importantly, they need not possess epistemic access to the policy mechanisms for the election's result to maintain a veritistic quality---say, whether single-payer is superior to market-based exchanges. It need only be the case that the outcome be the intended one. And sure, just because a candidate's superiority on \emph{some} issue that a majority agrees to enhances her chances of victory, it doesn't mean that the effect is necessarily decisive. That being said, we show here that the effect of sociotropic economic voting in U.S. presidential elections  has had consistent and measurable  effects on (popular) electoral outcomes.
 
-\subsection{Interactions Between Issues}
+\subsection{Interactions Between Issues}\label{sec:interactions}
 An anonymous reviewer pointed out that universal agreement on an issue
 need not imply assumption \ref{ass:preference}.
 To see why, imagine that the preference for higher health-care
@@ -540,56 +540,67 @@ Beyond the support of claims made by epistemic democrats, this paper shows the p
 
 In order to demonstrate our claim that \emph{in a binary election where votes are independently cast and, in part or whole, seek to select the candidate that maximizes a shared value, majority rule results recommends democracy on veritistic grounds}
 %we argue only that the linear model admits the same sort of monotonic convergence results on the independent belief dimension as do the theorems above. We needn't claim, however, that the Condorcet Jury Theorem or Miracle of Aggregation theorems apply directly.
-we will prove a more general conjecture which admits the propositions in Section \ref{sec:theory} as a special case, which we then state as a corollary. Note that the proof combines the two propositions into one statement (2). Note further that assumptions 1--3 above correspond to 2--4 below. Assumption 1 here in the appendix tracks the intuition above that the dimension in question is one of substantial normative agreement. 
 
-We are interested in the electability of a particular candidate in a binary election. Let $E=1$ if she is elected, and 0 otherwise.
-Say there is a fixed subset of the electorate, $\mathcal{S}$, such that $E=1$ if and only if the proportion of votes for a candidate from $\mathcal{S}$ exceeds a pre-determined (if unknown) threshold $\alpha$. In other words,
+We are interested in the electability of a particular candidate in a
+binary election. Let $E=1$ if she is elected, and 0 otherwise.
+Let $\mathcal{E}$ denote the electorate and let
+$i=1,2,3,...\in\mathcal{E}$ denote voters in the electorate.
+Let $V_i=1$ if voter $i$ votes for the candidate, and 0 otherwise. 
+Say $E=1$ if and only if the proportion of votes for a candidate from
+$\mathcal{E}$ exceeds a threshold $\alpha$, typically 1/2. In other words,
 \begin{equation}
-E =1 \text{ iff } \sum_{i\in \mathcal{S}} V_i>n\alpha
+E =1 \text{ iff } \sum_{i\in \mathcal{E}} V_i>n\alpha
 \end{equation}
-where $n=|\mathcal{S}|$, the number of voters in $\mathcal{S}$.
-For voters $i\in \mathcal{S}$ let $V_i=1$ if voter $i$ votes for the candidate in question, and 0 otherwise.
+where $n=|\mathcal{E}|$, the number of voters in $\mathcal{E}$.
 Let $a_x=1$ denote the truth of a fact $x$ that sways voters to vote for the candidate (for instance, she is better than her rival at increasing RDI).
 For clarity, we will drop the $x$ subscript, so $a=1$ denotes $a_x=1$.
 Let $A_i=1$ if voter $i$ believes $a$.
+Finally, let $\mathcal{F}$ be a (possibly empty) set of conditioning
+facts, as discussed in Section \ref{sec:interactions}.
 
 Then consider the following assumptions:\\
-For all $i\in\mathcal{S}$:
-\begin{enumerate}
-%\item $\forall v_i \in V, ~ xRy ~\forall y\ne x$, that is every voter prefers some criterion x over all other possible
-\item $Pr(V_i=1|A_i=1)\ge Pr(V_i=1|A_i=0)$, where a strict inequality holds for some subset of the population; stated otherwise, $A$ affects all voters' choices in the same direction.
-\item $Pr(A_i=1|a=1)\ge Pr(A_i=1|a=0)$, where a strict inequality holds for some subset of the population; stated otherwise, that voters are better than random at judging $a$.
-\item For all $j\ne i$, $V_i \independent V_j|a$
-\item $Pr(V_i=1|A_i, a)=Pr(V_i=1|A_i)$
-\end{enumerate}
-
-It may be the case that some voters' attitudes on issue $x$ depend on a number of other facts as well,  in such a way that assumption 2 only holds for some voters in $S$ under certain additional conditions.
-For instance, a candidate's superiority on RDI might only appeal to environmentalist voters if that superiority is not due to environmentally harmful policies.
-To allow for such situations, define a set of ``conditioning facts" $\tilde{a}$ consisting of those facts which may qualitatively moderate the relationship between $a$ and $V_i$, for some $i$.
-The composition of $\tilde{a}$ depends on the issue in question, and
-may in some circumstances be empty.
-In any case, we may restate assumptions 1--4 as conditional on
-$\tilde{a}$.
-Doing so weakens the assumptions---they may hold unconditionally or
-conditionally.
+For all $i\in\mathcal{E}$:
+\begin{itemize}
+\item[\ref{ass:preference}] $Pr(V_i=1|A_i=1,\mathcal{F})\ge Pr(V_i=1|A_i=0,\mathcal{F})$; stated otherwise, $A$ affects all voters' choices in the same direction.
+\item[\ref{ass:belief}] $Pr(A_i=1|a=1,\mathcal{F})\ge Pr(A_i=1|a=0,\mathcal{F})$; stated otherwise, that voters are better than random at judging $a$.
+\item[\ref{ass:independent}] For all $j\ne i$, $V_i \independent V_j|a,\mathcal{F}$
+\item[4] $Pr(V_i=1|A_i, a,\mathcal{F})=Pr(V_i=1|A_i,\mathcal{F})$
+\end{itemize}
+Finally, the inequalities in both \ref{ass:preference} and \ref{ass:belief}
+must be strict for some non-empty subset of $\mathcal{E}$. 
+% It may be the case that some voters' attitudes on issue $x$ depend on a number of other facts as well,  in such a way that assumption 2 only holds for some voters in $S$ under certain additional conditions.
+% For instance, a candidate's superiority on RDI might only appeal to environmentalist voters if that superiority is not due to environmentally harmful policies.
+% To allow for such situations, define a set of ``conditioning facts" $\mathcal{F}$ consisting of those facts which may qualitatively moderate the relationship between $a$ and $V_i$, for some $i$.
+% The composition of $\mathcal{F}$ depends on the issue in question, and
+% may in some circumstances be empty.
+% In any case, we may restate assumptions 1--4 as conditional on
+% $\mathcal{F}$.
+% Doing so weakens the assumptions---they may hold unconditionally or
+% conditionally.
 
 \begin{prop*}
-If assumptions 1,2, and 4 hold conditional on $\tilde{a}$, then
+If assumptions \ref{ass:preference}, \ref{ass:belief}, and 4 hold, then
 \begin{equation}\label{eq:prop1ap}
-\E \left[\displaystyle\sum_{i \in \mathcal{S}} V_i \middle| a=1,\tilde{a}\right]>\E \left[\displaystyle\sum_{i \in \mathcal{S}} V_i\middle| a=0,\tilde{a}\right]
+\E \left[\displaystyle\sum_{i \in \mathcal{E}} V_i \middle| a=1,\mathcal{F}\right]>\E \left[\displaystyle\sum_{i \in \mathcal{E}} V_i\middle| a=0,\mathcal{F}\right]
 \end{equation}
+If assumption \ref{ass:independent} also holds, then
 \begin{equation}\label{eq:prop2ap}
-Pr(E=1|a=1,\tilde{a})>Pr(E=1|a=0,\tilde{a})
+Pr(E=1|a=1,\mathcal{F})>Pr(E=1|a=0,\mathcal{F})
 \end{equation}
 \end{prop*}
+Note that when $\mathcal{F}$ is the empty set, this is equivalent to
+Propositions \ref{prop:voteTotal} and \ref{prop:main}.
+When $\mathcal{F}$ is not empty, this is equivalent to a
+generalization of Proposition \ref{prop:voteTotal} and to \ref{prop:main}$'$.
+
 
 \begin{proof}
-First note that
+%First note that
 %\begin{equation}
 %Pr(E=1|a=1)=Pr(\sum_i V_i>n\alpha|a=1)=1-Pr(\sum_i (1-V_i)>n\alpha|a=1)
 %\end{equation}
 %Next, notice that, given assumptions 1-3
-under assumptions 1, 2, and 4 we have (letting all probabilities be conditional on $\tilde{a}$)
+Under assumptions 1, 2, and 4 we have (letting all probabilities be conditional on $\mathcal{F}$)
 \begin{align*}
 &Pr(V_i=1|a=1)\\
 =&\E Pr(V_i=1|a=1,A_i)\\
@@ -600,16 +611,21 @@ under assumptions 1, 2, and 4 we have (letting all probabilities be conditional 
 =&Pr(V_i=1|a=0)
 \end{align*}
 Where the inequality is a result of assumptions 1 and 2, and is a strict $>$ for some members of the population.
-(\ref{eq:prop1ap}) follows immediately.
-We have that $V_i|a=1$ is stochastically greater that $V_i|a=0$. That being the case, $\sum_{i=1}^n V_i |a=1$ is stochastically greater than $\sum_{i=1}^n V_i |a=0$ (\citet{shaked2007stochastic}).
-Therefore, under assumption 3, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i
+Then 
+\begin{align*}
+\E \left[\displaystyle\sum_{i \in \mathcal{E}} V_i \middle| a=1\right] =
+&\displaystyle\sum_{i \in \mathcal{E}} Pr(V_i=1 | a=1)>\\
+&\displaystyle\sum_{i \in \mathcal{E}} Pr(V_i=1 | a=0)= 
+\E \left[\displaystyle\sum_{i \in \mathcal{E}} V_i \middle| a=0\right]
+\end{align*}
+proving (\ref{eq:prop1ap}).
+
+$V_i|a=1$ is stochastically greater that $V_i|a=0$. Therefore, under assumption \ref{ass:independent}, $\sum_{i=1}^n V_i |a=1$ is stochastically greater than $\sum_{i=1}^n V_i |a=0$ \citep{shaked2007stochastic}.
+Therefore, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i
 >n\alpha|a=1)>Pr(\sum_{i=1}^n V_i>n\alpha |a=0)=Pr(E=1|a=0)$, as in (\ref{eq:prop2ap}).
 \end{proof}
 
-\begin{cor}
-Setting $\mathcal{S}$ as the entire electorate and $\alpha=1/2$
-yields Proposition 2 in the body of the text.
-\end{cor}
+
 
 \subsection{A Comparison with CJT}\label{sec:cjt-compare}
 
