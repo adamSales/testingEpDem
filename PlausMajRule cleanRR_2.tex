@@ -525,18 +525,19 @@ Therefore, $Pr(E=1|a=1)=Pr(\sum_{i=1}^n V_i
 \subsection{A Comparison with CJT}\label{sec:cjt-compare}
 
 The propositions described informally in Section \ref{sec:theory} and formally in this appendix build on prior theoretical work in epistemic democracy, perhaps most famously the Condorcet Jury Theorem (CJT).
-In this section we will briefly compare and contrast our proposition with the CJT.
-We will argue that our proposition may be thought of as a generalization of the CJT to the multidimensional case.
+In this section we will argue that our proposition may be thought of as a generalization of the CJT to the multidimensional case.
 
 The CJT may be stated as follows \citep[e.g.][]{boland1989majority}:
 \begin{prop*}[CJT]
 A decision-making body is comprised of $n\ge 3$ voters who cast votes
 $V_i,\dots,V_n\in \{0,1\}$. The group's decision $E= 1$ if and only if
-$\sum_i V_i>n/2$ and $E=0$ otherwise.
+$\sum_i V_i>n/2$ and $E=0$ otherwise. There is a unique correct
+decision $a\in\{0,1\}$; we denote each voter's belief about $a$ as
+$A_i\in\{0,1\}$. 
 If:
 \begin{enumerate}
-\item There is a unique correct decision $a\in \{0,1\}$
-\item $p_i=Pr(V_i=a|a)=p>1/2$ for all $i$ (Competence) and
+\item $V_i=1$ if and only if $A_i=1$ 
+\item $Pr(A_i=a|a)=p>1/2$ for all $i$ (Competence) and
 \item $V_i \independent V_j|a$, $i\ne j$ (Independence)
 \end{enumerate}
 Then $Pr(E=a|a)>p$ and $Pr(E=a|a)\rightarrow 1$ as
@@ -544,48 +545,29 @@ $n\rightarrow\infty$
 \end{prop*}
 
 Our proposition extends the CJT to a setting in which voters' decision
-functions are (potentially) multidimensional, but in which universal
-consensus exists regarding one of those dimensions. 
-%Skeptics of claims advanced by epistemic democrats argue that there is no obvious means to evaluate which candidate is right or better. We respond to this worry by constraining our analysis to a particular dimension of voters' decision functions, insofar as voters agree.
-%The existence of a ``correct'' decision
-%between candidates is arguable, and typically hinges on voters'
-%personal values, as well as matters of fact.
-%Therefore, assumption 1 in our theorem is not that there is a correct
-%overall decision, but that, on one particular issue values are not in
-%dispute among members of the electorate---for this particular issue,
- The ``correct'' decision $a$ is the one that conforms with the
-consensus value. Thus the superior alternative (that which voters value) is also the correct alternative (that which would in fact bring about the ends that voters value).
-The formal statement $Pr(V_i=1|A_i=1) > Pr(V_i=1|A_i=0)$ means
-that voter $i$'s perception of candidate 1's superiority on the
-particular issue in question increases the chances he'll vote for
-her; to state it for all voters $i$ is to say that they all agree on
-the issue's choice-worthiness.
-
-Focusing on one dimension among (possibly) many that influence votes ($V$)
-required two additional modifications to the CJT.
-First, we introduced the ``individual belief'' variable $A_i$ encoding
-$i$'s belief about which candidate is superior on the issue in
-question.
-In the classic CJT setup, voters are assumed to vote for the option
-they believe is best (see \cite{austen1996information}, however), so
-$V_i\equiv A_i$, necessarily.
-However, in a political election $i$ may believe candidate 1 to be
-superior to 0 on the issue in question, so $A_i=1$, but believe
-candidate 0 to be superior on other issues, so that $V_i=0$. Call candidate 1 ``Caroline'' and candidate 0 ``Denise.''
-
-Secondly, we have weakened the relationship between truth $a$ and,
-respectively, beliefs $A$, votes $V$, and the outcome $E$.
+functions are (potentially) multidimensional, but in which there is universal
+consensus regarding one of those dimensions. 
+This consensus dimension is analogous to the ``unique correct
+decision'' in the CJT, and we denote both by $a$. 
+By Assumption 1 in both our proposition and
+the CJT, decisors cast their votes as a function
+of their beliefs about $a$. 
+However, in the CJT, voters' beliefs about $a$ determine their votes
+entirely, whereas in a multidimensional election $a$ only affects the
+probability of a vote, allowing for the influence of other factors. 
+ 
+Likewise, Assumption 2 in our proposition is a strictly weaker version
+of the Competence assumption in the CJT.
 In place of the CJT assumption 2 that voters are more likely to pick
 the correct alternative, we assume that a fact's veriticity
 makes voters more likely to believe it.
-So, say $a=1$, entailing that candidate Caroline is superior on the issue
-in question.
-However, perhaps because of voter $i$'s prejudice or confusion, he is
-unlikely to acknowledge Caroline's superiority under most any circumstances.
-That said, the probability he assigns to Caroline being superior on the issue is still higher \emph{than it would have been} were Denise to have been better along this dimension---say, $Pr(A_i=1|a=1)=0.02$ rather than $Pr(A_i=1|a=0)=0.01$.
-Voter $i$ would violate assumption 2 of the CJT, since $p<1/2$, but
-does not violate our assumption 2.
-Conversely, $p>1/2$ as in the CJT implies that
+For example, say $a=1$, but (perhaps due to some prejudice or confusion) voter $i$ is
+unlikely to believe $a=1$ under most any circumstances, so
+$Pr(A_i=1|a=1)<1/2$, violating the CJT competence assumption.
+However, if the probability that $i$ believes that $a=1$ when it's true is
+still greater than when it's false, $Pr(A_i=1|a=1)>Pr(A_i=1|a=0)$,
+our Assumption 2 is satisfied. 
+Conversely, the CJT competence assumption implies that
 $Pr(A_i=1|a=1)>1/2>Pr(A_i=1|a=0)$, so our assumption 2 is strictly
 weaker.
 
@@ -608,8 +590,9 @@ would not suffice, since a small group of mistaken voters might undermine the re
 %believes in the importance of the issue, they can undermine the
 %result.
 
-Our result (2) in section 6.1 is weaker as well---indeed, it ought to be.
-If broad agreement holds for only one of many issues, it would be
+Our results, Propositions 1 and 2 in section 6.1, are weaker than the
+CJT as well---indeed, they ought to be.
+If broad agreement holds for only one of many issues in an election, it would be
 troubling to state that $Pr(E=1|a=1)\rightarrow 1$ as the electorate
 grows, implying that all other issues---legitimate, if
 ambiguous---become irrelevant.
