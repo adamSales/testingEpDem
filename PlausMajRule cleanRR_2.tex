@@ -610,76 +610,124 @@ This suggests that relaxations of independence in the CJT case
 
 
 
-\subsection{Modeling Choices: Logit Model}
-Our models are based roughly on those presented in Nadeau and Lewis-Beck (2001). In particular, they estimated the following model:
-\begin{align*}
-  vote_{ind,elec}&=\alpha+\beta_1 RDI_{elec}+\beta_2 Finances_{ind,elec} +\beta_3 IncumbentParty_{elec}\\
-  &+\beta_4 PartyID_{ind,elec}+\beta_5 Race_{ind,elec}+\epsilon_{ind,elec}
-\end{align*}
-where $vote_{ind,elec}$ is an individual's vote, coded as 1 if she voted for the incumbent party, and 0 otherwise. $RDI_{elec}$ is the percent change in RDI per capita from the previous year, $Finances_{ind,elec}$ is an individual's assessment of his own personal finances, compared to the previous year (1 denotes
+\subsection{Statistical Models: Methodological Details}
+
+The models in Section \ref{sec:model} are multilevel/hierarchical
+logistic regressions \citep[e.g.]{raudenbush2002hierarchical}. 
+Let $V_i=1$ if $i$ votes for the candidate representing the incumbent
+party, and $V_i=0$ otherwise. Then model (1) is:
+\begin{equation}\label{eq:model}
+\begin{split}
+  Pr(V_{i,elec}=1) =&logit^{-1}(\alpha+\beta_1 RDI_{elec}+\beta_2
+  Finances_{i,elec}\\
+&+\beta_3 IncumbentParty_{elec}+\beta_4 PartyID_{i,elec}+\beta_5 Race_{i,elec}\\
+  &+\nu_{elec}+\eta_{state[i]}
+\end{split}
+\end{equation}
+Here, $logit^{-1}(\cdot)$ denotes the inverse logit function, so
+$logit^{-1}(x)=e^x/(1+e^x)$.
+ $RDI_{elec}$ is the percent change in RDI per capita from the previous year, $Finances_{i,elec}$ is an individual's assessment of his own personal finances, compared to the previous year (1 denotes
 ``better,'' 0 ``the same,'' $-1$ ``worse''). $IncumbentParty_{elec}$ codes whether the Democratic or Republican
-party was the incumbent in the election. $PartyID_{ind,elec}$ is a five-point scale that codes to what extent
-the voter's party identification agrees with the incumbent party (3: strongly agrees, 2: weakly agrees, 0: indifferent, $-2$ weakly disagrees, $-3$: strongly disagrees) and $Race_{ind,elec}$ is an indicator for race, also aligned with incumbent party (if the incumbent party is Republican, 1 indicates 'white' and 0 'nonwhite,' with the opposite if the incumbent party is Democratic). The parameters $\alpha$ and $\beta_k$, $k=1,...,5$ are estimated with ordinary least squares, and $\epsilon_{ind,elec}$ is a regression error.\footnote{The individual-level data in the model came from the American National
-Election Survey (ANES) time series \cite{ANES} and the RDI data is from the National Bureau of Economic Research.}
+party was the incumbent in the election. $PartyID_{i,elec}$ is a five-point scale that codes to what extent
+the voter's party identification agrees with the incumbent party (3:
+strongly agrees, 2: weakly agrees, 0: indifferent, $-2$ weakly
+disagrees, $-3$: strongly disagrees) and $Race_{i,elec}$ is an
+indicator for race, also aligned with incumbent party (if the
+incumbent party is Republican, 1 indicates 'white' and 0 'nonwhite,'
+with the opposite if the incumbent party is Democratic). $\nu_{elec}$
+and $\eta_{state[i]}$ are random intercepts for election year and
+$i$'s state of residence, modeled as normally distributed with mean
+zero. The parameters $\alpha$ and $\beta_k$, $k=1,...,5$ and the
+standard deviations of $\nu$ and $\eta$ are estimated from the
+data. 
 
-We model each individual's vote as a separate coin-toss.
-These coins, though, are not ``fair,'' in the usual sense: we assume that each voter has a different probability of voting for the incumbent party.
-The probability each voter chooses the incumbent party is modeled as a function of several factors, including $\Delta RDI$ and, in some versions of the model, their subjective beliefs regarding the state of the economy.
-In particular, the logit of the probability is a linear function of these factors.\footnote{If the probability of voting for the incumbent party is $p$, the logit is $log(p/(1-p))$.}
-
-Our model has two layers, the first one models an individual's probability of voting for the incumbent party:
-\begin{equation}\label{indMod}
-  logit(Pr(vote_{ind,elec}=1)) =\alpha+ \nu_{elec}+\eta_{state}+X_{ind,elec}\mathbf{\beta}
-\end{equation}
-where $X_{ind,elec}$ is a vector of all of the individual level regressors for voter $ind$ in election $elec$ and $logit(Pr(vote_{ind,elec}=1))$ is the logit of the probability that voter $ind$ votes for the incumbent party. In some models $X_{ind,elec}$ includes sociotropic measures: ``retrospective'' codes whether voters believe the economy has improved over the past year, and ``prospective'' codes voters' beliefs regarding whether the economy will improve in the coming year. These metrics are important because they give us a handle on the effect beliefs have on votes. The model also allows the states voters reside in, $\eta_{state}$, to idiosyncratically influence their voting decisions, with the random intercept $\eta_{state}\distras{iid} N(0, \sigma_s)$.
-
-In the second level of the model, $\nu_{elec}$ is a random effect for the election,
-\begin{equation}\label{elecMod}
-  \nu_{elec}=\gamma_1 \Delta RDI_{elec} + \gamma_2 incumbentParty_{elec}+\zeta_{elec}
-\end{equation}
-where $\zeta_{elec}\distras{iid} N(0,\sigma_e)$. Here voters' choices are affected, on an election-to-election basis by $\Delta RDI$ and the incumbent party, in addition to idiosyncratic factors. The variance parameters $\sigma_e$ and $\sigma_s$ are estimated from the data, along with the coefficients $\alpha$, $\mathbf{\beta}$, $\gamma_1$, and $\gamma_2$.
-Since voters in each election are not independent of each other, we include random effects for each election.
-Including a random election effect $\nu_{elec}$ models that dependence and corrects the overly-optimistic standard errors in \citet{Nadeau:2001tw}.
-
-
-Since each election has its own idiosyncrasies---for instance, the Vietnam war and Lyndon Johnson's surprising decision not to run in 1968, or the fallout from the Lewinsky scandal in the 2000 election---the error term from each election must be independently modeled. %---\st{inferences cannot reliably be made from a strictly deterministic model} voting choices in an individual election cannot be modeled as independent. Mistakingly ignoring year effects artificially deflates standard errors and p-values \citep[see ][]{hedges2007correcting}.
-We account for this by explicitly modeling the multilevel structure in the data with a mixed-model, measuring some variables at the voter level and others at the election level  \citep[e.g.][]{raudenbush2002hierarchical}. We also included state random effects, to account for state-level idiosyncrasies that are stable over time.\footnote{An alternative approach is to use cluster-robust standard errors \citep[see][]{freedman2006so}. Doing so, in our model, gave broadly similar results.}
-
-
-
-Another issue with the Nadeau and Lewis-Beck (NLB) model is its use of OLS to model binary outcomes. Since binary outcomes are restricted to be either one or zero, the regression errors $\epsilon$ are necessarily heteroskedastic, which can also bias standard error estimates. Some linear probability modeling techniques can overcome this difficulty \citep[see, e.g.][ sec. 4.6]{agresti2002categorical}, but another issue remains: the fitted values of a linear probability model might fall outside of the range 0--1, which hinders their interpretation. Indeed, when replicating NLB's specification, we found that greater than 10\% of the fitted values fell outside this range. We avoided these problems by modeling the data to fit a logistic regression.%We followed the conventional route in sidestepping this difficulty, which was to model not the probability, but the natural logarithm of the odds %, \hl{that is, the logit of the probability,} of voting for the incumbent party as linear in the regressors: logistic regression. So the second major difference is to make the regression logistic in order to properly account for the binary nature of the dependent variable.
-
-
-
-We further expanded on NLB's model in two different ways. First, the model in NLB was fit using years 1956--1996, which we extended through 2012, using, in part, the ANES 2012 time-series file \cite{ANES2012}.
-We chose to use individual-level data post-1976 because our scientific question fundamentally regards individual voting decisions as a function of their beliefs. As such we gain substantive purchase on our research question by omitting these aggregate level data and restricting our attention to those years where the variables ``retrospective'' and ``prospective'' were captured. By including four more presidential elections than \citet{Nadeau:2001tw}, those from 2000--2012, we could also mitigate the consequences of omitting elections from 1956--1976.
-Second, while their model used an aggregate sociotropic metric for economic voting, we included individual-levels where possible, which conveniently allows us to skirt any worries associated with the ecological fallacy. These sociotropic measures take two forms:
+Models (2)--(4) additionally include voter-level retrospective and/or prospective
+sociotropic measures.
 The ``retrospective'' measure is a voter's answer to the question: ``Would you say that over the past year the nation's economy has gotten better, stayed (all yrs. exc 1984: about) the same or gotten worse?'' while
- the ``prospective'' measure is subjects' answer to the question: ``Do you expect the economy to get better, get
-worse, or stay about the same?'' (1: better, $-1$: worse, 0: same). Model (1) draws from data on presidential voting from 1956--2012. Models (2)--(4), which include belief variables, are fit to data from presidential elections from 1980--2012, since the ANES only began measuring individual's beliefs of sociotropic economic performance following the 1976 election.\footnote{The lack of data regarding individual beliefs about economic performance led \citet{Nadeau:2001tw} to fit their models to an aggregate sociotropic measure, which they termed the ``National Business Index,'' computed using data from a separate survey (page 162). We included the retrospective and prospective belief measure both alone individually (Models 2 and 3) and coupled (Model 4).}
+the ``prospective'' measure is subjects' answer to the question: ``Do you expect the economy to get better, get
+ worse, or stay about the same?'' (1: better, $-1$: worse, 0: same). 
 
-%\st{Finally, motivated in part by NLB's results, we devised a combination measure, which is equal to to retrospective measure when an incumbent \emph{candidate} is running, and equal to the prospective measure otherwise.}
+Model (1) draws from American National
+Election Survey (ANES) time series \cite{ANES} data on presidential
+voting from 1956--2012. Models (2)--(4), which include sociotropic
+variables, are fit to data from presidential elections from
+1980--2012, since the ANES only began measuring individual's beliefs
+of sociotropic economic performance following the 1976 election. RDI data is from the National Bureau of Economic Research.
+The models were fit using the \texttt{lme4} package in \texttt{R} \citep{lme4,rcite}.
+Replication code can be found online at \url{ZEV PLS INSERT}.
 
-For the sake of simplicity, the results in Table 1 came from a ``complete case analysis'' of the data, which dropped any case with any missing regressors. However, in a supplemental analysis we accounted for item-level non-response with multiple imputation \citep{rubin2004multiple}.
-With the \verb|R| package \verb|mice| \citep{mice}, we created five datasets, with missing values for the regressors randomly imputed.
-Next, we used the package \verb|lme4| \citep{lme4} to fit mixed-effects models in each imputed dataset, and combined the results to yield estimates very similar to those in Table \ref{results}.
-This relaxes the strong assumption that item-level nonresponse is entirely random, replacing it with an assumption that nonresponse is random after accounting for the observed regressors.
+For the sake of simplicity, the results in Table 1 came from a
+``complete case analysis'' of the data, which dropped any case with
+any missing regressors. However, in a supplemental analysis we
+accounted for item-level non-response with multiple imputation
+\citep{rubin2004multiple}, using the \verb|R| package \verb|mice|
+\citep{mice}.
+This relaxes the strong assumption that item-level nonresponse is
+entirely random, replacing it with an assumption that nonresponse is
+random after accounting for the observed regressors. 
+The results were very similar to those in Table \ref{results}. 
 
-%I moved this from the body to the appendix ZB 8/18
-Aside from computational tractability, one of the advantages of the
-multilevel logistic regression model is that it allows us to independently assess
-the %effects of %%% added ``respective... votes'' took out ``effects'' A 1/30
- respective relationships between votes and each variable on the
-right-hand side.
-In particular, each coefficient can be interpreted as the relationship
-between its corresponding variable and votes, after modeling the effects of all of the other variables in the model.
-For instance, let $\hat{\gamma}_{1}$ be the estimated coefficient on $\Delta RDI$ in Model 1 found in Table 1. %ADAM(\ref{elecMod}). \marginpar{Did you want my comment here? It looks good to me.}
-One way of interpreting this result would be that, everything else (in
-the model) being equal, when $\Delta RDI$ increases by 1 percentage
-point, one may expect the logit of the probability of a voter choosing
-the incumbent party to increase by about $\hat{\gamma}_{1}$.
+A final caveat is that, though ANES is a nationally representative
+survey, our coefficient estimates are design consistent for the
+subjects in the study who voted or reported their votes. 
+Due to the difficulty of fitting a multilevel model with survey
+weights \citep{gelman2007struggles}, we fit an unweighted model, which
+limits the external validity of its estimates. 
+That being said, our attempts to fit weighted models in Stata
+\citep{stata} with the \verb|gllamm| function \citep{gllamm} yielded
+broadly similar results. 
 
-Regarding epistemic heterogeneity, since each wave of the ANES survey selects a different set of voters, the ANES data don't allow us to identify the individuals who
+
+\subsubsection{Differences from \citet{Nadeau:2001tw}}
+Model (\ref{eq:model}) draws heavily on the main models presented in
+\citet[][NLB]{Nadeau:2001tw}.
+In particular, the set of predictors and interactions was taken
+directly from their models.
+On the other hand, our model differed from their's in several
+respects. 
+
+First, whereas NLB used ordinary least squares (OLS) to model votes as
+a linear function of the predictors, we used a logistic model, which
+is a more common choice for modeling dichotomous outcomes such as votes. 
+The advantages and disadvantages of ``linear probability models'' such
+as NLB's, as compared to logistic models, are the subject of a
+long-running debate in econometrics and statistics 
+\citep[See, e.g.][]{caudill1988practitioners,horrace2006results} which
+is beyond the scope of this paper. 
+That said, there is broad agreement that OLS standard errors---and
+hence p-values and confidence intervals---are
+inappropriate for modeling dichotomous outcomes without further
+adjustment \citep[][ sec. 4.6]{agresti2002categorical}. Furthermore,
+we found that OLS fit election data particularly 
+poorly, with more than 10\% of fitted values falling outside of the
+0--1 probability range. 
+
+Second, the NLB model does not account for clustering of votes by
+election, and instead treated the main variable of interest, $\Delta
+RDI$, as an individual-level variable. 
+This has the effect of artificially decreasing standard error
+estimates and producing over-optimistic inference. 
+We account for this clustering by including random intercepts for
+election year. We also included state random effects, to account for
+state-level idiosyncrasies that are stable over time.\footnote{An
+  alternative approach is to use cluster-robust standard errors
+  \citep[see][]{freedman2006so}. Doing so, in our model, gave broadly
+  similar results.} 
+
+We further expanded on NLB's model in two different ways. First, the
+model in NLB was fit using years 1956--1996, which we extended through
+2012, using, in part, the ANES 2012 time-series file \cite{ANES2012}. 
+We chose to use individual-level data post-1976 because our scientific question fundamentally regards individual voting decisions as a function of their beliefs. As such we gain substantive purchase on our research question by omitting these aggregate level data and restricting our attention to those years where the variables ``retrospective'' and ``prospective'' were captured. By including four more presidential elections than \citet{Nadeau:2001tw}, those from 2000--2012, we could also mitigate the consequences of omitting elections from 1956--1976.
+Second, while their model used an aggregate sociotropic metric for
+economic voting, we included individual-levels where possible, which
+conveniently allows us to skirt any worries associated with the
+ecological fallacy.  
+
+\subsubsection{Modeling Heterogeneity}
+
+Since each wave of the ANES survey
+selects a different set of voters, the ANES data don't allow us to
+identify the individuals who 
 systematically misjudge the economy, and thereby directly rule out
 such a possibility.
 However, the ANES data do allow us to identify the correlations between
@@ -689,7 +737,9 @@ A demographic whose members' retrospective judgement of the economy
 correlate negatively with $\Delta RDI$ may indicate a problem.
 To attempt to identify such a sub-group, we fit a multilevel linear model to the
 data, predicting \emph{retrospective} as a function of $\Delta RDI$.
-The model included interactions between $\Delta RDI$ and a thick set of probative variables including personal finances, incumbent party, race, and party ID (variables incorporated in models (1)--(4)), %(\ref{indMod})-(\ref{elecMod}),
+The model included interactions between $\Delta RDI$ and a thick set
+of probative variables including personal finances, incumbent party,
+race, and party ID (variables incorporated in models (1)--(4)), 
 in addition to social class, education, gender, Hispanic
 identification, marital status, urbanism, and state. This test seeks
 to find exceptional cases, subsets of the population that
@@ -705,71 +755,21 @@ Calculated thusly, no respondent's estimated slope was negative---for
 every subgroup we identified, higher $\Delta RDI$ was associated with
 higher retrospective judgements of the economy.
 
-To test the possible heterogeneity of values held among the electorate we estimate the conceivable size of such a minority that might unwittingly vote for the right candidate given mistaken beliefs by asking whether there exists some subset of the sample that prefers a shrinking economy. %, by examining how the relationship between $\Delta RDI$ and votes varies along with observed individual-level variables.
+To test the possible heterogeneity of values held among the electorate
+we estimate the conceivable size of such a minority that might
+unwittingly vote for the right candidate given mistaken beliefs by
+asking whether there exists some subset of the sample that prefers a
+shrinking economy. %, by examining how the relationship between
+                   %$\Delta RDI$ and votes varies along with observed
+                   %individual-level variables. 
 To do this we fit another large interaction model: this time, a
 multilevel logit model model predicting votes as a function of $\Delta
 RDI$ interacted with all of the same probitive covariates as above.
 Again, no respondant's estimated $\Delta RDI$ slope was negative---for
 every subgroup we identified, higher $\Delta RDI$ was associated with
-a higher probability of voting for the incumbent.\footnote{A full report of the model results is available as an online supplement.}
+a higher probability of voting for the incumbent.
 
-\begin{comment}
-Though we argue that RDI's lack of significance when prospective and retrospective variables are included in the model is not a problem, we must admit that this informal path analysis \citep{baron1986moderator} should be taken with a grain of salt.
-In particular; \citet{imai2010identification} has shown that the path analysis estimators of indirect and direct effects rely upon sequential ignorability.
-Among other things, this implies that, conditioning on the other variables in the model, the relationship between subjects' perceptions of the economy and their votes are unconfounded.
-This would be violated if, say, a different macroeconomic indicator, such as unemployment, predicted both subjects' perceptions of the economy and RDI.
-Nevertheless, it is hard to see how RDI would affect voters' choices other than by affecting their perceptions of the macroeconomy, and these results support that intuition.
-\end{comment}
-
-A final caveat is that, though ANES is a nationally representative survey, our coefficient estimates are design consistent for the subjects in the study who voted or reported their votes.
-Due to the difficulty of fitting a multilevel model with survey weights \citep{gelman2007struggles}, we fit an unweighted model, which limits the external validity of its estimates.
-That being said, our attempts to fit weighted models in Stata \citep{stata} with the \verb|gllamm| function \citep{gllamm} yielded broadly similar results.
-
-We examined several alternative model specifications, as a robustness check.
-The results of % our approximate replication of \citet{Nadeau:2001tw}'s model,
-our multiple-imputation model, our mediation model, robustness checks and residual plots, along with the code to produce them, are available at \url{http://tinyurl.com/EpDemSupplement-pdf}.
-
-%\subsection{Modeling Choices: Mediation Analysis}\label{sec:mediationAppendix}
-%We specified and fit a causal version of the multilevel models of Section~\ref{sec:model}.
-%First, we dichotomized $\Delta RDI$ into low and high by splitting it at its median.
-%Next, we modeled votes with model (\ref{indMod})--(\ref{elecMod}), including $Retro$ as a predictor, and specifying fixed, not random, effects for state, due to software constraints.
-%Next, we modeled $Retro$ as linear in $\Delta RDI$ (dichotomized), finances, incumbent party, race, and party identification, with random effects for year and fixed effects for state.
-%Finally, we combined the two models using the \verb|mediation| package in \verb|R| \citep{mediation}.
-%
-%Moving from correlational analysis, as in the model described by
-%equations (\ref{indMod}) and (\ref{elecMod}), to a causal analysis,
-%requires making untestable assumptions.
-%First, the very definitions in equations (\ref{eq:mediated}) and
-%(\ref{eq:direct}) require that one election's $\Delta RDI$ does not
-%affect a different election's votes.
-%This assumption would be problematic if, for instance, voters tend to
-%account for past elections' $\Delta RDI$ when they vote.
-%A second assumption is that the relationship between $\Delta RDI$ and
-%votes is unconfounded, conditional on the other variables in the
-%model.
-%There are any number of ways for this to be violated, for instance, if
-%wars simultaneously boost $\Delta RDI$ and cause voters to endorse the
-%incumbent party.
-%Mediational analysis adds yet two more assummptions:
-%first, that conditional on the other variables in the model, the
-%relationship between  $\Delta
-%RDI$ and $Retro$ is unconfounded (which identifies the effect of
-%$\Delta RDI$ on $Retro$), and second,
-%that conditional
-%on $\Delta RDI$ and the other variables in the model, the relationship
-%between $Retro$ and votes is unconfounded.
-%This last assumption would be untestable even if $\Delta RDI$ were
-%assigned randomly.
-
- % Table created by stargazer v.5.1 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, Aug 22, 2014 - 18:41:57
-% Table created by stargazer v.5.1 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, Aug 29, 2014 - 08:46:16
-
-
-%%I want to be up font about the fact that we have submitted this paper previously to AJPS. We think that the paper has gone through a substantial revision (in part by reflecting on the helpful comments of the reviewers) in the intervening period and might warrant reconsideration. If you do not feel that is the case we completely understand if this paper gets desk-rejected.
-%%
-%%One further note: this paper is intended to weigh in on an ongoing literature in democratic theory. While we provide fresh data analysis, there is no substantive contribution to the empirical literature on economic voting. Some reviewers have been confused about this point in the past, so we just wanted to clarify the point.
+Replication code and results for these two models can be found at \url{ZEV PLS INSERT}.
 
 \bibliographystyle{philreview}	% (uses file "plain.bst")
 \bibliography{betting}
