@@ -16,11 +16,16 @@ library(splines)
 #print(load('datNonImputed.RData'))
 ```
 
+Set character variable `dataLocation` to the file path to where the
+dataset is stored. e.g.
+```{r dataLocation, eval=FALSE}
+dataLocation <- '~/anesData/'
+```
 
 ```{r makeData}
 
 if(!is.element('anes',ls())){
-anes <- read.table('data/anes_timeseries_cdf_rawdata.txt', sep='|',header=TRUE)
+anes <- read.table(paste0(dataLocation,'anes_timeseries_cdf_rawdata.txt'), sep='|',header=TRUE)
 }
 
 ## keep only years of interest
@@ -84,8 +89,8 @@ dat$race6[dat$race6==0] <- 9
 
 
 
-nbiRdi <- read.csv('data/NBI.RDI.csv') #this is cut and pasted from Table 1 in Nadeau Lewis-Beck.
-## I'm assuming the data they put in the table is the data they used in the analysis.
+nbiRdi <- read.csv(paste0(dataLocation,'NBI.RDI.csv')) #this is cut and pasted from Table 1 in Nadeau Lewis-Beck.
+
 
 dat <- merge(dat,nbiRdi,by='year',all.x=TRUE)
 
@@ -99,7 +104,7 @@ dat$age <- dat$age/sd(dat$age,na.rm=TRUE)
 dat$gender <- factor(anes$VCF0104,exclude=NULL)
 dat$hisp <- factor(anes$VCF0107  )
 dat$hisp[dat$hisp%in%c('1','2','3','4')] <- '1'
-dat$educ <- factor(anes$VCF0110,ordered=TRUE,exclude=NULL)
+dat$educ <- factor(anes$VCF0110,ordered=FALSE,exclude=NULL)
 dat$urbanism <- factor(anes$VCF0111,exclude=NULL)
 dat$marital <- anes$VCF0147
 dat$marital[dat$marital==4] <- 3
@@ -112,27 +117,13 @@ dat$class[dat$class=='7'] <- '9'
 
 
 yearExt=c(2000,2004,2008,2012)
-rdiDat <- read.csv('data/RDI.csv',na.st='.',stringsAsFactors=FALSE)
+rdiDat <- read.csv(paste0(dataLocation,'RDI.csv'),na.st='.',stringsAsFactors=FALSE)
 # downloaded from FRED http://research.stlouisfed.org/fred2/series/A229RX0/downloaddata 5/27/14
 
 
-nbiDat <- read.csv('data/NBIquarterly.csv',skip=1)
-# downloaded from http://www.sca.isr.umich.edu/data-archive/mine.php 'Table 25: Current Business Conditions Compared with a Year Ago' 5/27/14
-nbiDat$index <- nbiDat[,'Better.Now']-nbiDat[,'Worse.Now']
-
-
-nbiYear <- function(year){
-
-    row <- function(quarter)
-        which(nbiDat$Year==year & nbiDat$Quarter==quarter)
-
-
-    nbiDat$index[row(4)]
-}
 
 nbiRdiExtend <- cbind(
     year=yearExt,
-    NBI=sapply(yearExt, nbiYear),
 
     RDI=sapply(yearExt,function(year)
         rdiDat[rdiDat$DATE==paste(year,'-11-01',sep=''),'VALUE'])
@@ -140,7 +131,6 @@ nbiRdiExtend <- cbind(
 
 for(y in c(2000,2004,2008,2012)){
     row <- nbiRdiExtend[nbiRdiExtend[,'year']==y,]
-    dat$NBI[dat$year==y] <- row['NBI']
     dat$RDI[dat$year==y] <- row['RDI']
 }
 
@@ -170,15 +160,16 @@ stargazer(rf,ret,pro,both,type='html',star.cutoffs=c(0.05,0.01,0.001),
 dat <- within(dat,{
     financesFac <- factor(finances,exclude=NULL)
     partyIDFac <- factor(partyID,exclude=NULL)})
+
 fullInteraction <- glmer(vote~RDI*(financesFac+partyIDFac+
-                                   race6+age+class+educ+gender+marital+urbanism)+
+                                   race6+age+class+educ+gender+marital)+urbanism)+
                              incumbentParty*(race6+partyID)+
                              (RDI|state)+(1|year),data=dat,family=binomial(logit))
-
+save(fullInteraction,file='fullInteraction.RData')
 
 slopes <- fixef(fullInteraction)
 slopes <- slopes[grep('RDI',names(slopes))]
-slopes[-1] <- slopes[-1]#+slopes['RDI']
+
 
 ### for whom is the coefficient on RDI negative?
 terms <- names(fixef(fullInteraction))
