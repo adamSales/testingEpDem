@@ -162,7 +162,7 @@ dat <- within(dat,{
     partyIDFac <- factor(partyID,exclude=NULL)})
 
 fullInteraction <- glmer(vote~RDI*(financesFac+partyIDFac+
-                                   race6+age+class+educ+gender+marital)+urbanism)+
+                                   race6+age+class+educ+gender+marital+urbanism)+
                              incumbentParty*(race6+partyID)+
                              (RDI|state)+(1|year),data=dat,family=binomial(logit))
 save(fullInteraction,file='fullInteraction.RData')
@@ -233,6 +233,8 @@ print(with(pop,year[(-1)^(incWin)*diff> Margin/2]))
 
 ```{r}
 
+ilogit <- function(x) exp(x)/(1+exp(x)) #inverse logit function
+
 rdisd <- sd(vapply(unique(dat$year),function(y) mean(dat$RDI[dat$year==y]),1))
 
 pop$logodds <- log((pop$incVote/100)/(1-pop$incVote/100))
@@ -262,7 +264,6 @@ print(with(pop2,year[(-1)^(incWin)*diff> Margin/2]))
 ```{r}
 
 retsd <- sd(vapply(unique(ddd$year),function(y) mean(ddd$retrospective[ddd$year==y]),1))
-ilogit <- function(x) exp(x)/(1+exp(x))
 
 pop2$logodds <- log((pop2$incVote/100)/(1-pop2$incVote/100))
 pop2$counter <- ilogit(pop2$logodds+(-1)^(pop2$incWin)*fixef(ret)['retrospective'])
